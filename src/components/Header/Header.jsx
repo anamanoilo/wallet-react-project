@@ -1,6 +1,11 @@
 // import s from './Header.module.scss'
+import Container from "components/Container";
 
 const Header = () => {
-  return <div>Header</div>;
+  return (
+    <header>
+      <Container>Header</Container>
+    </header>
+  );
 };
 export default Header;
