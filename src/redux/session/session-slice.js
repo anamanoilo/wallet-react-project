@@ -18,7 +18,6 @@ const sessionSlice = createSlice({
   initialState,
   extraReducers: {
     [register.fulfilled](state, action) {
-      console.log("action", action);
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuth = true;
@@ -37,7 +36,6 @@ const sessionSlice = createSlice({
       state.fetchCurrentUser = true;
     },
     [refresh.fulfilled](state, action) {
-      console.log("action", action);
       state.user = action.payload;
       state.isAuth = true;
       state.fetchCurrentUser = false;
