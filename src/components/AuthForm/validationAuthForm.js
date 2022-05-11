@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const authValidationSchema = Yup.object().shape({
+const authValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Please enter correct email")
     .max(254, "Max 254")
@@ -17,3 +17,20 @@ export const authValidationSchema = Yup.object().shape({
     .max(12, "Max 12")
     .required("this field is required"),
 });
+const loginValidationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Please enter correct email")
+    .max(254, "Max 254")
+    .required("this field is required"),
+  password: Yup.string()
+    .min(6, "Please enter more than 5 character")
+    .max(12, "Max 12")
+    .required("this field is required"),
+});
+export function a(type) {
+  if (type === "auth") {
+    return authValidationSchema;
+  } else {
+    return loginValidationSchema;
+  }
+}

@@ -3,7 +3,7 @@ import AuthForm from "components/AuthForm";
 const Registration = () => {
   return (
     <div>
-      <AuthForm />
+      <AuthForm type="auth" />
     </div>
   );
 };
