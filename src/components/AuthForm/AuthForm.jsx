@@ -18,8 +18,7 @@ export const AuthForm = ({ type }) => {
         validationSchema={validationSchema(type)}
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
-          console.log("values", values);
-          type === "auth"
+          type === "signUp"
             ? dispatch(register(values))
             : dispatch(logIn(values));
           resetForm();
@@ -37,7 +36,7 @@ export const AuthForm = ({ type }) => {
           dirty,
         }) => (
           <form onSubmit={handleSubmit}>
-            {type === "auth" ? (
+            {type === "signUp" ? (
               <>
                 <label htmlFor="email">
                   email

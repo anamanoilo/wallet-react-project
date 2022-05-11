@@ -28,7 +28,7 @@ const loginValidationSchema = Yup.object().shape({
     .required("this field is required"),
 });
 export function validationSchema(type) {
-  if (type === "auth") {
+  if (type === "signUp") {
     return authValidationSchema;
   } else {
     return loginValidationSchema;

@@ -19,7 +19,7 @@ function App() {
     <div>
       <Routes>
         <Route
-          path="/auth"
+          path="/signUp"
           element={
             <PublicRoute restricted>
               <Registration />
@@ -27,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/Login"
+          path="/login"
           element={
             <PublicRoute restricted>
               <Login />
