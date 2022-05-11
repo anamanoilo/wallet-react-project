@@ -1,0 +1,49 @@
+@import "stylesheet/_mixin.scss";
+
+.Dashboard {
+    height: 500px;
+    padding-top: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--auth-bg-cl);
+    @include mq(tablet) {
+        padding-top: 20px;
+        background-image: radial-gradient(circle at top right, 
+        var(--expense-cl) 0.5%,
+        var(--auth-bg-cl) 40%,
+        #fff 50%);
+        
+    }
+    @include mq(desktop) {
+        flex-direction: row;
+        padding-top: 0px;
+    }
+}
+
+.Dashboard__left {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--auth-bg-cl);
+@include mq(tablet) {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+}
+@include mq(desktop) {
+    flex-direction: column;
+    border-right: 3px solid var(--auth-bg-cl) ;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px rgba(255, 255, 255, 0.6);
+    margin-bottom: 0;
+    padding-top: 45px;
+}
+}
+
+.Dashboard__nav {
+    margin-right: 20px;
+    @include mq(desktop) {
+        margin-right: 0;
+    }
+}
