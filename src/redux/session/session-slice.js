@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { register, logIn, logOut } from "./auth-operation";
 
 const initialState = {
   isAuth: false,
   token: null,
   user: {
-    name: null,
+    username: "",
+    email: "",
+    password: "",
   },
   error: null,
 };
@@ -12,14 +15,31 @@ const initialState = {
 const sessionSlice = createSlice({
   name: "session",
   initialState,
-  reducers: {
-    loggedIn: (state, { payload }) => {
+  extraReducers: {
+    [register.fulfilled](state, action) {
+      console.log("action", action);
+      state.user = action.payload.user;
+      state.token = action.payload.token;
       state.isAuth = true;
-      state.token = payload;
     },
-    loggedOut: () => {
-      return initialState;
+    [logIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isAuth = true;
     },
+    [logOut.fulfilled](state) {
+      state.user = { username: "", email: "", password: "" };
+      state.token = null;
+      state.isAuth = false;
+    },
+
+    // loggedIn: (state, { payload }) => {
+    //   state.isAuth = true;
+    //   state.token = payload;
+    // },
+    // loggedOut: () => {
+    //   return initialState;
+    // },
   },
 });
 
