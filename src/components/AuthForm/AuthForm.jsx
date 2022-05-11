@@ -1,7 +1,7 @@
 // import s from "./AuthForm.module.scss";
 import { Formik, ErrorMessage } from "formik";
 import { authValidationSchema } from "./validationAuthForm";
-import { register } from "redux/session/auth-operation";
+import { register, login } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
 
 export const AuthForm = () => {
@@ -62,7 +62,6 @@ export const AuthForm = () => {
               {/* {errors.password && touched.password && errors.password} */}
               <ErrorMessage component="div" name="password" />
             </label>
-            {}
             <label htmlFor="confirmPassword">
               confirmPassword
               <input
