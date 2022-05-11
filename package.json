@@ -7,6 +7,7 @@
     "axios": "^0.27.2",
     "chart.js": "^3.7.1",
     "cra-template-redux": "2.0.0",
+    "formik": "^2.2.9",
     "modern-normalize": "^1.1.0",
     "node-sass": "^7.0.1",
     "react": "^18.1.0",
