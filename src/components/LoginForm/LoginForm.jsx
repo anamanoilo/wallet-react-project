@@ -1,25 +1,22 @@
-// import s from "./AuthForm.module.scss";
 import { Formik, ErrorMessage } from "formik";
-import { authValidationSchema } from "./validationAuthForm";
-import { register } from "redux/session/auth-operation";
+import { loginValidationSchema } from "./loginValidation";
+import { logIn } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
 
-export const AuthForm = () => {
+export const LoginForm = () => {
   const dispatch = useDispatch();
   return (
     <div>
       <Formik
         initialValues={{
-          username: "",
           email: "",
           password: "",
-          confirmPassword: "",
         }}
-        validationSchema={authValidationSchema}
+        validationSchema={loginValidationSchema}
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
           console.log("values", values);
-          dispatch(register(values));
+          dispatch(logIn(values));
           resetForm();
         }}
       >
@@ -50,7 +47,7 @@ export const AuthForm = () => {
             </label>
 
             <label htmlFor="password">
-              password
+              Password
               <input
                 type="password"
                 name="password"
@@ -62,34 +59,9 @@ export const AuthForm = () => {
               {/* {errors.password && touched.password && errors.password} */}
               <ErrorMessage component="div" name="password" />
             </label>
-            {}
-            <label htmlFor="confirmPassword">
-              confirmPassword
-              <input
-                type="password"
-                name="confirmPassword"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.confirmPassword}
-              />
-              {/* {errors.password && touched.password && errors.password} */}
-              <ErrorMessage component="div" name="confirmPassword" />
-            </label>
-            <label htmlFor="username">
-              Name
-              <input
-                type="name"
-                name="username"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-              />
-              {/* {errors.email && touched.email && errors.email} */}
-              <ErrorMessage component="div" name="username" />
-            </label>
 
             <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
-              registration
+              LogIn
             </button>
           </form>
         )}
@@ -98,4 +70,4 @@ export const AuthForm = () => {
   );
 };
 
-export default AuthForm;
+export default LoginForm;
