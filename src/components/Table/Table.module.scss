@@ -1,0 +1,82 @@
+// @import "stylesheet/shared.scss";
+@import "src/stylesheet/_mixin.scss";
+
+.expenses__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 32px;
+  @include mq(mobile) {
+    width: 440px;
+  }
+
+  @include mq(tablet) {
+    width: 336px;
+    padding-top: 40px;
+  }
+
+  @include mq(desktop) {
+    width: 395px;
+    padding-top: 0;
+  }
+}
+.select__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 20px;
+  //   @include mq(mobile) {
+  //     width: 440px;
+  //   }
+
+  @include mq(tablet) {
+    //   width: 336px;
+    flex-direction: row;
+  }
+}
+.select {
+  border-radius: 30px;
+  border: 1px solid var(--main-text-cl);
+  color: var(--main-text-cl);
+  font-size: 16px;
+  line-height: 1.5;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @include mq(tablet) {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.select:first-child {
+  margin-bottom: 20px;
+  @include mq(tablet) {
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
+  @include mq(desktop) {
+    margin-right: 32px;
+  }
+}
+
+.table__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.table__title {
+  display: flex;
+  border-radius: 30px;
+}
+.first {
+  width: 80%;
+  //   border-radius: 30px;
+  border-radius: 30%;
+}
+.second {
+  width: 20%;
+  border-radius: 30px;
+}

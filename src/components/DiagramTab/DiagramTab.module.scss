@@ -1,0 +1,18 @@
+@import "src/stylesheet/_mixin.scss";
+.wrapper {
+  @include mq(tablet) {
+    display: flex;
+  }
+}
+.title {
+  display: none;
+  @include mq(desktop) {
+    // font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.5;
+    align-items: start;
+    color: var(--main-text-cl);
+  }
+}

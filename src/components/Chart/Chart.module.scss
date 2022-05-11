@@ -1,0 +1,48 @@
+@import "src/stylesheet/_mixin.scss";
+
+.wrapper__chart {
+  width: 100%;
+  padding-top: 20px;
+  @include mq(desktop) {
+    padding-top: 0;
+  }
+}
+
+.title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.5;
+  align-items: start;
+  color: var(--main-text-cl);
+  margin-bottom: 8px;
+  @include mq(tablet) {
+    margin-bottom: 20px;
+  }
+
+  @include mq(desktop) {
+    display: none;
+    margin-bottom: 0;
+  }
+}
+
+.wrapper__doughnut {
+  width: 280px;
+  height: 280px;
+
+  @include mq(mobile) {
+    width: 440px;
+    height: 440px;
+  }
+
+  @include mq(tablet) {
+    width: 336px;
+    height: 336px;
+  }
+
+  @include mq(desktop) {
+    width: 288px;
+    height: 288px;
+  }
+}
