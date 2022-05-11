@@ -52,3 +52,21 @@ export const logOut = createAsyncThunk(
     }
   }
 );
+
+export const refresh = createAsyncThunk(
+  "auth/refresh",
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const localStorageToken = state.session.token;
+
+    if (localStorageToken === null) return rejectWithValue();
+
+    token.set(localStorageToken);
+    try {
+      const { data } = await axios.get("/api/users/current");
+      return data;
+    } catch (error) {
+      rejectWithValue(error.message);
+    }
+  }
+);

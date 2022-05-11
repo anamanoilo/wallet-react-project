@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PublicRoute from "components/PublicRoute/PublicRoute";
 import Registration from "pages/Registration/Registration";
 import Login from "pages/Login/Login";
 import { Route, Routes } from "react-router-dom";
-import { logOut } from "redux/session/auth-operation";
-import axios from "axios";
+import { refresh } from "redux/session/auth-operation";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
+
   return (
     <div>
       <Routes>
