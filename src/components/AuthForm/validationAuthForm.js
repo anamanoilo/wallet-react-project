@@ -27,7 +27,7 @@ const loginValidationSchema = Yup.object().shape({
     .max(12, "Max 12")
     .required("this field is required"),
 });
-export function a(type) {
+export function validationSchema(type) {
   if (type === "auth") {
     return authValidationSchema;
   } else {

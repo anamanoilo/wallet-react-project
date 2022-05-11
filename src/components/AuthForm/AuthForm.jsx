@@ -1,6 +1,6 @@
 // import s from "./AuthForm.module.scss";
 import { Formik, ErrorMessage } from "formik";
-import { a } from "./validationAuthForm";
+import { validationSchema } from "./validationAuthForm";
 import { logIn, register } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
 
@@ -15,7 +15,7 @@ export const AuthForm = ({ type }) => {
           password: "",
           confirmPassword: "",
         }}
-        validationSchema={a(type)}
+        validationSchema={validationSchema(type)}
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
           console.log("values", values);
