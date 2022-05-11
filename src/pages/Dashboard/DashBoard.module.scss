@@ -8,9 +8,10 @@
     align-items: center;
     background-color: var(--auth-bg-cl);
     @include mq(tablet) {
+        align-items:unset;
         padding-top: 20px;
         background-image: radial-gradient(circle at top right, 
-        var(--expense-cl) 0.5%,
+        var(--expense-cl) 10%,
         var(--auth-bg-cl) 40%,
         #fff 50%);
         

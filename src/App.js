@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import PublicRoute from "components/PublicRoute/PublicRoute";
 import Registration from "pages/Registration/Registration";
+import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import Login from "pages/Login/Login";
+import Dashboard from "pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
 
 import { refresh } from "redux/session/auth-operation";
@@ -33,6 +35,18 @@ function App() {
               <Login />
             </PublicRoute>
           }
+        />
+        {/* <Route
+          path="*"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        /> */}
+        <Route
+          path="*"
+          element={<Dashboard />}
         />
       </Routes>
     </div>

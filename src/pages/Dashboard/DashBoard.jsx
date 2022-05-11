@@ -21,14 +21,11 @@ const Dashboard = () => {
           {matches.small &&
             <>
               <Navigation />
-
-              <Balance />
-              <HomeTab />
-              {/* <Routes>
-                <Route path='/hometab' element={<><Balance/><HomeTab /></>}/>
-                <Route path='/currency' element={<Currency />}/>
+              <Routes>
+                <Route path='*' element={<><Balance/><HomeTab /></>}/>
+                <Route path="/currency" element={<Currency />}/>
                 <Route path='/diagramtab' element={<DiagramTab />}/>
-              </Routes> */}
+              </Routes>
             </>
           }
           {matches.medium && <>
@@ -40,11 +37,10 @@ const Dashboard = () => {
               <Currency/>
             </div>
             <div className={s.Dashboard__rigth}>
-              <HomeTab />
-              {/* <Routes>
-                <Route path='/hometab' element={<HomeTab />}/>
+              <Routes>
+                <Route path='*' element={<HomeTab />}/>
                 <Route path='/diagramtab' element={<DiagramTab />}/>
-              </Routes> */}
+              </Routes>
             </div>
           </>}
             </Fragment>
