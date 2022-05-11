@@ -1,7 +1,9 @@
 import { useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import s from "./Modal.module.scss";
 
+const modalRoot = document.querySelector('#modal-root');
 const Modal = ({ children, closeModal }) => {
   const closeModalByEsc = useCallback(
     (e) => {
@@ -25,10 +27,11 @@ const Modal = ({ children, closeModal }) => {
     };
   }, [closeModalByEsc]);
 
-  return (
+  return createPortal(
     <div className={s.overlay} onClick={closeByBackdropClick}>
       <div className={s.modal}>{children}</div>
-    </div>
+    </div>,
+    modalRoot,
   );
 };
 

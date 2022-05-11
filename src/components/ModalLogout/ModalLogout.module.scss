@@ -1,0 +1,40 @@
+@import "stylesheet/shared.scss";
+.logout{
+   padding: 40px 80px;
+    max-width: 540px;
+      &__title{
+   font-family: 'Poppins';
+   font-weight: 400;
+   font-size: 30px;
+   line-height: 1.5;
+   text-align: center;
+   margin-bottom: 40px;
+   }
+}
+.wrapper{
+   display: flex;
+   justify-content: space-around;
+   &__btn{
+      font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+text-align: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+border: none;
+padding: 13px 65px;
+border-radius: 20px;
+background-color: var(--main-bg-cl);
+border: 1px solid var(--accent-active-cl);
+color: var(--accent-active-cl);
+transition: all 250ms ease;
+      &:hover,
+      &:focus{
+         background-color: var(--income-cl);
+         color: var(--main-bg-cl);
+         border: 1px solid transparent;
+      }
+   }
+}
