@@ -7,8 +7,8 @@
     "axios": "^0.27.2",
     "chart.js": "^3.7.1",
     "cra-template-redux": "2.0.0",
+    "formik": "^2.2.9",
     "modern-normalize": "^1.1.0",
-    "node-sass": "^7.0.1",
     "react": "^18.1.0",
     "react-chartjs-2": "^4.1.0",
     "react-datetime": "^3.1.1",
@@ -21,6 +21,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.1",
     "redux-persist": "^6.0.0",
+    "sass": "^1.51.0",
     "yup": "^0.32.11"
   },
   "scripts": {

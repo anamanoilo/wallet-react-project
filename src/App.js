@@ -1,10 +1,12 @@
 import React from "react";
+
 import PublicRoute from "components/PublicRoute/PublicRoute";
 import Registration from "pages/Registration/Registration";
 import Login from "pages/Login/Login";
 import { Route, Routes } from "react-router-dom";
 import { logOut } from "redux/session/auth-operation";
-import axios from "axios";
+import "stylesheet/shared.scss";
+
 
 function App() {
   return (

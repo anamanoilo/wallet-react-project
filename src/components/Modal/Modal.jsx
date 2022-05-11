@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import s from "./Modal.module.scss";
 
-const Modal = ({ children }) => {
-  const closeModal = () => {
-    return null; // треба змінити флаг isModalOpen
-  };
+const Modal = ({ children, closeModal }) => {
+  const closeModalByEsc = useCallback(
+    (e) => {
+      if (e.code === "Escape") {
+        closeModal();
+      }
+    },
+    [closeModal]
+  );
 
-  const closeModalByEsc = (e) => {
-    if (e.code === "Escape") {
-      closeModal();
-    }
-  };
   const closeByBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
@@ -22,14 +23,18 @@ const Modal = ({ children }) => {
     return () => {
       window.removeEventListener("keydown", closeModalByEsc);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [closeModalByEsc]);
 
   return (
     <div className={s.overlay} onClick={closeByBackdropClick}>
       <div className={s.modal}>{children}</div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default Modal;
