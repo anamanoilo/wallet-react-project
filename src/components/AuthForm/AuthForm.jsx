@@ -189,7 +189,7 @@ export const AuthForm = ({ type }) => {
                 >
                   LogIn
                 </Button>
-                <Link className={classNames(s.btnFormLogin)} to="/signup">
+                <Link className={classNames(s.btnFormLogin)} to="/signUp">
                   Signup
                 </Link>
               </div>
