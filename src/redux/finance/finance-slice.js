@@ -3,6 +3,7 @@ import {
   getTransactions,
   getUserBalance,
   getSummary,
+  getCategories,
 } from "./finance-operations-nastya";
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   totalBalance: null,
   summary: [],
   error: null,
+  categories: [],
 };
 
 const financeSlice = createSlice({
@@ -21,17 +23,20 @@ const financeSlice = createSlice({
     },
   },
   extraReducers: {
-    [getUserBalance.fulfilled]: (state, { payload }) => {
-      state.totalBalance = payload;
-    },
-    [getUserBalance.rejected]: (state, { payload }) => {
-      state.error = payload;
-    },
-    [getTransactions.fulfilled]: (state, { payload }) => {
-      state.data = payload;
-    },
+    // [getUserBalance.fulfilled]: (state, { payload }) => {
+    //   state.totalBalance = payload;
+    // },
+    // [getUserBalance.rejected]: (state, { payload }) => {
+    //   state.error = payload;
+    // },
+    // [getTransactions.fulfilled]: (state, { payload }) => {
+    //   state.data = payload;
+    // },
     [getSummary.fulfilled]: (state, { payload }) => {
       state.summary = payload;
+    },
+    [getCategories.fulfilled]: (state, { payload }) => {
+      state.categories = payload;
     },
   },
 });
