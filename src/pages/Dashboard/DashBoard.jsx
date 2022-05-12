@@ -11,7 +11,7 @@ import s from './DashBoard.module.scss';
 const Dashboard = () => {
 
   return (<>
-    <h1>Dashboard page</h1><div className={s.Dashboard}>
+  <div className={s.Dashboard}>
     <Media queries={{
           small: "(max-width: 767px)",
           medium: "(min-width: 768px)",

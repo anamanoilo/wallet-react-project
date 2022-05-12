@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div>
+      <Header />
       <Routes>
         <Route
           path="/signUp"
@@ -49,7 +50,7 @@ function App() {
           element={<Dashboard />}
         />
       </Routes>
-      <Header />
+      
     </div>
   );
 }

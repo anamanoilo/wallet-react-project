@@ -11,11 +11,11 @@
     @include mq(tablet) {
         align-items: center;
         padding-top: 20px;
-        background-image: url(../../bc-image/Ellipse1-tablet.png), url(../../bc-image/Ellipse2-tablet.png);
+        background-image: url(../../bc-image/Ellipse1-tablet.webp), url(../../bc-image/Ellipse2-tablet.webp);
         background-repeat: no-repeat;
         background-position: left bottom, right -9em top -5em;
         @include retina() {
-            background-image:url(../../bc-image/Ellipse1-2x-tablet.png), url(../../bc-image/Ellipse2-2x-tablet.png);
+            background-image:url(../../bc-image/Ellipse1-2x-tablet.webp), url(../../bc-image/Ellipse2-2x-tablet.webp);
             background-size: 35em;
         }
     }
@@ -23,12 +23,12 @@
         align-items: unset;
         flex-direction: row;
         padding-top: 0px;
-        background-image: url(../../bc-image/Ellipse1-desktop.png), url(../../bc-image/Ellipse-2-desktop.png);
+        background-image: url(../../bc-image/Ellipse1-desktop.webp), url(../../bc-image/Ellipse-2-desktop.webp);
             background-repeat: no-repeat;
             background-position: left bottom, right top -4em;
         
         @include retina() {
-            background-image: url(../../bc-image/Ellipse1-2x-desktop.png), url(../../bc-image/Ellipse2-2x-desktop.png);
+            background-image: url(../../bc-image/Ellipse1-2x-desktop.webp), url(../../bc-image/Ellipse2-2x-desktop.webp);
             background-size: 35em;
             }
     }
