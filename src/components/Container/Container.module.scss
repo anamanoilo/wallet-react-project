@@ -1,7 +1,7 @@
 @import "../../stylesheet/_mixin.scss";
 
 .container {
-  width: 100%;
+  width: 280px;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
@@ -11,9 +11,9 @@
   }
 
   @include mq(tablet) {
-    padding-left: 32px;
-    padding-right: 32px;
-    width: 704px;
+    padding-left: 117px;
+    padding-right: 117px;
+    width: 533px;
   }
 
   @include mq(desktop) {

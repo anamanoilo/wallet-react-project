@@ -3,9 +3,9 @@ import Container from "components/Container";
 
 const Login = () => {
   return (
-    <div>
+    <Container>
       <AuthForm type="login" />
-    </div>
+    </Container>
   );
 };
 
