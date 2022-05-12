@@ -1,0 +1,138 @@
+// @import "stylesheet/shared.scss";
+@import "../../stylesheet/_mixin.scss";
+
+.expenses__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 32px;
+  @include mq(mobile) {
+    width: 440px;
+  }
+
+  @include mq(tablet) {
+    width: 336px;
+    padding-top: 40px;
+  }
+
+  @include mq(desktop) {
+    width: 395px;
+    padding-top: 0;
+  }
+}
+.select__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 20px;
+  //   @include mq(mobile) {
+  //     width: 440px;
+  //   }
+
+  @include mq(tablet) {
+    //   width: 336px;
+    flex-direction: row;
+  }
+}
+.select {
+  border-radius: 30px;
+  border: 1px solid var(--main-text-cl);
+  color: var(--main-text-cl);
+  font-size: 16px;
+  line-height: 1.5;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @include mq(tablet) {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.select:first-child {
+  margin-bottom: 20px;
+  @include mq(tablet) {
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
+  @include mq(desktop) {
+    margin-right: 32px;
+  }
+}
+
+.table__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.12;
+}
+
+.table__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 30px;
+  padding-top: 16px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: var(--main-bg-cl);
+}
+.table__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  height: 50px;
+}
+.table__color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+.table__name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+}
+.table__total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 20%;
+}
+.table__bottom {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 14px;
+}
+
+.first {
+  width: 80%;
+  display: inline-block;
+}
+.second__expense {
+  width: 20%;
+  display: inline-block;
+  color: var(--expense-cl);
+  text-align: end;
+}
+.second__income {
+  width: 20%;
+  display: inline-block;
+  color: var(--income-cl);
+  text-align: end;
+}

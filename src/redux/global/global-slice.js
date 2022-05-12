@@ -10,9 +10,9 @@ const globalSlice = createSlice({
   name: "global",
   initialState,
   reducers: {
-    toggleModalAddTransaction: (state) => !state.isModalAddTransactionOpen,
-    toggleModalLogout: (state) => !state.isModalLogoutOpen,
-    toggleIsLoading: (state) => !state.isLoading,
+    toggleModalAddTransaction: (state) => {state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen},
+    toggleModalLogout: (state) => {state.isModalLogoutOpen = !state.isModalLogoutOpen},
+    toggleIsLoading: (state) => {state.isLoading = !state.isLoading},
   },
 });
 

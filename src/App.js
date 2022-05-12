@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { refresh } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
-import "stylesheet/shared.scss";
+import Header from "components/Header";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +49,7 @@ function App() {
           element={<Dashboard />}
         />
       </Routes>
+      <Header />
     </div>
   );
 }
