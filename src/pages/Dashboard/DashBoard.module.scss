@@ -1,0 +1,67 @@
+@import "stylesheet/_mixin.scss";
+
+.Dashboard {
+  height: 1000px;
+  padding-top: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--auth-bg-cl);
+  background-image: none;
+  @include mq(tablet) {
+    align-items: center;
+    padding-top: 20px;
+    background-image: url(../../bc-image/Ellipse1-tablet.webp),
+      url(../../bc-image/Ellipse2-tablet.webp);
+    background-repeat: no-repeat;
+    background-position: left bottom, right -9em top -5em;
+    @include retina() {
+      background-image: url(../../bc-image/Ellipse1-2x-tablet.webp),
+        url(../../bc-image/Ellipse2-2x-tablet.webp);
+      background-size: 35em;
+    }
+  }
+  @include mq(desktop) {
+    align-items: unset;
+    flex-direction: row;
+    padding-top: 0px;
+    background-image: url(../../bc-image/Ellipse1-desktop.webp),
+      url(../../bc-image/Ellipse-2-desktop.webp);
+    background-repeat: no-repeat;
+    background-position: left bottom, right top -4em;
+
+    @include retina() {
+      background-image: url(../../bc-image/Ellipse1-2x-desktop.webp),
+        url(../../bc-image/Ellipse2-2x-desktop.webp);
+      background-size: 35em;
+    }
+  }
+}
+
+.Dashboard__left {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mq(tablet) {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+  }
+  @include mq(desktop) {
+    flex-direction: column;
+    border-right: 3px solid var(--auth-bg-cl);
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+    margin-bottom: 0;
+    padding-top: 45px;
+  }
+}
+
+.Dashboard__nav {
+  margin-right: 20px;
+  @include mq(desktop) {
+    margin-right: 0;
+  }
+}
