@@ -1,7 +1,9 @@
 // import s from "./AuthForm.module.scss";
 import { Formik, ErrorMessage } from "formik";
+
 import { validationSchema } from "./validationAuthForm";
 import { logIn, register } from "redux/session/auth-operation";
+
 import { useDispatch } from "react-redux";
 
 export const AuthForm = ({ type }) => {
@@ -89,6 +91,7 @@ export const AuthForm = ({ type }) => {
                   {/* {errors.email && touched.email && errors.email} */}
                   <ErrorMessage component="div" name="username" />
                 </label>
+
 
                 <button
                   type="submit"
