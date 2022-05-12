@@ -4,7 +4,7 @@ import Container from "components/Container";
 const Login = () => {
   return (
     <Container>
-      <AuthForm type="login" />
+      <AuthForm type="signup" />
     </Container>
   );
 };
