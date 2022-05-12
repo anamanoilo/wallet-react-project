@@ -5,6 +5,8 @@ import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import Login from "pages/Login/Login";
 import Dashboard from "pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 import { refresh } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
@@ -43,8 +45,18 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <Route path="*" element={<Dashboard />} /> */}
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
