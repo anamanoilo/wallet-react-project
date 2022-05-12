@@ -1,5 +1,10 @@
 import s from "./Table.module.scss";
 import React, { useState } from "react";
+// import { HiOutlineChevronDown } from "react-icons/hi";
+
+{
+  /* <HiOutlineChevronDown style={{ width: "18", height: "9", color: "black" }} />; */
+}
 
 // {
 //   "categoriesSummary": [
