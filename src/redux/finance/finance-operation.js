@@ -5,7 +5,7 @@ axios.defaults.baseURL = "https://wallet.goit.ua/";
 
 export const allTransactions = createAsyncThunk(
     "finance/transactions",
-    async (_, { rejectWithValue }) => {
+    async (_, { rejectWithValue }) => {    
         try {
             const transactions = await axios.get("/api/transactions");
             return transactions.data;
@@ -15,4 +15,14 @@ export const allTransactions = createAsyncThunk(
     }
 );
 
-export const totalBalance = createAsyncThunk();
+export const totalBalance = createAsyncThunk(
+    "finance/balance",
+    async (_, { rejectWithValue }) => {
+        try {
+            const {data} = await axios.get("/api/users/current");
+            return data.balance;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
