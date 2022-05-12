@@ -8,7 +8,6 @@ import { Route, Routes } from "react-router-dom";
 
 import { refresh } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
-import Header from "components/Header";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ function App() {
 
   return (
     <div>
-      <Header />
       <Routes>
         <Route
           path="/signUp"
@@ -37,20 +35,16 @@ function App() {
             </PublicRoute>
           }
         />
-        {/* <Route
+        <Route
           path="*"
           element={
             <PrivateRoute>
               <Dashboard />
             </PrivateRoute>
           }
-        /> */}
-        <Route
-          path="*"
-          element={<Dashboard />}
         />
+        {/* <Route path="*" element={<Dashboard />} /> */}
       </Routes>
-      
     </div>
   );
 }
