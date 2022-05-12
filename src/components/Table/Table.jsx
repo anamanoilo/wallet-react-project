@@ -16,73 +16,6 @@ import React, { useState } from "react";
 //   "month": 0
 // }
 
-const allCategories = [
-  {
-    id: "c9d9e447-1b83-4238-8712-edc77b18b739",
-    name: "Main expenses",
-    type: "EXPENSE",
-    backgroundColor: "rgba(254, 208, 87, 1)",
-  },
-  {
-    id: "27eb4b75-9a42-4991-a802-4aefe21ac3ce",
-    name: "Products",
-    type: "EXPENSE",
-    backgroundColor: "rgba(255, 216, 208, 1)",
-  },
-  {
-    id: "3caa7ba0-79c0-40b9-ae1f-de1af1f6e386",
-    name: "Car",
-    type: "EXPENSE",
-    backgroundColor: "rgba(253, 148, 152, 1)",
-  },
-  {
-    id: "bbdd58b8-e804-4ab9-bf4f-695da5ef64f4",
-    name: "Self care",
-    type: "EXPENSE",
-    backgroundColor: "rgba(197, 186, 255, 1)",
-  },
-  {
-    id: "76cc875a-3b43-4eae-8fdb-f76633821a34",
-    name: "Child care",
-    type: "EXPENSE",
-  },
-  {
-    id: "128673b5-2f9a-46ae-a428-ec48cf1effa1",
-    name: "Household products",
-    type: "EXPENSE",
-    backgroundColor: "rgba(110, 120, 232, 1)",
-  },
-  {
-    id: "1272fcc4-d59f-462d-ad33-a85a075e5581",
-    name: "Education",
-    type: "EXPENSE",
-    backgroundColor: "rgba(74, 86, 226, 1)",
-  },
-  {
-    id: "c143130f-7d1e-4011-90a4-54766d4e308e",
-    name: "Leisure",
-    type: "EXPENSE",
-    backgroundColor: "rgba(129, 225, 255, 1)",
-  },
-  {
-    id: "719626f1-9d23-4e99-84f5-289024e437a8",
-    name: "Other expenses",
-    type: "EXPENSE",
-    backgroundColor: "rgba(36, 204, 167, 1)",
-  },
-  {
-    id: "3acd0ecd-5295-4d54-8e7c-d3908f4d0402",
-    name: "Entertainment",
-    type: "EXPENSE",
-    backgroundColor: "rgba(0, 173, 132, 1)",
-  },
-  {
-    id: "063f1132-ba5d-42b4-951d-44011ca46262",
-    name: "Income",
-    type: "INCOME",
-  },
-];
-
 const answerAllTran = [
   {
     id: "55585235-f407-415c-a3f0-7e76e5a0d0fb",
@@ -223,8 +156,7 @@ const allMonths = [
 ];
 const allYears = ["год"];
 
-const Table = ({ data }) => {
-  console.log(data);
+const Table = ({ data, allCategories }) => {
   const { categoriesSummary, incomeSummary, expenseSummary } = data;
 
   const [monthForState, setMonthForState] = useState(
@@ -286,13 +218,21 @@ const Table = ({ data }) => {
         </div>
         <ul className={s.table__list}>
           {categoriesSummary?.map((category) => {
+            const color = allCategories?.find(
+              (object) => object.name === category.name
+            ).backgroundColor;
+            const number = category.total * -1;
+
             if (category.type === "EXPENSE") {
               return (
                 <>
                   <li key={category.name} className={s.table__item}>
-                    <span className={s.table__color}>{category.type}</span>
-                    <span className={s.table__name}>{category.name}</span>
-                    <span className={s.table__total}>{category.total}</span>
+                    <div
+                      style={{ backgroundColor: `${color}` }}
+                      className={s.table__color}
+                    ></div>
+                    <div className={s.table__name}>{category.name}</div>
+                    <div className={s.table__total}>{number}</div>
                   </li>
                 </>
               );
@@ -302,12 +242,12 @@ const Table = ({ data }) => {
       </div>
       <ul className={s.table__foot}>
         <li className={s.table__bottom}>
-          <span className={s.first}>Expenses</span>
-          <span className={s.second}>{expenseSummary}</span>
+          <span className={s.first}>Expenses:</span>
+          <span className={s.second__expense}>{expenseSummary}</span>
         </li>
         <li className={s.table__bottom}>
-          <span className={s.first}>Incomes</span>
-          <span className={s.second}>{incomeSummary}</span>
+          <span className={s.first}>Incomes:</span>
+          <span className={s.second__income}>{incomeSummary}</span>
         </li>
       </ul>
     </div>
@@ -315,57 +255,3 @@ const Table = ({ data }) => {
 };
 
 export default Table;
-
-//  {
-//       name: "Self care",
-//       type: "EXPENSE",
-//       total: -130,
-//     },
-
-//  <>
-//    <div>Table</div>
-//    <div className={s.table__wrapper}>
-//      <div className={s.table__title}>
-//        <span className={s.first}>Категория</span>
-//        <span className={s.second}>Сумма</span>
-//      </div>
-//      <table className={s.table}>
-//        <thead>
-//          <tr>
-//            <th scope="colgroup" className={s.head}>
-//              Категория
-//            </th>
-//            <th scope="col" className={s.head}>
-//              Сумма
-//            </th>
-//          </tr>
-//        </thead>
-
-//        <tbody>
-//          {array?.map((object) => {
-//            return (
-//              <tr key={object.id}>
-//                <td className={s.line}>type</td>
-//                <td className={s.line}>amount</td>
-//                <td className={s.line}>currency</td>
-//              </tr>
-//            );
-//          })}
-//        </tbody>
-//        <tfoot>
-//          <tr>
-//            <th scope="row" colspan="2">
-//              Расходы:
-//            </th>
-//            <td colspan="2">total</td>
-//          </tr>
-//          <tr>
-//            <th scope="row" colspan="2">
-//              Доходы:
-//            </th>
-//            <td colspan="2">total</td>
-//          </tr>
-//        </tfoot>
-//      </table>
-//    </div>
-//  </>;
