@@ -22,7 +22,7 @@ function App() {
           path="/signUp"
           element={
             <PublicRoute restricted>
-              <Registration />
+              <Login />
             </PublicRoute>
           }
         />
@@ -30,7 +30,7 @@ function App() {
           path="/login"
           element={
             <PublicRoute restricted>
-              <Login />
+              <Registration />
             </PublicRoute>
           }
         />
