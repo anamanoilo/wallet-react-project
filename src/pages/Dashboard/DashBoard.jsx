@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Route, Routes } from "react-router";
+import { useDispatch } from "react-redux";
 import Media from "react-media";
 import Navigation from "components/Navigation";
 import Balance from "components/Balance";
@@ -9,8 +10,12 @@ import DiagramTab from "components/DiagramTab";
 import s from "./DashBoard.module.scss";
 import Header from "components/Header";
 import Container from "components/Container/Container";
+import { allTransactions } from "redux/finance/finance-operation";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  dispatch(allTransactions());
+
   return (
     <>
       <Header />
