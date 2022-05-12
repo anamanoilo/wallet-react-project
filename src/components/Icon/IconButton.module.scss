@@ -1,0 +1,10 @@
+.button {
+  width: 33px;
+  height: 33px;
+  background-color: var(--accent-active-cl);
+  transition: all 250ms linear;
+}
+.btn:hover,
+.btn:focus {
+  background-color: var(--accent-inactive-cl);
+}

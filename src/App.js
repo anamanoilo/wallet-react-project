@@ -7,6 +7,8 @@ import { Route, Routes } from "react-router-dom";
 import { refresh } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
 import Header from "components/Header";
+import Navigation from "components/Navigation";
+import DiagramTab from "components/DiagramTab/DiagramTab";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +38,8 @@ function App() {
         />
       </Routes>
       <Header />
+      <Navigation />
+      <DiagramTab />
     </div>
   );
 }

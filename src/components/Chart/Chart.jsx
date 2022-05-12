@@ -48,7 +48,7 @@ const Chart = () => {
           data={data}
           options={{
             maintainAspectRatio: false,
-            cutout: 90,
+            cutoutPercentage: 90,
             plugins: {
               legend: { display: false },
             },
