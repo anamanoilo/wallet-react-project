@@ -1,4 +1,6 @@
-@import "stylesheet/mixin";
+
+@import "../../stylesheet/_mixin.scss";
+
 
 .container {
   width: 100%;
@@ -8,6 +10,7 @@
   @include mq(s-mobile) {
   width: 280px;
 }
+
   @include mq(mobile) {
     width: 440px;
   }
