@@ -1,5 +1,11 @@
 import React, { Fragment } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router";
+import {
+  getTransactions,
+  getCategories,
+} from "redux/finance/finance-operations-nastya";
 import Media from "react-media";
 import Navigation from "components/Navigation";
 import Balance from "components/Balance";
@@ -11,6 +17,12 @@ import Header from "components/Header";
 import Container from "components/Container/Container";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategories());
+    dispatch(getTransactions());
+  }, [dispatch]);
   return (
     <>
       <Header />

@@ -28,9 +28,16 @@ export const getUserBalance = createAsyncThunk(
 
 export const getTransactions = createAsyncThunk(
   "finance/get",
-  async (_, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const localStorageToken = state.session.token;
+
+    if (localStorageToken === null) return rejectWithValue();
+
+    token.set(localStorageToken);
     try {
       const { data } = await axios.get("/api/transactions");
+      console.log("~ data", data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

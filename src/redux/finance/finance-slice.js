@@ -29,9 +29,9 @@ const financeSlice = createSlice({
     // [getUserBalance.rejected]: (state, { payload }) => {
     //   state.error = payload;
     // },
-    // [getTransactions.fulfilled]: (state, { payload }) => {
-    //   state.data = payload;
-    // },
+    [getTransactions.fulfilled]: (state, { payload }) => {
+      state.data = payload;
+    },
     [getSummary.fulfilled]: (state, { payload }) => {
       state.summary = payload;
     },
