@@ -38,8 +38,6 @@ function App() {
         />
       </Routes>
       <Header />
-      <Navigation />
-      <DiagramTab />
     </div>
   );
 }
