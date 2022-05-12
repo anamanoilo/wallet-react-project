@@ -1,5 +1,11 @@
+import AuthForm from "components/AuthForm";
+
 const Registration = () => {
-  return <div>Registration page</div>;
+  return (
+    <div>
+      <AuthForm type="signUp" />
+    </div>
+  );
 };
 
 export default Registration;
