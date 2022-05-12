@@ -1,9 +1,20 @@
 import s from "./DiagramTab.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getSummary,
+  getCategories,
+} from "redux/finance/finance-operations-nastya";
 import Container from "components/Container/Container";
 import Chart from "components/Chart/Chart";
 import Table from "components/Table/Table";
 
 const DiagramTab = () => {
+  const dispatch = useDispatch();
+
+  const handleCategories = () => {
+    dispatch(getCategories);
+  };
+
   const answerMonth = {
     categoriesSummary: [
       {

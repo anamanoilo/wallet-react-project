@@ -8,7 +8,8 @@ const initialState = {
   user: {
     username: "",
     email: "",
-    password: "",
+    id: "",
+    balance: "",
   },
   error: null,
 };
@@ -43,16 +44,7 @@ const sessionSlice = createSlice({
     [refresh.rejected](state) {
       state.fetchCurrentUser = false;
     },
-
-    // loggedIn: (state, { payload }) => {
-    //   state.isAuth = true;
-    //   state.token = payload;
-    // },
-    // loggedOut: () => {
-    //   return initialState;
-    // },
   },
 });
 
-export const { loggedIn, loggedOut } = sessionSlice.actions;
 export const sessionReducer = sessionSlice.reducer;
