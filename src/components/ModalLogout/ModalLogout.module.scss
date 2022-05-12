@@ -1,19 +1,27 @@
 @import "stylesheet/shared.scss";
 .logout{
-   padding: 40px 80px;
    max-width: 540px;
+   @include mq(mobile) {
+      padding: 40px 80px;
+   }
       &__title{
-   font-family: 'Poppins';
-   font-weight: 400;
-   font-size: 30px;
-   line-height: 1.5;
-   text-align: center;
-   margin-bottom: 40px;
+         font-size: 24px;
+         font-family: 'Poppins';
+         font-weight: 400;
+         line-height: 1.5;
+         text-align: center;
+         margin-bottom: 40px;
+         @include mq(mobile){
+            font-size: 30px;
+         }
    }
 }
 .wrapper{
    display: flex;
-   justify-content: space-around;
+   flex-direction: column;
+   @include mq(mobile){
+         justify-content: space-around;
+      }
    &__btn{
       font-family: 'Circe';
 font-style: normal;
@@ -35,6 +43,9 @@ transition: all 250ms ease;
          background-color: var(--income-cl);
          color: var(--main-bg-cl);
          border: 1px solid transparent;
+      }
+      &:first-child{
+         margin-bottom: 20px;
       }
    }
 }

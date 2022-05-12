@@ -18,7 +18,6 @@ const Header = () => {
   const dispatch = useDispatch();
    const isOpenModal = () => {
      dispatch(toggleModalLogout());
-     console.log('privet')
    }
   return (
     <header>
