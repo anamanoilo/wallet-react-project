@@ -1,25 +1,36 @@
 @import "stylesheet/_mixin.scss";
 
 .Dashboard {
-    height: 500px;
+    height: 1000px;
     padding-top: 13px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--auth-bg-cl);
+    background-image: none;
     @include mq(tablet) {
         align-items: center;
         padding-top: 20px;
-        background-image: radial-gradient(circle at top right, 
-        var(--expense-cl) 10%,
-        var(--auth-bg-cl) 40%,
-        #fff 50%);
-        
+        background-image: url(../../bc-image/Ellipse1-tablet.png), url(../../bc-image/Ellipse2-tablet.png);
+        background-repeat: no-repeat;
+        background-position: left bottom, right -9em top -5em;
+        @include retina() {
+            background-image:url(../../bc-image/Ellipse1-2x-tablet.png), url(../../bc-image/Ellipse2-2x-tablet.png);
+            background-size: 35em;
+        }
     }
     @include mq(desktop) {
         align-items: unset;
         flex-direction: row;
         padding-top: 0px;
+        background-image: url(../../bc-image/Ellipse1-desktop.png), url(../../bc-image/Ellipse-2-desktop.png);
+            background-repeat: no-repeat;
+            background-position: left bottom, right top -4em;
+        
+        @include retina() {
+            background-image: url(../../bc-image/Ellipse1-2x-desktop.png), url(../../bc-image/Ellipse2-2x-desktop.png);
+            background-size: 35em;
+            }
     }
 }
 
@@ -28,7 +39,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--auth-bg-cl);
+    
 @include mq(tablet) {
     margin-bottom: 40px;
     display: flex;
