@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { IconContext } from "react-icons";
 import { FaUser } from 'react-icons/fa';
 import { IoExitOutline } from 'react-icons/io5'
 import authSelectors from 'redux/session/session-selectors';
+import globalSelectors from 'redux/global/global-selectors';
+import { toggleModalLogout } from "redux/global/global-slice";
 import Container from "components/Container";
 import ModalLogout from '../ModalLogout/ModalLogout';
 import  {Logo}  from 'components/Icon/Logo';
@@ -13,6 +14,12 @@ import s from './Header.module.scss'
 
 const Header = () => {
   const name = useSelector(authSelectors.getUsername);
+  const modalOpen = useSelector(globalSelectors.getIsModalLogout);
+  const dispatch = useDispatch();
+   const isOpenModal = () => {
+     dispatch(toggleModalLogout());
+     console.log('privet')
+   }
   return (
     <header>
       <Container>
@@ -29,14 +36,14 @@ const Header = () => {
           </IconContext.Provider>
         </div>
           <IconContext.Provider value={{  className: "global-class-name", size: "24px" }}>
-          <button className={s.logout__button}>
+          <button className={s.logout__button} type='button' onClick={isOpenModal}>
                 <IoExitOutline/>
-              <span className={s.logout__text}>Выйти</span>
+              <span className={s.logout__text}>Exit</span>
         </button>
           </IconContext.Provider>
             </div>
-          <ModalLogout />
-           </section>
+          {modalOpen && <ModalLogout />}
+          </section>
       </Container>
     </header>
   );

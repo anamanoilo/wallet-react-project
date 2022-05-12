@@ -21,6 +21,11 @@
       font-size: 22px;
       line-height: 1.5;
       margin-left: 15px;
+      transition: color 450ms ease;
+      &:hover,
+      &:focus{
+      color:var(--expense-hover-cl);
+      }
        @include mq(mobile) {
       margin-left: 20px;
       font-size: 30px;
@@ -49,6 +54,7 @@
    border: none;
    background-color: transparent;
    color: rgba(189, 189, 189, 1);
+   transition: color 250ms ease;
       &:hover,
       &:focus{
          color:var(--expense-hover-cl);
@@ -65,6 +71,7 @@
       line-height: 1.5;
       margin-left: 8px;
       color: var(--secondary-text-cl);
+   transition: color 250ms ease;
       @include mq(mobile){
          display: block;
       }

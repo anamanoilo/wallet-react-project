@@ -23,5 +23,5 @@ const sessionSlice = createSlice({
   },
 });
 
-export const { loggedIn, loggedOff } = sessionSlice.actions;
+export const { loggedIn, loggedOut } = sessionSlice.actions;
 export const sessionReducer = sessionSlice.reducer;
