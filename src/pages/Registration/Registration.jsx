@@ -12,7 +12,7 @@ const Registration = () => {
             <h1 className={s.title}>Finance App</h1>
           </div>
           <div className={s.right}>
-            <AuthForm type={s.signUp} />
+            <AuthForm type="signUp" />
           </div>
         </div>
       </Container>
