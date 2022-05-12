@@ -1,0 +1,47 @@
+@import "../../stylesheet/shared.scss";
+
+.containerForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: block;
+  text-align: center;
+  width: 280px;
+
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  background-color: transparent;
+}
+
+// .logo {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+
+//   padding-right: 20px;
+// }
+
+.title {
+  font-family: Poppins;
+  display: inline;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  color: var(--main-text-cl);
+}
+
+// .img {
+//     width: 40px;
+//     height: 40px;
+//     display: inline;
+//     margin-right: 20px;
+//   }
+
+.formInput.formInput {
+  width: 100%;
+}
