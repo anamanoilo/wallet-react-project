@@ -61,7 +61,7 @@ const sessionSlice = createSlice({
     },
     [logOut.fulfilled](state) {
       state.loading = false;
-      state.user = { username: "", email: "", password: "" };
+      state.user = { username: "", email: "", id: "", balance: "" };
       state.token = null;
       state.isAuth = false;
     },
