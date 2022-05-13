@@ -8,7 +8,8 @@ const initialState = {
   user: {
     username: "",
     email: "",
-    password: "",
+    id: "",
+    balance: "",
   },
   currentUser: null,
   error: null,
