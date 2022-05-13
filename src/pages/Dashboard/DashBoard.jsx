@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Media from "react-media";
+// const HomePage = lazy(() => import("./HomePage" /*webpackChankName: "home-view" */));
 import Navigation from "components/Navigation";
 import Balance from "components/Balance";
 import Currency from "components/Currency";
-import HomeTab from "components/HomeTab";
+// import HomeTab from "components/HomeTab";
+
 import DiagramTab from "components/DiagramTab";
 import s from "./DashBoard.module.scss";
 import Header from "components/Header";
@@ -19,6 +21,7 @@ import {
 import { refresh } from "redux/session/auth-operation";
 import { toggleIsLoading } from "redux/global/global-slice";
 import globalSelectors from 'redux/global/global-selectors';
+const  HomeTab = lazy(() => import("components/HomeTab" /*webpackChankName: "HomeTab" */));
 
 const Dashboard = () => {
   const dispatch = useDispatch()
@@ -49,6 +52,7 @@ const Dashboard = () => {
                 {matches.small && (
                   <>
                     <Navigation />
+                    <Suspense fallback={<Loader/>}>
                     <Routes>
                       <Route
                         path="*"
@@ -62,6 +66,7 @@ const Dashboard = () => {
                       <Route path="/currency" element={<Currency />} />
                       <Route path="/diagram" element={<DiagramTab />} />
                     </Routes>
+                  </Suspense>
                   </>
                 )}
                 {matches.medium && (
