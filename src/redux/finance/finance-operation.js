@@ -20,18 +20,6 @@ export const allTransactions = createAsyncThunk(
   }
 );
 
-export const totalBalance = createAsyncThunk(
-  "balance",
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.get("/api/users/current");
-      return data.balance;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
 export const addTransaction = createAsyncThunk(
   "add",
   async (transaction, { rejectWithValue }) => {
