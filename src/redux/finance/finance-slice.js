@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { allTransactions, totalBalance } from "./finance-operation";
 import {
-  getTransactions,
-  getUserBalance,
+  // getTransactions,
+  // getUserBalance,
   getSummary,
   getCategories,
 } from "./finance-operations-nastya";
@@ -23,6 +24,19 @@ const financeSlice = createSlice({
     },
   },
   extraReducers: {
+    [allTransactions.fulfilled]: (state, {payload}) => {
+      state.data = payload;
+    },
+    [allTransactions.rejected]: (state, {payload}) => {
+      state.error = payload;
+    },
+    [totalBalance.fulfilled]: (state, { payload }) => {
+      state.totalBalance = payload;
+    },
+    [totalBalance.rejected]: (state, { payload }) => {
+      state.error = payload;
+    },
+  
     // [getUserBalance.fulfilled]: (state, { payload }) => {
     //   state.totalBalance = payload;
     // },
@@ -38,7 +52,7 @@ const financeSlice = createSlice({
     [getCategories.fulfilled]: (state, { payload }) => {
       state.categories = payload;
     },
-  },
+  }
 });
 
 // export const {} = financeSlice.actions;

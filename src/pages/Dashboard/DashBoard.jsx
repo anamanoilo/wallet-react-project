@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { useEffect} from "react";
 import { Route, Routes } from "react-router";
+import { useDispatch } from "react-redux";
 import Media from "react-media";
 import Navigation from "components/Navigation";
 import Balance from "components/Balance";
@@ -9,12 +10,22 @@ import DiagramTab from "components/DiagramTab";
 import s from "./DashBoard.module.scss";
 import Header from "components/Header";
 import Container from "components/Container/Container";
+import { allTransactions, totalBalance } from "redux/finance/finance-operation";
+import { refresh } from "redux/session/auth-operation";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(refresh());
+    dispatch(allTransactions());
+    dispatch(totalBalance());
+  }, [dispatch]);
+
   return (
     <>
       <Header />
-      <main className={s.Dashboard}>
+      <main className={s.main}>
         <Media
           queries={{
             small: "(max-width: 767px)",
@@ -23,6 +34,7 @@ const Dashboard = () => {
         >
           {(matches) => (
             <Container>
+              <div className={s.Dashboard}>
               {matches.small && (
                 <>
                   <Navigation />
@@ -57,7 +69,8 @@ const Dashboard = () => {
                     </Routes>
                   </div>
                 </>
-              )}
+                )}
+            </div>
             </Container>
           )}
         </Media>
