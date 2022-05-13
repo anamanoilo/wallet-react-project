@@ -130,12 +130,15 @@ export const AuthForm = ({ type }) => {
               />
 
               <div className={s.loginFormBtnContainer}>
-                <Link className={classNames(s.btnForm, s.current)} to="/login">
-                  login
-                </Link>
-                <Button className={classNames(s.btnFormLogin)} type="submit">
+                <Button
+                  className={classNames(s.btnForm, s.current)}
+                  type="submit"
+                >
                   SignUp
                 </Button>
+                <Link className={classNames(s.btnFormLogin)} to="/login">
+                  login
+                </Link>
               </div>
             </>
           ) : (
