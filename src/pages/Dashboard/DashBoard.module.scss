@@ -1,77 +1,77 @@
-@import "stylesheet/_mixin.scss";
+@import "../../stylesheet/_mixin.scss";
 
 .main {
-    height: calc(100vh - 85px) ;
-    // flex-grow: 1;
-    background-color: var(--auth-bg-cl);
-    background-image: none;
-    background-attachment: fixed;
-    @include mq(tablet) {
-        align-items: center;
-        padding-top: 20px;
-        background-image: url(../../bc-image/Group1-tablet.webp);
-        background-repeat: no-repeat;
-            // background-position: left bottom;
-        background-size: cover;
-    
-        @include retina() {
-            background-image: url(../../bc-image/Group2-tablet.webp);
-        }
-        }
-    
-        @include mq(desktop) {
-            align-items: unset;
-            flex-direction: row;
-            padding-top: 0px;
-            background-image: url(../../bc-image/Group1-desktop.webp);
-            background-repeat: no-repeat;
-            // background-position: left bottom;
-    
-            @include retina() {
-                background-image: url(../../bc-image/Group2-desktop.webp);
-                // background-size: 35em;
-            }
-        }
+  height: calc(100vh - 85px);
+  // flex-grow: 1;
+  background-color: var(--auth-bg-cl);
+  background-image: none;
+  background-attachment: fixed;
+  @include mq(tablet) {
+    align-items: center;
+    padding-top: 20px;
+    background-image: url(../../bc-image/Group1-tablet.webp);
+    background-repeat: no-repeat;
+    // background-position: left bottom;
+    background-size: cover;
+
+    @include retina() {
+      background-image: url(../../bc-image/Group2-tablet.webp);
+    }
+  }
+
+  @include mq(desktop) {
+    align-items: unset;
+    flex-direction: row;
+    padding-top: 0px;
+    background-image: url(../../bc-image/Group1-desktop.webp);
+    background-repeat: no-repeat;
+    // background-position: left bottom;
+
+    @include retina() {
+      background-image: url(../../bc-image/Group2-desktop.webp);
+      // background-size: 35em;
+    }
+  }
 }
 
 .Dashboard {
-    height: 100%;
-    padding-top: 13px;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  padding-top: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: none;
+  background-attachment: fixed;
+  @include mq(tablet) {
     align-items: center;
-    
-    background-image: none;
-    background-attachment:fixed;
-    @include mq(tablet) {
-        align-items: center;
-        padding-top: 20px;
-        // background-image: url(../../bc-image/Group1-tablet.webp);
-        // background-repeat: no-repeat;
-        // background-size:cover;
-        // @include retina() {
-        //     background-image:url(../../bc-image/Group2-tablet.webp);
-        // }
-    }
-    @include mq(desktop) {
-        align-items: unset;
-        flex-direction: row;
-        padding-top: 0px;
-        // background-image: url(../../bc-image/Group1-desktop.webp);
-        //     background-repeat: no-repeat;
-        // @include retina() {
-        //     background-image: url(../../bc-image/Group2-desktop.webp);
-        //     }
-    }
+    padding-top: 20px;
+    // background-image: url(../../bc-image/Group1-tablet.webp);
+    // background-repeat: no-repeat;
+    // background-size:cover;
+    // @include retina() {
+    //     background-image:url(../../bc-image/Group2-tablet.webp);
+    // }
+  }
+  @include mq(desktop) {
+    align-items: unset;
+    flex-direction: row;
+    padding-top: 0px;
+    // background-image: url(../../bc-image/Group1-desktop.webp);
+    //     background-repeat: no-repeat;
+    // @include retina() {
+    //     background-image: url(../../bc-image/Group2-desktop.webp);
+    //     }
+  }
 }
 
 .Dashboard__left {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-@include mq(tablet) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mq(tablet) {
     margin-bottom: 40px;
     display: flex;
     flex-direction: row;
@@ -87,13 +87,13 @@
     margin-bottom: 0;
     padding-top: 45px;
     height: 1000px;
-}
+  }
 }
 
 .Dashboard__rigth {
-    @include mq(tablet) {
-        height: 1000px;
-    }
+  @include mq(tablet) {
+    height: 1000px;
+  }
 }
 
 .Dashboard__nav {

@@ -1,4 +1,4 @@
-@import "stylesheet/shared.scss";
+@import "../../stylesheet/shared.scss";
 .overlay {
   margin-top: 60px;
   background-color: #fff;
@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1200;
-  @include mq(mobile){
+  @include mq(mobile) {
     margin-top: 0px;
     background-color: rgba(0, 0, 0, 0.8);
   }
