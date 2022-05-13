@@ -1,12 +1,43 @@
 import s from "./DiagramTab.module.scss";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
 
 import Chart from "components/Chart/Chart";
 import Table from "components/Table/Table";
 import financeSelectors from "redux/finance/finance-selectors";
+import { getSummary } from "redux/finance/finance-operation";
 
 const DiagramTab = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const data = dispatch(getSummary());
+    console.log(data);
+  }, []);
+
+  const optionsAllMonths = [
+    "All months",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   const categories = useSelector(financeSelectors.getCategories);
+  console.log("categories", categories);
+  const balans = useSelector(financeSelectors.getTotalBalance);
+  console.log("balans", balans);
+  const transactionsData = useSelector(financeSelectors.getTransactionsData);
+  console.log("transactionsData", transactionsData);
+  const filteredData = useSelector(financeSelectors.getFilteredData);
+  console.log("filteredData", filteredData);
 
   const answerMonth = {
     categoriesSummary: [

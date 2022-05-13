@@ -10,7 +10,9 @@ export const allTransactions = createAsyncThunk(
     const state = getState();
     const localStorageToken = state.session.token;
 
-    if (localStorageToken === null) return rejectWithValue();
+    if (localStorageToken === null) {
+      return rejectWithValue();
+    }
 
     token.set(localStorageToken);
     try {
@@ -48,9 +50,9 @@ export const addTransaction = createAsyncThunk(
 
 export const getSummary = createAsyncThunk(
   "finance/getSummary",
-  async (_, { rejectWithValue }) => {
+  async (param = "", { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/api/transactions-summary");
+      const { data } = await axios.get(`/api/transactions-summary${param}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
