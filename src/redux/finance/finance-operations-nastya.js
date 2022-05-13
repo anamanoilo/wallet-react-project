@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { token } from "../session/auth-operation";
+// import { token } from "../session/auth-operation";
 
 export const addTransaction = createAsyncThunk(
   "finance/add",
