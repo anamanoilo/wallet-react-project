@@ -1,10 +1,10 @@
 import s from "./DiagramTab.module.scss";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react"
 
 import Chart from "components/Chart/Chart";
 import Table from "components/Table/Table";
 import financeSelectors from "redux/finance/finance-selectors";
-import { useEffect } from 'react';
 import { getSummary } from "redux/finance/finance-operation";
 
 const DiagramTab = () => {
@@ -13,6 +13,13 @@ const DiagramTab = () => {
     dispatch(getSummary());
   }, [dispatch]);
   const categories = useSelector(financeSelectors.getCategories);
+  console.log("categories", categories);
+  const balans = useSelector(financeSelectors.getTotalBalance);
+  console.log("balans", balans);
+  const transactionsData = useSelector(financeSelectors.getTransactionsData);
+  console.log("transactionsData", transactionsData);
+  const filteredData = useSelector(financeSelectors.getFilteredData);
+  console.log("filteredData", filteredData);
 
   const answerMonth = {
     categoriesSummary: [
