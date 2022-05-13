@@ -3,8 +3,13 @@
 .wrapper__chart {
   width: 100%;
   padding-top: 20px;
+  @include mq(tablet) {
+    width: 336px;
+    margin-right: 32px;
+  }
   @include mq(desktop) {
     padding-top: 0;
+    width: 288px;
   }
 }
 

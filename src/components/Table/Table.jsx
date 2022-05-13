@@ -1,25 +1,6 @@
 import s from "./Table.module.scss";
 import React, { useState } from "react";
-// import { HiOutlineChevronDown } from "react-icons/hi";
-
-{
-  /* <HiOutlineChevronDown style={{ width: "18", height: "9", color: "black" }} />; */
-}
-
-// {
-//   "categoriesSummary": [
-//     {
-//       "name": "string",
-//       "type": "INCOME",
-//       "total": 0
-//     }
-//   ],
-//   "incomeSummary": 0,
-//   "expenseSummary": 0,
-//   "periodTotal": 0,
-//   "year": 0,
-//   "month": 0
-// }
+import Select from "components/Select/Select";
 
 const answerAllTran = [
   {
@@ -159,15 +140,13 @@ const allMonths = [
   "November",
   "December",
 ];
-const allYears = ["год"];
+const allYears = ["All years"];
 
 const Table = ({ data, allCategories }) => {
   const { categoriesSummary, incomeSummary, expenseSummary } = data;
 
-  const [monthForState, setMonthForState] = useState(
-    new Date().getUTCMonth() + 1
-  );
-  const [yearForState, setYearForState] = useState(new Date().getFullYear());
+  const [monthForState, setMonthForState] = useState("Month");
+  const [yearForState, setYearForState] = useState("Year");
 
   const handleChangeMonth = (event) => {
     const { name, value } = event.target;
@@ -190,30 +169,12 @@ const Table = ({ data, allCategories }) => {
   return (
     <div className={s.expenses__wrapper}>
       <div className={s.select__wrapper}>
-        <select
-          id="month"
-          name="month"
-          value={monthForState}
-          onChange={handleChangeMonth}
-          className={s.select}
-        >
-          <option>Month</option>
-          {allMonths.map((month) => (
-            <option key={month}>{month}</option>
-          ))}
-        </select>
-        <select
-          id="years"
-          name="years"
-          value={yearForState}
-          onChange={handleChangeYear}
-          className={s.select}
-        >
-          <option>Year</option>
-          {allYears.map((year) => (
-            <option key={year}>{year}</option>
-          ))}
-        </select>
+        <Select
+          selected={monthForState}
+          setSelected={setMonthForState}
+          position
+        />
+        <Select selected={yearForState} setSelected={setYearForState} />
       </div>
 
       <div className={s.table__wrapper}>
