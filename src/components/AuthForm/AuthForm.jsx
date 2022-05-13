@@ -29,7 +29,6 @@ export const AuthForm = ({ type }) => {
         type === "signUp"
           ? dispatch(register(values))
           : dispatch(logIn(values));
-        resetForm();
       }}
     >
       {({
