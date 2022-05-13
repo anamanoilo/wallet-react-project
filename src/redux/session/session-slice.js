@@ -33,26 +33,17 @@ const sessionSlice = createSlice({
       state.isAuth = false;
     },
     [refresh.pending](state) {
-      state.fetchCurrentUser = true;
+      state.currentUser = true;
     },
     [refresh.fulfilled](state, action) {
       state.user = action.payload;
       state.isAuth = true;
-      state.fetchCurrentUser = false;
+      state.currentUser = false;
     },
     [refresh.rejected](state) {
-      state.fetchCurrentUser = false;
+      state.currentUser = false;
     },
-
-    // loggedIn: (state, { payload }) => {
-    //   state.isAuth = true;
-    //   state.token = payload;
-    // },
-    // loggedOut: () => {
-    //   return initialState;
-    // },
   },
 });
 
-export const { loggedIn, loggedOff } = sessionSlice.actions;
 export const sessionReducer = sessionSlice.reducer;
