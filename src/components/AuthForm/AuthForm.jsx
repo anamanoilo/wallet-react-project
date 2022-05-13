@@ -80,7 +80,7 @@ export const AuthForm = ({ type }) => {
                 }}
                 id="password"
                 name="password"
-                label="Пароль"
+                label="Password"
                 type="password"
                 value={values.password}
                 onChange={handleChange}
@@ -99,7 +99,7 @@ export const AuthForm = ({ type }) => {
                 }}
                 id="confirmPassword"
                 name="confirmPassword"
-                label="Подтвердите пароль"
+                label="Confirm password"
                 type="password"
                 value={values.confirmPassword}
                 onChange={handleChange}
@@ -118,14 +118,14 @@ export const AuthForm = ({ type }) => {
                     </Icon>
                   ),
                 }}
-                id="name"
-                name="name"
-                label="Ваше имя"
+                id="username"
+                name="username"
+                label="Username"
                 type="name"
-                value={values.name}
+                value={values.username}
                 onChange={handleChange}
-                error={touched.name && Boolean(errors.name)}
-                helperText={touched.name && errors.name}
+                error={touched.username && Boolean(errors.username)}
+                helperText={touched.username && errors.username}
               />
 
               <div className={s.loginFormBtnContainer}>
@@ -133,7 +133,7 @@ export const AuthForm = ({ type }) => {
                   login
                 </Link>
                 <Button className={classNames(s.btnFormLogin)} type="submit">
-                  Регистрация
+                  SignUp
                 </Button>
               </div>
             </>
@@ -174,7 +174,7 @@ export const AuthForm = ({ type }) => {
                   }}
                   id="password"
                   name="password"
-                  label="Пароль"
+                  label="password"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -190,7 +190,7 @@ export const AuthForm = ({ type }) => {
                   LogIn
                 </Button>
                 <Link className={classNames(s.btnFormLogin)} to="/signUp">
-                  Signup
+                  SignUp
                 </Link>
               </div>
             </>
