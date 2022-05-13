@@ -1,18 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { token } from "../session/auth-operation";
-
-axios.defaults.baseURL = "https://wallet.goit.ua/";
+// import { token } from "../session/auth-operation";
 
 export const allTransactions = createAsyncThunk(
-  "finance/transactions",
+  "transactions",
   async (_, { getState, rejectWithValue }) => {
-    const state = getState();
-    const localStorageToken = state.session.token;
+    // const state = getState();
+    // const localStorageToken = state.session.token;
 
-    if (localStorageToken === null) return rejectWithValue();
+    // if (localStorageToken === null) return rejectWithValue();
 
-    token.set(localStorageToken);
+    // token.set(localStorageToken);
     try {
       const transactions = await axios.get("/api/transactions");
       return transactions.data;
@@ -23,7 +21,7 @@ export const allTransactions = createAsyncThunk(
 );
 
 export const totalBalance = createAsyncThunk(
-  "finance/balance",
+  "balance",
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get("/api/users/current");
@@ -35,7 +33,7 @@ export const totalBalance = createAsyncThunk(
 );
 
 export const addTransaction = createAsyncThunk(
-  "finance/add",
+  "add",
   async (transaction, { rejectWithValue }) => {
     try {
       const { data } = await axios.post("/api/transactions", transaction);
@@ -47,10 +45,10 @@ export const addTransaction = createAsyncThunk(
 );
 
 export const getSummary = createAsyncThunk(
-  "finance/getSummary",
-  async (_, { rejectWithValue }) => {
+  "getSummary",
+  async (period = "", { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/api/transactions-summary");
+      const { data } = await axios.get(`/api/transactions-summary${period}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -59,7 +57,7 @@ export const getSummary = createAsyncThunk(
 );
 
 export const getCategories = createAsyncThunk(
-  "finance/getCategories",
+  "getCategories",
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get("/api/transaction-categories");
