@@ -81,7 +81,7 @@ display: block;
        background-color: var(--income-cl);
        border: 1px solid var(--income-cl);
        color: white;
-     }
+    }
 
   .btnForm {
     width: 300px;
@@ -144,13 +144,14 @@ display: block;
         width: 300px;
       }
          }
-  // .MuiFormLabel-root.Mui-focused {
-  //   color: var(--income-cl);
-  // }
+  .MuiFormLabel-root.Mui-focused {
+    color: var(--income-cl);
+    background-color: cla;
+  }
 
-  // .MuiInput-underline:after {
-  //   border-bottom: 2px solid var(--income-cl);
-  // }
+  .MuiInput-underline:after {
+    border-bottom: 2px solid var(--income-cl);
+  }
 
  
 }
