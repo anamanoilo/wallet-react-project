@@ -31,7 +31,7 @@ const Dashboard = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="">
       <Header />
       <main className={s.main}>
         <Media
@@ -83,7 +83,7 @@ const Dashboard = () => {
           )}
         </Media>
       </main>
-    </>
+    </div>
   );
 };
 export default Dashboard;

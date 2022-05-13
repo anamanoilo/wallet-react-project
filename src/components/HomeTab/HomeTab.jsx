@@ -67,10 +67,10 @@ const HomeTab = () => {
               </li>
             );
                 }) }</ul>)}
-        {matches.medium && (
+        {matches.medium && (<div className={s.tableTrList}>
           <table className={s.table}>
             <thead className={s.tableHead}>
-              <tr className={s.tableRow}>
+              <tr >
                 <th className={s.tableHeader} scope="col">
                   Date
                 </th>
@@ -91,7 +91,10 @@ const HomeTab = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className={s.tableBody}>
+          </table>
+          <div className={s.tableScrollBox}>
+            <table>
+              <tbody className={s.tableBody}>
               {data?.map(
                 ({
                   id,
@@ -110,14 +113,17 @@ const HomeTab = () => {
                       </td>
                       <td className={s.tableData}>{category}</td>
                       <td className={s.tableData}>{comment}</td>
-                      <td className={s.tableData}>{amount}</td>
+                      <td className={type === "INCOME" ? s.tableData_INCOME : s.tableData_EXPENSE}>{amount}</td>
                       <td className={s.tableData}>{balanceAfter}</td>
                     </tr>
                   );
                 }
               )}
-            </tbody>
-          </table>)}</>)}
+              </tbody>
+            </table>
+          </div>
+          </div>
+          )}</>)}
       </Media>
     )
   );

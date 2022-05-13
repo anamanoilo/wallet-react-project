@@ -1,12 +1,13 @@
 @import "stylesheet/_mixin.scss";
 
 .main {
-    height: calc(100vh - 85px) ;
+    
     // flex-grow: 1;
     background-color: var(--auth-bg-cl);
     background-image: none;
     background-attachment: fixed;
     @include mq(tablet) {
+        height: calc(100vh - 85px);
         align-items: center;
         padding-top: 20px;
         background-image: url(../../bc-image/Group1-tablet.webp);
@@ -93,7 +94,7 @@
 .Dashboard__rigth {
     height: 100%;
     @include mq(tablet) {
-        // height: 1000px;
+        
     }
     @include mq(desktop) {
         padding-top: 46px;

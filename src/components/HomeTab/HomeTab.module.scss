@@ -1,3 +1,4 @@
+@import "stylesheet/_mixin.scss";
 // мобильная версия
 .mobailTrList {
 
@@ -46,11 +47,11 @@
     font-weight: 400;
     font-size: 16px;
     &_INCOME {
-            compose: mobailTrItem__cell_value;
+            composes: mobailTrItem__cell_value;
             color: var(--income-cl);
         }
     &_EXPENSE {
-        compose: mobailTrItem__cell_value;
+        composes: mobailTrItem__cell_value;
         color: var(--expense-cl);
     }
 }
@@ -61,4 +62,76 @@
     line-height: 1.47;
 }
 
-// таблет и десктоп версии
+// таблет и десктоп версии==========================
+.tableTrList {
+    @include mq(tablet) {
+        width:100%;
+    }
+    @include mq(desktop) {
+        
+    }
+}
+
+.table {
+    background-color: #fff;
+    border-radius: 30px;
+    height: 58px;
+}
+
+.tableHeader {
+    font-weight: 700;
+    font-size: 18px; 
+    line-height: 1.47;
+    @include mq(tablet) {
+        width: 114px;
+    }
+    @include mq(desktop) {
+        width: 116px;
+    }
+}
+
+.tableScrollBox {
+    overflow: scroll;
+    @include mq(tablet) {
+        height: 30vh;
+    }
+    
+    @include mq(desktop) {
+        height: 40vh;
+    }
+}
+
+.tableBody {
+    border-collapse: collapse;
+}
+
+
+.tableRow {
+    height: 54px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.tableData {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.47;
+    &_INCOME {
+        composes: tableData;
+        color: var(--income-cl);
+    }
+    
+    &_EXPENSE {
+        composes: tableData;
+        color: var(--expense-cl);
+    }
+    @include mq(tablet) {
+        width: 114px;
+    }
+    
+    @include mq(desktop) {
+        width: 116px;
+    }
+
+}
+
