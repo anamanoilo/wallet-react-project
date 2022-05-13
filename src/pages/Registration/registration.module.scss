@@ -12,6 +12,7 @@
 
     @media screen and (min-width: 1280px) {
         background-image: url('../../assets/images/imgFrameRegisterbig.png');
+        background-color: black;
     }
 
     .containerForm {
@@ -51,6 +52,7 @@
         animation: left 1s 1;
         animation-fill-mode: forwards;
         animation-delay: 0s;
+        
 
         @keyframes left {
             0% {
@@ -104,6 +106,7 @@
         animation: mainAnimation 1s 1;
         animation-fill-mode: forwards;
         animation-delay: 0s;
+    
 
         @media screen and (max-width: 1279px) {
             margin-top: 20px;

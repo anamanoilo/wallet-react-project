@@ -1,7 +1,5 @@
 @import "../../stylesheet/shared.scss";
 
-
-
 .form {
 width: 400px;
 display: block;
@@ -12,7 +10,6 @@ display: block;
   background-color: white;
   border-radius: 20px;
   text-align: center;
-  // background-color: aquamarine;
 
   @media screen and (max-width: 767px) {
     width: 280px;
@@ -64,7 +61,6 @@ display: block;
 
   .textField {
     width: 100%;
-
     margin-top: 26px;
   }
 
@@ -73,28 +69,20 @@ display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     margin-top: 36px;
   }
 
-  .current {
-       background-color: var(--income-cl);
-       border: 1px solid var(--income-cl);
-       color: white;
-    }
+ 
 
   .btnForm {
     width: 300px;
-
     margin-top: 20px;
     padding-top: 16px;
     padding-bottom: 13px;
-
-    border: 1px solid var(--income-cl);
     border-radius: 20px;
-    // background-color: white;
-    
-    color: white;
+    border: 1px solid #4A56E2;
+    color: #4A56E2;
+    background-color: white;
     font-family: Circe;
     font-style: normal;
     font-weight: 400;
@@ -103,55 +91,22 @@ display: block;
     text-align: center;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-
     transition: all cubic-bezier(0.4, 0, 0.2, 1) 250ms;
-  
 
     @media screen and (max-width: 767px) {
       width: 280px;
     }
   }
 
+  .current {
+       background-color: var(--income-cl);
+       border: 1px solid var(--income-cl);
+       color: white;
+     }
   .btnForm:hover {
-    background-color: white;
-    border: 1px solid #4A56E2;
-    color: #4A56E2;
+    background-color: var(--income-cl);
+      border: 1px solid var(--income-cl);
+      color: white;
   }
-  
-  
-  
-
-    .btnFormLogin {
-      background-color: white;
-      border: 1px solid #4A56E2;
-      color: hsl(235, 72%, 59%);
-      width: 280px;
-      margin-top: 20px;
-      padding-top: 16px;
-      padding-bottom: 13px;
-      border: 1px solid #4A56E2;
-      border-radius: 20px;
-      font-family: Circe;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 27px;
-      text-align: center;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-  
-      @media screen and (min-width: 767px) {
-        width: 300px;
-      }
-         }
-  .MuiFormLabel-root.Mui-focused {
-    color: var(--income-cl);
-    background-color: cla;
-  }
-
-  .MuiInput-underline:after {
-    border-bottom: 2px solid var(--income-cl);
-  }
-
  
 }
