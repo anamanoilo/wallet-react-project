@@ -1,4 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import {
+//   allTransactions,
+//   totalBalance,
+//   getSummary,
+//   getCategories,
+//   addTransaction,
+// } from "./finance-operation";
+import { logOut } from "redux/session/auth-operation";
 
 const initialState = {
   isModalAddTransactionOpen: false,
@@ -10,12 +18,38 @@ const globalSlice = createSlice({
   name: "global",
   initialState,
   reducers: {
-    toggleModalAddTransaction: (state) => !state.isModalAddTransactionOpen,
-    toggleModalLogout: (state) => !state.isModalLogoutOpen,
-    toggleIsLoading: (state) => !state.isLoading,
+    toggleModalAddTransaction: (state) => {
+      state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen;
+    },
+    toggleModalLogout: (state) => {
+      state.isModalLogoutOpen = !state.isModalLogoutOpen;
+    },
+    toggleIsLoading: (state) => {
+      state.isLoading = !state.isLoading;
+    },
+  },
+  extraReducers: {
+    [logOut.fulfilled]: (state) => {
+      state.isModalAddTransactionOpen = false;
+      state.isModalLogoutOpen = false;
+      state.isLoading = false;
+    },
+    // [allTransactions.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [allTransactions.fulfilled]: (state) => {
+    //   state.isLoading = false;
+    // },
+    // [allTransactions.rejected]: (state) => {
+    //   state.isLoading = false;
+    // },
   },
 });
 
-export const { toggleModalAddTransaction, toggleModalLogout, toggleIsLoading } =
-  globalSlice.actions;
+export const {
+  toggleModalAddTransaction,
+  toggleModalLogout,
+  toggleIsLoading,
+  resetGlobal,
+} = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;
