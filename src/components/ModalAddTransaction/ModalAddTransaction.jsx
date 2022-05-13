@@ -13,24 +13,24 @@ import { validationSchema } from "./validationAddTransaction";
 
 const ModalAddTransaction = () => {
   const [chooseType, setChooseType] = useState(false);
+  const [type, setType] = useState('-');
   const [startDate, setStartDate] = useState(new Date());
   const [openDate, setOpenDate] = useState(false);
-  const [type, setType] = useState('+')
 
    const dispatch = useDispatch();
    const isCloseModal = () => {
       dispatch(toggleModalAddTransaction());
    }
-   const showDate = () => {
-     setOpenDate(!openDate);
-   }
-   const chooseDate = (value) => {
-    setStartDate(value);
-    showDate();
-   }
+  //  const showDate = () => {
+  //    setOpenDate(!openDate);
+  //  }
+  //  const chooseDate = (value) => {
+  //   setStartDate(value);
+  //   showDate();
+  //  }
   const handleChangeType = () => {
-    setChooseType(true);
-    setType('-');
+    setChooseType(!chooseType);
+    setType('+');
   }
   return(
     <Modal closeModal={isCloseModal}>
@@ -42,11 +42,11 @@ const ModalAddTransaction = () => {
         </button>
         <Formik
           initialValues={{
-            type: chooseType ? '+' : '-',
+            type: !chooseType ? '-' : '+',
             money: '',
             comment: '',
             category: '',
-            date: chooseDate,
+            // date: chooseDate,
           }}
           validationSchema={validationSchema}
           enableReinitialize
@@ -56,15 +56,21 @@ const ModalAddTransaction = () => {
         <h1 className={s.form__title}>Add transaction</h1>
             <div className={s.checkbox}>
               <span className={`${s.checkboxIncome} ${chooseType && s.checkboxChecked}`}>Income</span>
-              <label htmlFor="type" className={s.checkboxSwitch}>
-                <input type="checkbox"
+              <label htmlFor="type" className={s.checkboxLabel}>
+                  <input
+                  type="checkbox"
                   value="type"
                   checked={chooseType}
                   onChange={handleChangeType}
+                  readOnly
                 />
+                <span 
+                onClick={handleChangeType}
+                  className={s.checkboxSwitch}></span>
               </label>
-              </div>
-              <span className={`${s.checkboxCosts} ${chooseType && s.checkboxChecked}`}>Costs</span>
+              <span className={`${s.checkboxExpense} ${!chooseType && s.checkboxChecked}`}>Expense</span>
+            </div>
+            {chooseType && }
           </Form>
           {/* <button onClick={showDate}>
             <IconContext.Provider value={{ className: "global-class-name",color: "#4A56E2", size: "20px" }}>
