@@ -1,4 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import {
+//   allTransactions,
+//   totalBalance,
+//   getSummary,
+//   getCategories,
+//   addTransaction,
+// } from "./finance-operation";
+import { logOut } from "redux/session/auth-operation";
 
 const initialState = {
   isModalAddTransactionOpen: false,
@@ -19,11 +27,22 @@ const globalSlice = createSlice({
     toggleIsLoading: (state) => {
       state.isLoading = !state.isLoading;
     },
-    resetGlobal: (state) => {
+  },
+  extraReducers: {
+    [logOut.fulfilled]: (state) => {
       state.isModalAddTransactionOpen = false;
       state.isModalLogoutOpen = false;
       state.isLoading = false;
     },
+    // [allTransactions.pending]: (state) => {
+    //   state.isLoading = true;
+    // },
+    // [allTransactions.fulfilled]: (state) => {
+    //   state.isLoading = false;
+    // },
+    // [allTransactions.rejected]: (state) => {
+    //   state.isLoading = false;
+    // },
   },
 });
 
