@@ -86,7 +86,7 @@ const Dashboard = () => {
           )}
         </Media>
       </main>
-    </div>
+    </>
   );
 };
 export default Dashboard;
