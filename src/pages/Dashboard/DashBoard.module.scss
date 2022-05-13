@@ -1,7 +1,8 @@
 @import "stylesheet/_mixin.scss";
 
 .main {
-    height: 100%;
+    height: calc(100vh - 85px) ;
+    // flex-grow: 1;
     background-color: var(--auth-bg-cl);
     background-image: none;
     background-attachment: fixed;
