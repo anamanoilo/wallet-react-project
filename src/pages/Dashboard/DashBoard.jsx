@@ -16,15 +16,18 @@ import {
   getCategories,
 } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
+import { toggleIsLoading } from "redux/global/global-slice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(toggleIsLoading());
     dispatch(refresh());
     dispatch(allTransactions());
     dispatch(totalBalance());
     dispatch(getCategories());
+    dispatch(toggleIsLoading());
   }, [dispatch]);
 
   return (

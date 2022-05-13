@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //   getSummary,
 //   getCategories,
 //   addTransaction,
-// } from "./finance-operation";
+// } from "./finance/finance-operation";
 import { logOut } from "redux/session/auth-operation";
 
 const initialState = {
