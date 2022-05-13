@@ -1,7 +1,6 @@
 import s from "./DiagramTab.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react"
-
 import Chart from "components/Chart/Chart";
 import Table from "components/Table/Table";
 import financeSelectors from "redux/finance/finance-selectors";
