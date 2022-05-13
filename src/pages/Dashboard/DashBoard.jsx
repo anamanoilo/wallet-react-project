@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router";
 import { useDispatch } from "react-redux";
 import Media from "react-media";
@@ -10,16 +10,21 @@ import DiagramTab from "components/DiagramTab";
 import s from "./DashBoard.module.scss";
 import Header from "components/Header";
 import Container from "components/Container/Container";
-import { allTransactions, totalBalance } from "redux/finance/finance-operation";
+import {
+  allTransactions,
+  totalBalance,
+  getCategories,
+} from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(refresh());
     dispatch(allTransactions());
     dispatch(totalBalance());
+    dispatch(getCategories());
   }, [dispatch]);
 
   return (
@@ -35,42 +40,42 @@ const Dashboard = () => {
           {(matches) => (
             <Container>
               <div className={s.Dashboard}>
-              {matches.small && (
-                <>
-                  <Navigation />
-                  <Routes>
-                    <Route
-                      path="*"
-                      element={
-                        <>
-                          <Balance />
-                          <HomeTab />
-                        </>
-                      }
-                    />
-                    <Route path="/currency" element={<Currency />} />
-                    <Route path="/diagram" element={<DiagramTab />} />
-                  </Routes>
-                </>
-              )}
-              {matches.medium && (
-                <>
-                  <div className={s.Dashboard__left}>
-                    <div className={s.Dashboard__nav}>
-                      <Navigation />
-                      <Balance />
-                    </div>
-                    <Currency />
-                  </div>
-                  <div className={s.Dashboard__rigth}>
+                {matches.small && (
+                  <>
+                    <Navigation />
                     <Routes>
-                      <Route path="*" element={<HomeTab />} />
+                      <Route
+                        path="*"
+                        element={
+                          <>
+                            <Balance />
+                            <HomeTab />
+                          </>
+                        }
+                      />
+                      <Route path="/currency" element={<Currency />} />
                       <Route path="/diagram" element={<DiagramTab />} />
                     </Routes>
-                  </div>
-                </>
+                  </>
                 )}
-            </div>
+                {matches.medium && (
+                  <>
+                    <div className={s.Dashboard__left}>
+                      <div className={s.Dashboard__nav}>
+                        <Navigation />
+                        <Balance />
+                      </div>
+                      <Currency />
+                    </div>
+                    <div className={s.Dashboard__rigth}>
+                      <Routes>
+                        <Route path="*" element={<HomeTab />} />
+                        <Route path="/diagram" element={<DiagramTab />} />
+                      </Routes>
+                    </div>
+                  </>
+                )}
+              </div>
             </Container>
           )}
         </Media>

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { allTransactions, totalBalance } from "./finance-operation";
 import {
-  // getTransactions,
-  // getUserBalance,
+  allTransactions,
+  totalBalance,
   getSummary,
   getCategories,
-} from "./finance-operations-nastya";
+  addTransaction,
+} from "./finance-operation";
 
 const initialState = {
   data: null,
@@ -24,10 +24,10 @@ const financeSlice = createSlice({
     },
   },
   extraReducers: {
-    [allTransactions.fulfilled]: (state, {payload}) => {
+    [allTransactions.fulfilled]: (state, { payload }) => {
       state.data = payload;
     },
-    [allTransactions.rejected]: (state, {payload}) => {
+    [allTransactions.rejected]: (state, { payload }) => {
       state.error = payload;
     },
     [totalBalance.fulfilled]: (state, { payload }) => {
@@ -36,24 +36,17 @@ const financeSlice = createSlice({
     [totalBalance.rejected]: (state, { payload }) => {
       state.error = payload;
     },
-  
-    // [getUserBalance.fulfilled]: (state, { payload }) => {
-    //   state.totalBalance = payload;
-    // },
-    // [getUserBalance.rejected]: (state, { payload }) => {
-    //   state.error = payload;
-    // },
-    // [getTransactions.fulfilled]: (state, { payload }) => {
-    //   state.data = payload;
-    // },
     [getSummary.fulfilled]: (state, { payload }) => {
       state.summary = payload;
     },
     [getCategories.fulfilled]: (state, { payload }) => {
       state.categories = payload;
     },
-  }
+    [addTransaction.fulfilled]: (state, { payload }) => {
+      state.data = [...state.data, payload];
+    },
+  },
 });
 
-// export const {} = financeSlice.actions;
+export const { resetFinance } = financeSlice.actions;
 export const financeReducer = financeSlice.reducer;
