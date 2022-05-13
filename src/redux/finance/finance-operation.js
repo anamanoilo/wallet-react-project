@@ -8,13 +8,7 @@ export const allTransactions = createAsyncThunk(
     // const state = getState();
     // const localStorageToken = state.session.token;
 
-<<<<<<< HEAD
-    if (localStorageToken === null) {
-      return rejectWithValue();
-    }
-=======
     // if (localStorageToken === null) return rejectWithValue();
->>>>>>> dev
 
     // token.set(localStorageToken);
     try {
