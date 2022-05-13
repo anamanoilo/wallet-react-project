@@ -93,6 +93,9 @@
     @include mq(tablet) {
         height: 1000px;
     }
+    @include mq(desktop) {
+        padding-top: 46px;
+    }
 }
 
 .Dashboard__nav {
