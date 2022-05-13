@@ -21,7 +21,7 @@ export const register = createAsyncThunk(
       if (data.token) token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.status);
     }
   }
 );
@@ -35,7 +35,7 @@ export const logIn = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.status);
     }
   }
 );
