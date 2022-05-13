@@ -1,8 +1,8 @@
-import AuthForm from "components/AuthForm";
 import s from "../Registration/registration.module.scss";
 import imgLogin from "../../assets/images/imgLogin.png";
 import sContainer from "../../components/AuthForm/ContainerForm.module.scss";
 import { ToastContainer } from "react-toastify";
+import AuthForm from "../../components/AuthForm/AuthForm";
 const Login = () => {
   return (
     <div className={s.registerBg}>
