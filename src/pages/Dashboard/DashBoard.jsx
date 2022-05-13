@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Media from "react-media";
 import Navigation from "components/Navigation";
 import Balance from "components/Balance";
@@ -10,25 +10,31 @@ import DiagramTab from "components/DiagramTab";
 import s from "./DashBoard.module.scss";
 import Header from "components/Header";
 import Container from "components/Container/Container";
+import Loader from "components/Loader"
 import {
   allTransactions,
   totalBalance,
   getCategories,
 } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
+import { toggleIsLoading } from "redux/global/global-slice";
+import globalSelectors from 'redux/global/global-selectors';
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const isLoading = useSelector(globalSelectors.getIsLoading);
 
   useEffect(() => {
+    // dispatch(toggleIsLoading());
     dispatch(refresh());
     dispatch(allTransactions());
-    dispatch(totalBalance());
+    // dispatch(totalBalance());
     dispatch(getCategories());
+    // dispatch(toggleIsLoading());
   }, [dispatch]);
 
   return (
-    <>
+      isLoading ? <Loader/> : <>
       <Header />
       <main className={s.main}>
         <Media

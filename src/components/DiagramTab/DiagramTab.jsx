@@ -1,11 +1,17 @@
 import s from "./DiagramTab.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Chart from "components/Chart/Chart";
 import Table from "components/Table/Table";
 import financeSelectors from "redux/finance/finance-selectors";
+import { useEffect } from 'react';
+import { getSummary } from "redux/finance/finance-operation";
 
 const DiagramTab = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSummary());
+  }, [dispatch]);
   const categories = useSelector(financeSelectors.getCategories);
 
   const answerMonth = {
