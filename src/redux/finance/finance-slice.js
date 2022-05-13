@@ -6,23 +6,19 @@ import {
   getCategories,
   addTransaction,
 } from "./finance-operation";
+import { logOut } from "redux/session/auth-operation";
 
 const initialState = {
   data: null,
   totalBalance: null,
-  summary: [],
+  summary: null,
   error: null,
-  categories: [],
+  categories: null,
 };
 
 const financeSlice = createSlice({
   name: "finance",
   initialState,
-  reducers: {
-    resetFinance: () => {
-      return initialState;
-    },
-  },
   extraReducers: {
     [allTransactions.fulfilled]: (state, { payload }) => {
       state.data = payload;
@@ -44,6 +40,13 @@ const financeSlice = createSlice({
     },
     [addTransaction.fulfilled]: (state, { payload }) => {
       state.data = [...state.data, payload];
+    },
+    [logOut.fulfilled]: (state) => {
+      state.data = null;
+      state.totalBalance = null;
+      state.summary = null;
+      state.error = null;
+      state.categories = null;
     },
   },
 });
