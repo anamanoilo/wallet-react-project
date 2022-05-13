@@ -1,19 +1,12 @@
 import s from "./DiagramTab.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getSummary,
-  getCategories,
-} from "redux/finance/finance-operations-nastya";
-import Container from "components/Container/Container";
+import { useSelector } from "react-redux";
+
 import Chart from "components/Chart/Chart";
 import Table from "components/Table/Table";
+import financeSelectors from "redux/finance/finance-selectors";
 
 const DiagramTab = () => {
-  const dispatch = useDispatch();
-
-  const handleCategories = () => {
-    dispatch(getCategories);
-  };
+  const categories = useSelector(financeSelectors.getCategories);
 
   const answerMonth = {
     categoriesSummary: [
@@ -140,7 +133,7 @@ const DiagramTab = () => {
 
   return (
     <>
-      <Container>
+      <>
         <section className={s.section}>
           <h2 className={s.title}>Statistics</h2>
           <div className={s.wrapper}>
@@ -148,7 +141,7 @@ const DiagramTab = () => {
             <Table data={answerMonth} allCategories={allCategories} />
           </div>
         </section>
-      </Container>
+      </>
     </>
   );
 };

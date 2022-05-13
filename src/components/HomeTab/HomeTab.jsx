@@ -1,12 +1,11 @@
 import s from "./HomeTab.module.scss";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getTransactions } from "redux/finance/finance-operations-nastya";
+// import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import financeSelectors from "redux/finance/finance-selectors";
 
 const HomeTab = () => {
-  const data = useSelector(financeSelectors.getTransactionsData);
-  const categories = useSelector(financeSelectors.getCategories);
+  const data = useSelector(financeSelectors.getFilteredData);
+  // const categories = useSelector(financeSelectors.getCategories);
 
   return (
     <table className={s.table}>

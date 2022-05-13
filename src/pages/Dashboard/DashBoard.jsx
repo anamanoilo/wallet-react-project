@@ -10,7 +10,11 @@ import DiagramTab from "components/DiagramTab";
 import s from "./DashBoard.module.scss";
 import Header from "components/Header";
 import Container from "components/Container/Container";
-import { allTransactions, totalBalance } from "redux/finance/finance-operation";
+import {
+  allTransactions,
+  totalBalance,
+  getCategories,
+} from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
 
 const Dashboard = () => {
@@ -20,6 +24,7 @@ const Dashboard = () => {
     dispatch(refresh());
     dispatch(allTransactions());
     dispatch(totalBalance());
+    dispatch(getCategories());
   }, [dispatch]);
 
   return (
