@@ -22,18 +22,18 @@ function App() {
     <div>
       <Routes>
         <Route
-          path="/signUp"
-          element={
-            <PublicRoute restricted>
-              <Registration />
-            </PublicRoute>
-          }
-        />
-        <Route
           path="/login"
           element={
             <PublicRoute restricted>
               <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/signUp"
+          element={
+            <PublicRoute restricted>
+              <Registration />
             </PublicRoute>
           }
         />
