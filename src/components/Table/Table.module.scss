@@ -34,33 +34,6 @@
     flex-direction: row;
   }
 }
-.select {
-  border-radius: 30px;
-  border: 1px solid var(--main-text-cl);
-  color: var(--main-text-cl);
-  font-size: 16px;
-  line-height: 1.5;
-  padding-top: 12px;
-  padding-bottom: 14px;
-  padding-left: 20px;
-  padding-right: 20px;
-  @include mq(tablet) {
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-.select:first-child {
-  margin-bottom: 20px;
-  @include mq(tablet) {
-    margin-bottom: 0;
-    margin-right: 16px;
-  }
-  @include mq(desktop) {
-    margin-right: 32px;
-  }
-}
 
 .table__wrapper {
   display: flex;
