@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Media from "react-media";
 import Navigation from "components/Navigation";
-import Balance from "components/Balance";
+// import Balance from "components/Balance";
 import Currency from "components/Currency";
 // import HomeTab from "components/HomeTab";
 // import DiagramTab from "components/DiagramTab";
@@ -19,8 +19,9 @@ import {
 import { refresh } from "redux/session/auth-operation";
 // import { toggleIsLoading } from "redux/global/global-slice";
 import globalSelectors from 'redux/global/global-selectors';
-const HomeTab = lazy(() => import("../../components/HomeTab" /*webpackChankName: "HomeTab" */));
-const DiagramTab = lazy(() => import("components/DiagramTab" /*webpackChankName: "DiagramTab" */))
+const HomeTab = lazy(() => import("components/HomeTab" /*webpackChankName: "HomeTab" */));
+const DiagramTab = lazy(() => import("components/DiagramTab" /*webpackChankName: "DiagramTab" */));
+const Balance = lazy(() => import("components/Balance" /*webpackChankName: "Balance" */));
 
 const Dashboard = () => {
   const dispatch = useDispatch()
@@ -51,21 +52,21 @@ const Dashboard = () => {
                 {matches.small && (
                   <>
                     <Navigation />
+                    <Suspense fallback={<Loader/>}>
                     <Routes>
                       <Route
                         path="*"
                         element={
                           <>
                             <Balance />
-                            <Suspense fallback={<Loader/>}>
                               <HomeTab />
-                            </Suspense>
                           </>
                         }
                       />
                       <Route path="/currency" element={<Currency />} />
                       <Route path="/diagram" element={<DiagramTab />} />
                     </Routes>
+                    </Suspense>
                   </>
                 )}
                 {matches.medium && (

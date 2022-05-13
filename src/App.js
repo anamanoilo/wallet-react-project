@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import PublicRoute from "components/PublicRoute/PublicRoute";
-import Registration from "pages/Registration/Registration";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
-import Login from "pages/Login/Login";
-import Dashboard from "pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-
 import { refresh } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
+import Loader from "components/Loader/Loader";
+// import Registration from "pages/Registration/Registration";
+// import Login from "pages/Login/Login";
+// import Dashboard from "pages/Dashboard";
+const Registration = lazy(() => import("pages/Registration/Registration"));
+const Login = lazy(() => import("pages/Login/Login"));
+const Dashboard = lazy(() => import("pages/Dashboard"));
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +23,7 @@ function App() {
 
   return (
     <>
+      <Suspense fallback={<Loader/>}>
       <Routes>
         <Route
           path="/login"
@@ -45,7 +49,8 @@ function App() {
             </PrivateRoute>
           }
         />
-      </Routes>
+        </Routes>
+      </Suspense>
       <ToastContainer
         position="top-right"
         autoClose={3000}
