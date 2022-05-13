@@ -8,7 +8,7 @@ const Balance = () => {
     <div className={s.balance}>
       <p className={s.balanceTitle}>Your balance</p>
       <p className={s.balanceValue}>
-        <span className={s.symbol}>&#8372; {totalBalance}</span>
+        <span className={s.symbol}>&#8372;</span>{totalBalance}
       </p>
     </div>
   );
