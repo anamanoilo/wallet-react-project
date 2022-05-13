@@ -143,45 +143,41 @@ export const AuthForm = ({ type }) => {
                 <img className={s.img} src={headerLogo} alt="logo" />
                 <h1 className={s.title}>Wallet</h1>
               </div>
-              <div>
-                <TextField
-                  className={s.textField}
-                  InputProps={{
-                    endAdornment: (
-                      <Icon color="action" position="start">
-                        <EmailIcon />
-                      </Icon>
-                    ),
-                  }}
-                  id="email"
-                  name="email"
-                  label="E-mail"
-                  value={values.email}
-                  onChange={handleChange}
-                  error={touched.email && Boolean(errors.email)}
-                  helperText={touched.email && errors.email}
-                />
-              </div>
-              <div>
-                <TextField
-                  className={s.textField}
-                  InputProps={{
-                    endAdornment: (
-                      <Icon color="action" position="start">
-                        <LockIcon />
-                      </Icon>
-                    ),
-                  }}
-                  id="password"
-                  name="password"
-                  label="password"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  error={touched.password && Boolean(errors.password)}
-                  helperText={touched.password && errors.password}
-                />
-              </div>
+              <TextField
+                className={s.textField}
+                InputProps={{
+                  endAdornment: (
+                    <Icon color="action" position="start">
+                      <EmailIcon />
+                    </Icon>
+                  ),
+                }}
+                id="email"
+                name="email"
+                label="E-mail"
+                value={values.email}
+                onChange={handleChange}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+              />
+              <TextField
+                className={s.textField}
+                InputProps={{
+                  endAdornment: (
+                    <Icon color="action" position="start">
+                      <LockIcon />
+                    </Icon>
+                  ),
+                }}
+                id="password"
+                name="password"
+                label="Password"
+                type="password"
+                value={values.password}
+                onChange={handleChange}
+                error={touched.password && Boolean(errors.password)}
+                helperText={touched.password && errors.password}
+              />
               <div className={s.loginFormBtnContainer}>
                 <Button
                   className={classNames(s.btnForm, s.current)}

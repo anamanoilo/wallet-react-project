@@ -1,11 +1,11 @@
 import AuthForm from "components/AuthForm";
-import Container from "components/Container";
 import imgRegister from "../../assets/images/imgRegister.png";
 import s from "./registration.module.scss";
+import sContainer from "../../components/AuthForm/ContainerForm.module.scss";
 const Registration = () => {
   return (
     <div className={s.registerBg}>
-      <Container>
+      <div className={sContainer.container}>
         <div className={s.mainPage}>
           <div className={s.left}>
             <img src={imgRegister} alt="finance app" className={s.img} />
@@ -15,7 +15,7 @@ const Registration = () => {
             <AuthForm type="signUp" />
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

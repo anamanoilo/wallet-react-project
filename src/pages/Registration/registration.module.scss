@@ -13,13 +13,14 @@
         background-image: url('../../assets/images/imgFrameRegisterbig.png');
     }
 
-    .container {
-        padding-left: 76px;
+    .containerForm {
+            width: 280px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0 auto;
 
         @media screen and (max-width: 1279px) {
-            padding-left: 114px;
-            padding-right: 114px;
-            padding-bottom: 192px;
+            width: 440px;
         }
 
         @media screen and (max-width: 767px) {
