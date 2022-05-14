@@ -1,4 +1,4 @@
-import AuthForm from "components/AuthForm";
+import AuthForm from "../../components/AuthForm/AuthForm";
 import imgRegister from "../../assets/images/imgRegister.png";
 import s from "./registration.module.scss";
 import sContainer from "../../components/AuthForm/ContainerForm.module.scss";

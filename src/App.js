@@ -19,7 +19,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
       <Routes>
         <Route
           path="/login"
@@ -57,7 +57,7 @@ function App() {
         draggable
         pauseOnHover
       />
-    </div>
+    </>
   );
 }
 
