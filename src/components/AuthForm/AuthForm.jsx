@@ -1,9 +1,7 @@
 import s from "./AuthForm.module.scss";
-import { Formik, ErrorMessage } from "formik";
-
+import { Formik } from "formik";
 import { validationSchema } from "./validationAuthForm";
 import { logIn, register } from "redux/session/auth-operation";
-
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import headerLogo from "../../assets/images/Logo.png";
@@ -27,7 +25,7 @@ export const AuthForm = ({ type }) => {
       }}
       validationSchema={validationSchema(type)}
       validateOnBlur
-      onSubmit={(values, { resetForm }) => {
+      onSubmit={(values) => {
         type === "signUp"
           ? dispatch(register(values))
           : dispatch(logIn(values));
@@ -40,9 +38,6 @@ export const AuthForm = ({ type }) => {
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting,
-        isValid,
-        dirty,
       }) => (
         <form className={s.form} onSubmit={handleSubmit}>
           {type === "signUp" ? (
