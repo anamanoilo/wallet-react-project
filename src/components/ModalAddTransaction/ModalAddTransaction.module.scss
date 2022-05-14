@@ -1,6 +1,6 @@
 @import "stylesheet/shared.scss";
 .transaction{
-   padding: 40px 80px;
+   padding: 40px 70px;
    position: relative;
 }
 .button{
@@ -98,4 +98,157 @@
       color: var(--expense-cl);
    }
 }
+}
+
+
+
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+}
+.money{
+  width: 180px;
+  height: 32px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e0e0e0;
+   &::placeholder {
+  font-family: 'Circe', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: var(--secondary-text-cl);
+}
+&Wrapper{
+   position: relative;
+}
+&Error{
+  color: var( --expense-cl);
+  transition: all 500ms ease;
+  position: absolute;
+      top: 35px;
+}
+}
+.date{
+   & input{
+      font-family: 'Circe';
+width: 160px;
+  height: 32px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #000000;
+padding-left: 20px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e0e0e0;
+   }
+   &Wrapper{
+   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   }
+   &Btn{
+      right: 14px;
+      position: absolute;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+   }
+}
+.comment{
+    margin-bottom: 40px;
+  width: 100%;
+  height: 32px;
+  color: var(--main-text-cl);
+  font-family: 'Circe', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+
+  outline: none;
+  resize: none;
+  overflow: hidden;
+
+  &::placeholder {
+    color:var(--secondary-text-cl);
+  }
+
+  @include mq(tablet) {
+    width: 100%;
+  }
+   &Wrapper{
+         width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border: none;
+   }
+}
+ .btnWrapper{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   }
+.btnSubmit{
+    font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+text-align: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+border: none;
+height: 50px;
+width: 300px;
+border-radius: 20px;
+color: var(--main-bg-cl);
+background-color: var(--income-cl);
+transition: all 250ms ease;
+      &:hover,
+      &:focus{
+         background-color: var(--income-hover-cl);
+      }
+      &:first-child{
+         margin-bottom: 20px;
+      }
+}
+.btnCancel{
+    font-family: 'Circe';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 27px;
+text-align: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+border: none;
+height: 50px;
+width: 300px;
+border-radius: 20px;
+background-color: var(--main-bg-cl);
+border: 1px solid var(--accent-active-cl);
+color: var(--accent-active-cl);
+transition: all 250ms ease;
+      &:hover,
+      &:focus{
+         background-color: var(--income-hover-cl);
+         color: var(--main-bg-cl);
+         border: 1px solid transparent;
+      }
+      &:first-child{
+         margin-bottom: 20px;
+      }
 }

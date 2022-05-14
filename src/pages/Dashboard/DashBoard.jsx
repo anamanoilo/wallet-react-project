@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import Media from "react-media";
 import Navigation from "components/Navigation";
 import Balance from "components/Balance";
@@ -17,6 +17,11 @@ import {
 } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
 
+import  globalSelectors  from 'redux/global/global-selectors';
+import ButtonAddTransactions from "components/ButtonAddTransactions";
+import ModalAddTransaction from "components/ModalAddTransaction";
+
+
 const Dashboard = () => {
   const dispatch = useDispatch();
 
@@ -27,6 +32,9 @@ const Dashboard = () => {
     dispatch(getCategories());
   }, [dispatch]);
 
+///
+  const showModal = useSelector(globalSelectors.getIsModalAddTransaction)
+////
   return (
     <>
       <Header />
@@ -79,6 +87,8 @@ const Dashboard = () => {
             </Container>
           )}
         </Media>
+                <ButtonAddTransactions />
+   {showModal && <ModalAddTransaction />}
       </main>
     </>
   );
