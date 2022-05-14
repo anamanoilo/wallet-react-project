@@ -80,13 +80,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 60%;
+  width: 50%;
 }
 .table__total {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 20%;
+  width: 40%;
 }
 .table__bottom {
   font-weight: bold;
@@ -95,17 +95,17 @@
 }
 
 .first {
-  width: 80%;
+  width: 50%;
   display: inline-block;
 }
 .second__expense {
-  width: 20%;
+  width: 50%;
   display: inline-block;
   color: var(--expense-cl);
   text-align: end;
 }
 .second__income {
-  width: 20%;
+  width: 50%;
   display: inline-block;
   color: var(--income-cl);
   text-align: end;

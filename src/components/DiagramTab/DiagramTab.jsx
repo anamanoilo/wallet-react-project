@@ -18,6 +18,13 @@ const DiagramTab = () => {
       return;
     }
     const index = allMonths.findIndex((month) => month === monthForState) + 1;
+    // if (index === 0 && yearForState === "All years") {
+    //   setPeriod("");
+    //   return;
+    // }
+    if (new Date() < new Date(`${monthForState} ${yearForState}`)) {
+      return;
+    }
     setPeriod(`?month=${index}&year=${yearForState}`);
   }, [monthForState, yearForState]);
 

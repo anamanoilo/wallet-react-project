@@ -3,7 +3,7 @@ function numberWithSpaces(nr) {
 }
 
 export default function normalizeAmount(amount) {
-  if (amount === null) {
+  if (amount === null || amount === undefined) {
     return;
   }
   const splittedAmount = numberWithSpaces(amount);
