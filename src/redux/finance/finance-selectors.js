@@ -1,9 +1,16 @@
+
 import { allMonths, allCategoriesWithColors } from "assets/const";
+
+import normalizeAmount from "services/normalizeAmount";
+
+
 const getTotalBalance = (state) => state.finance.totalBalance;
 const getTransactionsData = (state) => state.finance.data;
 const getCategories = (state) => state.finance.categories;
 const getSummary = (state) => state.finance.summary;
 const getError = (state) => state.finance.error;
+
+const getBalance = (state) => normalizeAmount(getTotalBalance(state));
 
 const getFilteredData = (state) => {
   const sortedData = getTransactionsData(state)
@@ -31,7 +38,8 @@ function normalizeData(data, categories) {
     const updatedData = {
       ...data,
       transactionDate: `${day}.${month}.${year}`,
-      amount,
+      amount: normalizeAmount(amount),
+      balanceAfter: normalizeAmount(data.balanceAfter),
     };
     return categories
       ? {
@@ -131,6 +139,7 @@ const financeSelectors = {
   getDataAllSummaryForChart,
   getBalanceForChart,
   getTotalBalance,
+  getBalance,
   getTransactionsData,
   getCategories,
   getFilteredData,
