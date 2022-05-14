@@ -1,4 +1,4 @@
-@import "stylesheet/shared.scss";
+@import "../../stylesheet/shared.scss";
 // .table {
 //   table-layout: fixed;
 //   width: 100%;
@@ -80,7 +80,7 @@
     min-height: 182px;
   }
   @include mq(desktop) {
-    width: 348px;
+    width: 393px;
     min-height: 347px;
   }
 }
