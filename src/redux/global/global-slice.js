@@ -34,6 +34,9 @@ const globalSlice = createSlice({
       state.isModalLogoutOpen = false;
       state.isLoading = false;
     },
+    [logOut.rejected]: (state) => {
+      state.isModalLogoutOpen = false;
+    },
     [allTransactions.pending]: (state) => {
       state.isLoading = true;
     },

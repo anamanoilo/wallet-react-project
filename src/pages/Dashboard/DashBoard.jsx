@@ -14,6 +14,8 @@ import Currency from "components/Currency";
 import Header from "components/Header";
 import Container from "components/Container/Container";
 import Loader from "components/Loader";
+import ButtonAddTransactions from "components/ButtonAddTransactions";
+import ModalAddTransaction from "components/ModalAddTransaction";
 
 const HomeTab = lazy(() =>
   import("components/HomeTab" /*webpackChankName: "HomeTab" */)
@@ -25,15 +27,20 @@ const Balance = lazy(() =>
   import("components/Balance" /*webpackChankName: "Balance" */)
 );
 
+
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(globalSelectors.getIsLoading);
+  const showModal = useSelector(globalSelectors.getIsModalAddTransaction);
 
   useEffect(() => {
     dispatch(refresh());
     dispatch(allTransactions());
     dispatch(getCategories());
   }, [dispatch]);
+
+
 
   return isLoading ? (
     <Loader />
@@ -93,6 +100,8 @@ const Dashboard = () => {
             </Container>
           )}
         </Media>
+                <ButtonAddTransactions />
+   {showModal && <ModalAddTransaction />}
       </main>
     </>
   );

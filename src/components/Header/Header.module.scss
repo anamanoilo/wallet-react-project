@@ -33,7 +33,7 @@
       transition: color 450ms ease;
       &:hover,
       &:focus{
-      color:var(--expense-hover-cl);
+      color:var(--accent-active-cl);
       }
        @include mq(mobile) {
       margin-left: 20px;
@@ -88,4 +88,12 @@
 }
 .wrapper{
    display: flex;
+}
+.icon{
+ @media screen and (max-width: 479px)  {
+display: none;
+}
+@include mq(mobile){
+   display: block;
+}
 }
