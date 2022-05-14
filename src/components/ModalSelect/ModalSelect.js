@@ -1,6 +1,6 @@
 import PropTypes  from 'prop-types';
 import { useField } from 'formik';
-import s from './Select.module.scss';
+import s from './ModalSelect.module.scss';
 
 export default function Select({label,...props}) {
    const [field, meta] = useField(props);

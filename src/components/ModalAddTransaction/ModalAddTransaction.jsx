@@ -10,7 +10,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { toggleModalAddTransaction } from "redux/global/global-slice";
 import s from "./ModalAddTransaction.module.scss";
 import { validationSchema } from "./validationAddTransaction";
-import Select from "./Select/Select";
+import ModalSelect from '../ModalSelect/ModalSelect'
 import financeSelectors from "redux/finance/finance-selectors";
 import moment from 'moment';
 import { addTransaction } from '../../redux/finance/finance-operation';
@@ -50,6 +50,7 @@ const ModalAddTransaction = () => {
   const handleSubmitForm = ({ type, amount, comment, categoryId, transactionDate }) => {
     const normalizedAmount = type === 'EXPENSE' ? -amount : amount;
     dispatch(addTransaction({ type, amount: normalizedAmount, comment, categoryId, transactionDate }));
+    isCloseModal();
   }
 
   return(
@@ -94,7 +95,7 @@ const ModalAddTransaction = () => {
             </div>
             {chooseType ? (
                 <div className={s.category}>
-                  <Select label='categoryId' name="categoryId">
+                  <ModalSelect label='categoryId' name="categoryId">
                     <option className={s.categoryOption} value=''>
                       Choose category
                     </option>
@@ -103,11 +104,11 @@ const ModalAddTransaction = () => {
                       className={s.categoryOption}
                       key={incomeCategory.id}
                       value={incomeCategory.id}>{incomeCategory.name}</option>
-                  </Select> 
+                  </ModalSelect> 
                     </div>
               ) : (
                           <div className={s.category}>
-                  <Select label='categoryId' name="categoryId">
+                  <ModalSelect label='categoryId' name="categoryId">
                     <option className={s.categoryChoose} value=''>
                       Choose category
                   </option>
@@ -117,7 +118,7 @@ const ModalAddTransaction = () => {
                       key={category.id}
                       value={category.id}>{category.name}</option>
                   ))}
-                  </Select> 
+                  </ModalSelect> 
                     </div>
               )}
               <div className={s.wrapper}>
