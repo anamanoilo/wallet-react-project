@@ -5,7 +5,7 @@ import financeSelectors from "redux/finance/finance-selectors";
 
 const HomeTab = () => {
   const data = useSelector(financeSelectors.getFilteredData);
-  console.log("~ data", data);
+  // console.log("~ data", data);
 
   return (
     data && (
