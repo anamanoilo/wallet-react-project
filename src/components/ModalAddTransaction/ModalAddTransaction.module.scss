@@ -1,15 +1,25 @@
 @import "stylesheet/shared.scss";
 .transaction{
-   padding: 40px 70px;
+   padding:20px 0px ;
+   @include mq(mobile){
+      padding: 30px 35px;
+   }
+      @include mq(tablet){
+      padding: 40px 70px;
+   }
    position: relative;
 }
 .button{
    &Close{
+      display: none;
       background-color: transparent;
       border: none;
       position: absolute;
       right: 20px;
       top:20px;
+      @include mq(mobile){
+         display: block;
+      }
    }
 }
 .form {
@@ -100,36 +110,56 @@
 }
 }
 
-
-
 .wrapper{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 40px;
-  margin-bottom: 40px;
+   display: flex;
+   flex-direction: column;
+align-items: center;
+margin-top: 40px;
+margin-bottom: 40px;
+@include mq(mobile){
+   flex-direction: row;
+   align-items: flex-start;
+   justify-content: space-evenly;
+   }
+   @include mq(tablet){
+      justify-content: space-between;
+   }
 
 }
 .money{
-  width: 180px;
+  width: 280px;
   height: 32px;
-  font-size: 18px;
   line-height: 1.5;
+  font-size: 18px;
   font-weight: 400;
   color: #000000;
-  text-align: center;
+      text-align: left;
   border: none;
   outline: none;
   border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 40px;
+  @include mq(mobile){
+        margin-bottom: 0px;
+      text-align: center;
+     width: 180px;
+  }
    &::placeholder {
   font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 18px;
-  text-align: center;
+  text-align: left;
   color: var(--secondary-text-cl);
+  @include mq(mobile){
+       text-align: center;
+  }
 }
 &Wrapper{
    position: relative;
+   display: flex;
+    justify-content: center;
+    @include mq(mobile) {
+       justify-content: start;
+    }
 }
 &Error{
   color: var( --expense-cl);
@@ -140,8 +170,8 @@
 }
 .date{
    & input{
-      font-family: 'Circe';
-width: 160px;
+font-family: 'Circe';
+width: 260px;
   height: 32px;
   font-size: 18px;
   line-height: 1.5;
@@ -151,6 +181,12 @@ padding-left: 20px;
   border: none;
   outline: none;
   border-bottom: 1px solid #e0e0e0;
+  @include mq(mobile){
+     max-width: 160px;
+  }
+//    @include mq(tablet){
+//      width: 160px;
+//   }
    }
    &Wrapper{
    position: relative;
@@ -167,8 +203,9 @@ padding-left: 20px;
    }
 }
 .comment{
+   padding-bottom: 40px;
     margin-bottom: 40px;
-  width: 100%;
+  min-width: 280px;
   height: 32px;
   color: var(--main-text-cl);
   font-family: 'Circe', sans-serif;
@@ -180,7 +217,10 @@ padding-left: 20px;
   outline: none;
   resize: none;
   overflow: hidden;
-
+   @include mq(mobile){
+      padding-bottom: 0px;
+      width: 400px;
+   }
   &::placeholder {
     color:var(--secondary-text-cl);
   }
@@ -189,11 +229,14 @@ padding-left: 20px;
     width: 100%;
   }
    &Wrapper{
-         width: 100%;
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
    align-items: center;
    border: none;
+   justify-content: center;
+   // @include mq(tablet) {
+   //    flex-direction: row;
+   // }
    }
 }
  .btnWrapper{
