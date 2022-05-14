@@ -1,0 +1,19 @@
+.select {
+   width: 100%;
+   font-family: 'Circe', sans-serif;
+   font-weight: 400;
+   font-size: 18px;
+   line-height: 1.5;
+   color: #bdbdbd;
+   border: none;
+   background-color: transparent;
+   border-bottom: 1px solid #e0e0e0;
+   outline: none;
+  &wrapper {
+  margin-bottom: 42px;
+}
+}
+.error {
+  position: absolute;
+  color: var(--expense-cl);
+}
