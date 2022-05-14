@@ -9,7 +9,7 @@ const HomeTab = () => {
   // console.log("~ data", data);
 
   return (
-    data && (
+    !!data.length ? (
       <Media
         queries={{
           small: "(max-width: 767px)",
@@ -194,7 +194,7 @@ const HomeTab = () => {
           </>
         )}
       </Media>
-    )
+    ) : <div className={s.noTransactions}><h2>Your transactions will be shown here</h2></div>
   );
 };
 export default HomeTab;

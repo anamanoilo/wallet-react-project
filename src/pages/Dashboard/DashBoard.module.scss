@@ -17,7 +17,6 @@
     @include mq(tablet) {
         height: calc(100vh - 85px);
         align-items: center;
-        padding-top: 20px;
         background-image: url(../../bc-image/Group1-tablet.webp);
         background-repeat: no-repeat;
             // background-position: left bottom;
@@ -31,7 +30,6 @@
         @include mq(desktop) {
             align-items: unset;
             flex-direction: row;
-            padding-top: 0px;
             background-image: url(../../bc-image/Group1-desktop.webp);
             background-repeat: no-repeat;
             // background-position: left bottom;
@@ -87,14 +85,17 @@
     justify-content: space-between;
   }
   @include mq(desktop) {
+    align-items: flex-start;
     width: 380px;
+    height: calc(100vh - 125px);
     justify-content: flex-start;
     flex-direction: column;
-    border-right: 3px solid var(--auth-bg-cl);
-    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
-      1px 0px 0px rgba(255, 255, 255, 0.6);
+    border-right: 2px solid var(--auth-bg-cl);
+    // box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+    //   1px 0px 0px rgba(255, 255, 255, 0.6);
     margin-bottom: 0;
-    padding-top: 45px;
+    padding-top: 40px;
+    
     
 }
 }
@@ -111,9 +112,13 @@
 }
 
 .Dashboard__nav {
-  margin-right: 20px;
-  @include mq(desktop) {
+    margin-right: 20px;
+    @include mq(tablet) {
+    padding-top: 10px;
+}
+    @include mq(desktop) {
+        padding-top: 0px;
     margin-right: 0;
     margin-bottom: 30px;
-  }
+    }
 }

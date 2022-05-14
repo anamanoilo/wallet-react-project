@@ -8,6 +8,10 @@
     margin-bottom: 30px;
     background: var(--main-bg-cl);
     border-radius: 30px;
+    @include mq(mobile) {
+        width: 400px;
+        padding-left: 40px;
+    }
     @include mq(tablet) {
         width: 334px;
         padding-left: 40px;

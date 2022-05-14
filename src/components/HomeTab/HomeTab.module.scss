@@ -1,5 +1,9 @@
 @import "stylesheet/_mixin.scss";
 // мобильная версия
+.noTransactions {
+    width: 100%;
+}
+
 .mobailTrList {
 
 }
@@ -11,6 +15,9 @@
     background-color: #fff;
     margin-bottom: 10px;
     display: flex;
+    @include mq(mobile) {
+         width: 400px;
+    }
     &_INCOME {
         composes: mobailTrItem;
             &::before {
@@ -108,7 +115,7 @@
 
 .tableRow {
     height: 54px;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 1px 0px var(--bottom-table-row);
 }
 
 .tableData {
