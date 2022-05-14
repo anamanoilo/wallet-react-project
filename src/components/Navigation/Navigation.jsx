@@ -6,11 +6,6 @@ import { AiFillHome } from "react-icons/ai";
 import { FaDollarSign } from "react-icons/fa";
 import { MdShowChart } from "react-icons/md";
 
-// const linkStyle = { fontWeight: "normal" };
-// const linkActiveStyle = {
-//   fontWeight: "bold",
-// };
-
 const toggle = ({ isActive }) => {
   return isActive ? s.active__link : s.nav__link;
 };
