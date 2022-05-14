@@ -11,7 +11,7 @@ const Table = ({
   yearForState,
   setYearForState,
 }) => {
-  const { arrayCategoriesSummary, incomeSummary, newExpenseSummary } = data;
+  const { arrayCategoriesSummary, newIncomeSummary, newExpenseSummary } = data;
 
   const periodForSelects = useSelector(financeSelectors.getPeriodForStatistic);
 
@@ -69,7 +69,7 @@ const Table = ({
         </li>
         <li className={s.table__bottom}>
           <span className={s.first}>Incomes:</span>
-          <span className={s.second__income}>{incomeSummary}</span>
+          <span className={s.second__income}>{newIncomeSummary}</span>
         </li>
       </ul>
     </div>

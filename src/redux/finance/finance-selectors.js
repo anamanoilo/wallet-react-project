@@ -1,8 +1,6 @@
-
 import { allMonths, allCategoriesWithColors } from "assets/const";
 
 import normalizeAmount from "services/normalizeAmount";
-
 
 const getTotalBalance = (state) => state.finance.totalBalance;
 const getTransactionsData = (state) => state.finance.data;
@@ -51,41 +49,43 @@ function normalizeData(data, categories) {
 }
 
 const getPeriodForStatistic = (state) => {
-  const uniqueMonths = getTransactionsData(state)
-    ?.map((obj) => obj.transactionDate.slice(5, 7))
-    .reduce((acc, month) => (!acc.includes(month) ? [...acc, month] : acc), []);
-  if (!uniqueMonths) {
-    return {};
-  }
+  // const uniqueMonths = getTransactionsData(state);
+  //   ?.map((obj) => obj.transactionDate.slice(5, 7))
+  //   .reduce((acc, month) => (!acc.includes(month) ? [...acc, month] : acc), []);
+  // if (!uniqueMonths) {
+  //   return {};
+  // }
+  // const sortMonth = uniqueMonths
+  //   .map((string) => Number(string))
+  //   .sort((a, b) => a - b);
+  // const stringMonths = sortMonth.map((number) => allMonths[number - 1]);
 
-  const sortMonth = uniqueMonths
-    .map((string) => Number(string))
-    .sort((a, b) => a - b);
-
-  const stringMonths = sortMonth.map((number) => allMonths[number - 1]);
-
-  const uniqueYears = getTransactionsData(state)
-    ?.map((obj) => obj.transactionDate.slice(0, 4))
-    .reduce((acc, year) => (!acc.includes(year) ? [...acc, year] : acc), []);
+  const uniqueYears =
+    getTransactionsData(state)
+      ?.map((obj) => obj.transactionDate?.slice(0, 4))
+      .reduce(
+        (acc, year) => (!acc.includes(year) ? [...acc, year] : acc),
+        []
+      ) || [];
   const sortYears = uniqueYears
-    .map((string) => Number(string))
-    .sort((a, b) => a - b);
-
-  const period = { months: stringMonths, years: sortYears };
+    ?.map((string) => Number(string))
+    ?.sort((a, b) => a - b);
+  const period = { months: allMonths, years: sortYears };
   return period;
 };
 
 const getAllTransactionsForStat = (state) => {
   const objectSummary = getSummary(state) || {};
   const { categoriesSummary, expenseSummary, incomeSummary } = objectSummary;
-  const newExpenseSummary = String(expenseSummary * -1);
+  const newExpenseSummary = String(normalizeAmount(expenseSummary * -1));
+  const newIncomeSummary = normalizeAmount(incomeSummary);
   const arrayCategoriesSummary = categoriesSummary
     ?.filter((category) => category.type === "EXPENSE")
     .map((category) => {
       const color = allCategoriesWithColors?.find(
         (object) => object.name === category.name
       ).backgroundColor;
-      const number = category.total * -1;
+      const number = normalizeAmount(category.total * -1);
       const object = {
         ...category,
         total: String(number),
@@ -93,7 +93,11 @@ const getAllTransactionsForStat = (state) => {
       };
       return object;
     });
-  return { arrayCategoriesSummary, newExpenseSummary, incomeSummary };
+  return {
+    arrayCategoriesSummary,
+    newExpenseSummary,
+    newIncomeSummary,
+  };
 };
 
 const getDataAllSummaryForChart = (state) => {
@@ -110,6 +114,7 @@ const getDataAllSummaryForChart = (state) => {
       },
     ],
   };
+
   const objectSummary = getSummary(state) || {};
 
   const { categoriesSummary } = objectSummary;
@@ -126,10 +131,12 @@ const getDataAllSummaryForChart = (state) => {
     });
   return dataAllSummaryForChart;
 };
+
 const getBalanceForChart = (state) => {
   const objectSummary = getSummary(state) || {};
 
-  const balanceForChart = objectSummary?.periodTotal || "Data missing";
+  const balanceForChart =
+    normalizeAmount(objectSummary?.periodTotal) || "Data missing";
   return balanceForChart;
 };
 
