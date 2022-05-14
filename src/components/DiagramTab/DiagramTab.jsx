@@ -6,25 +6,12 @@ import Table from "components/Table/Table";
 import financeSelectors from "redux/finance/finance-selectors";
 import { getSummary } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
+import { allMonths } from "assets/const";
 
 const DiagramTab = () => {
   const [monthForState, setMonthForState] = useState("Month");
   const [yearForState, setYearForState] = useState("Year");
   const [period, setPeriod] = useState("");
-  const allMonths = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
   useEffect(() => {
     if (monthForState === "Month" || yearForState === "Year") {
@@ -46,13 +33,19 @@ const DiagramTab = () => {
   const dataAllSummaryForChart = useSelector(
     financeSelectors.getDataAllSummaryForChart
   );
+  const balanceForChart = useSelector(financeSelectors.getBalanceForChart);
+  const show = dataAllSummaryForChart?.datasets[0]?.data?.length ?? true;
 
   return (
     <>
       <section className={s.section}>
         <h2 className={s.title}>Statistics</h2>
         <div className={s.wrapper}>
-          <Chart data={dataAllSummaryForChart} />
+          <Chart
+            data={dataAllSummaryForChart}
+            balanceForChart={balanceForChart}
+            show={show}
+          />
           <Table
             data={dataAllSummaryForTabl}
             monthForState={monthForState}
