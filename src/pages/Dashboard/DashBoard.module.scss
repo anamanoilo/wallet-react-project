@@ -3,16 +3,16 @@
 .main {
     height: 100%;
     // flex-grow: 1;
-    background-color: var(--auth-bg-cl);
-    background-image: none;
+    // background-color: var(--auth-bg-cl);
+    background-image: url(../../bc-image/Rectangle.png);
+    background-size: cover;
     background-attachment: fixed;
     @include mq(s-mobile) {
-        // position: absolute;
-        // z-index: -1;
-        // height: calc(100vh - 73px);
+        overflow: scroll;
+        height: calc(100vh - 73px);
     }
     @include mq(mobile) {
-        // height: calc(100vh - 85px);
+        height: calc(100vh - 85px);
     }
     @include mq(tablet) {
         height: calc(100vh - 85px);
@@ -44,6 +44,7 @@
 .Dashboard {
     // height: 100%;
     padding-top: 13px;
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,6 +54,7 @@
     @include mq(tablet) {
         align-items: center;
         padding-top: 20px;
+        padding-bottom: 0px;
         // background-image: url(../../bc-image/Group1-tablet.webp);
         // background-repeat: no-repeat;
         // background-size:cover;
@@ -95,7 +97,7 @@
     //   1px 0px 0px rgba(255, 255, 255, 0.6);
     margin-bottom: 0;
     padding-top: 40px;
-    
+    padding-right: 30px;
     
 }
 }
