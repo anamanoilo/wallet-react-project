@@ -9,6 +9,7 @@
     background-image: url("./img/tablet-1x.png");
     background-color: var(--auth-bg-cl);
     height: 1024px;
+
     @include retina {
       background-image: url("./img/tablet-2x.png");
     }
