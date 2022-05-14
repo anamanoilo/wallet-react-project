@@ -3,6 +3,9 @@ function numberWithSpaces(nr) {
 }
 
 export default function normalizeAmount(amount) {
+  if (amount === null) {
+    return;
+  }
   const splittedAmount = numberWithSpaces(amount);
   if (Number.isInteger(amount)) {
     return splittedAmount.concat(".00");
