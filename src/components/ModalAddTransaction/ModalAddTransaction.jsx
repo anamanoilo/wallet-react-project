@@ -14,6 +14,7 @@ import ModalSelect from '../ModalSelect/ModalSelect'
 import financeSelectors from "redux/finance/finance-selectors";
 import moment from 'moment';
 import { addTransaction } from '../../redux/finance/finance-operation';
+import { refresh } from "redux/session/auth-operation";
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,8 @@ const ModalAddTransaction = () => {
   const handleSubmitForm = ({ type, amount, comment, categoryId, transactionDate }) => {
     const normalizedAmount = type === 'EXPENSE' ? -amount : amount;
     dispatch(addTransaction({ type, amount: normalizedAmount, comment, categoryId, transactionDate }));
+    dispatch(refresh());
+
     isCloseModal();
   }
 

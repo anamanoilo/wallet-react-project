@@ -9,7 +9,7 @@ const HomeTab = () => {
   // console.log("~ data", data);
 
   return (
-    !!data.length ? (
+    !!data?.length ? (
       <Media
         queries={{
           small: "(max-width: 767px)",
