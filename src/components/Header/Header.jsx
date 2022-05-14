@@ -29,8 +29,10 @@ const Header = () => {
           </Link>
           <div className={s.wrapper}>
         <div className={s.user}>
-          <IconContext.Provider value={{ color: "#bdbdbd", className: "global-class-name", size: "24px" }}>
+              <IconContext.Provider value={{ color: "#bdbdbd", className: "global-class-name", size: "18px" }}>
+                <div className={s.icon}>
             <FaUser />
+                </div>
             <span className={s.user__name}>{name}</span>
           </IconContext.Provider>
         </div>
