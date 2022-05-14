@@ -25,7 +25,13 @@
   top: 206px;
   // left: 60px;
   @include mq(mobile) {
-    top:233px;
-    left: 39px;
+    top:224px;
+    // left: 70px;
+
   }
+    @include mq(tablet) {
+    top:234px;
+    left: 70px;
+  }
+
 }

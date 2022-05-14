@@ -157,13 +157,12 @@ margin-bottom: 40px;
    position: relative;
    display: flex;
     justify-content: center;
-    @include mq(mobile) {
+    @include mq(tablet) {
        justify-content: start;
     }
 }
 &Error{
   color: var( --expense-cl);
-  transition: all 500ms ease;
   position: absolute;
       top: 35px;
 }
