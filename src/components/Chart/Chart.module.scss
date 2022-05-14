@@ -33,6 +33,10 @@
 }
 
 .wrapper__doughnut {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 280px;
   height: 280px;
 
@@ -50,4 +54,30 @@
     width: 288px;
     height: 288px;
   }
+}
+.text__messeng {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--main-text-cl);
+  text-align: center;
+}
+
+.balance__wrapper {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  color: var(--main-text-cl);
+}
+.symbol {
+  font-weight: 400;
+  font-style: normal;
+  margin-right: 10px;
 }

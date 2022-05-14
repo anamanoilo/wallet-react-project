@@ -1,4 +1,8 @@
+
+import { allMonths, allCategoriesWithColors } from "assets/const";
+
 import normalizeAmount from "services/normalizeAmount";
+
 
 const getTotalBalance = (state) => state.finance.totalBalance;
 const getTransactionsData = (state) => state.finance.data;
@@ -46,7 +50,95 @@ function normalizeData(data, categories) {
   });
 }
 
+const getPeriodForStatistic = (state) => {
+  const uniqueMonths = getTransactionsData(state)
+    ?.map((obj) => obj.transactionDate.slice(5, 7))
+    .reduce((acc, month) => (!acc.includes(month) ? [...acc, month] : acc), []);
+  if (!uniqueMonths) {
+    return {};
+  }
+
+  const sortMonth = uniqueMonths
+    .map((string) => Number(string))
+    .sort((a, b) => a - b);
+
+  const stringMonths = sortMonth.map((number) => allMonths[number - 1]);
+
+  const uniqueYears = getTransactionsData(state)
+    ?.map((obj) => obj.transactionDate.slice(0, 4))
+    .reduce((acc, year) => (!acc.includes(year) ? [...acc, year] : acc), []);
+  const sortYears = uniqueYears
+    .map((string) => Number(string))
+    .sort((a, b) => a - b);
+
+  const period = { months: stringMonths, years: sortYears };
+  return period;
+};
+
+const getAllTransactionsForStat = (state) => {
+  const objectSummary = getSummary(state) || {};
+  const { categoriesSummary, expenseSummary, incomeSummary } = objectSummary;
+  const newExpenseSummary = String(expenseSummary * -1);
+  const arrayCategoriesSummary = categoriesSummary
+    ?.filter((category) => category.type === "EXPENSE")
+    .map((category) => {
+      const color = allCategoriesWithColors?.find(
+        (object) => object.name === category.name
+      ).backgroundColor;
+      const number = category.total * -1;
+      const object = {
+        ...category,
+        total: String(number),
+        backgroundColor: color,
+      };
+      return object;
+    });
+  return { arrayCategoriesSummary, newExpenseSummary, incomeSummary };
+};
+
+const getDataAllSummaryForChart = (state) => {
+  const dataAllSummaryForChart = {
+    labels: [],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [],
+        backgroundColor: [],
+        hoverOffset: 0,
+        borderColor: [],
+        borderWidth: 0,
+      },
+    ],
+  };
+  const objectSummary = getSummary(state) || {};
+
+  const { categoriesSummary } = objectSummary;
+  categoriesSummary
+    ?.filter((category) => category.type === "EXPENSE")
+    .map((category) => {
+      const color = allCategoriesWithColors?.find(
+        (object) => object.name === category.name
+      ).backgroundColor;
+      const number = category.total * -1;
+      dataAllSummaryForChart.labels.push(category.name);
+      dataAllSummaryForChart.datasets[0].backgroundColor.push(color);
+      dataAllSummaryForChart.datasets[0].data.push(number);
+    });
+  return dataAllSummaryForChart;
+};
+const getBalanceForChart = (state) => {
+  const objectSummary = getSummary(state) || {};
+
+  const balanceForChart = objectSummary?.periodTotal || "Data missing";
+  return balanceForChart;
+};
+
 const financeSelectors = {
+  getPeriodForStatistic,
+  getAllTransactionsForStat,
+  getDataAllSummaryForChart,
+  getBalanceForChart,
+  getTotalBalance,
   getBalance,
   getTransactionsData,
   getCategories,
