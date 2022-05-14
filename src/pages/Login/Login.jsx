@@ -1,7 +1,6 @@
 import s from "../Registration/registration.module.scss";
 import imgLogin from "../../assets/images/imgLogin.png";
 import sContainer from "../../components/AuthForm/ContainerForm.module.scss";
-import { ToastContainer } from "react-toastify";
 import AuthForm from "../../components/AuthForm/AuthForm";
 const Login = () => {
   return (
@@ -16,17 +15,6 @@ const Login = () => {
             <AuthForm type="login" />
           </div>
         </div>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </div>
     </div>
   );

@@ -2,42 +2,43 @@ import React, { useEffect, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Media from "react-media";
-import Navigation from "components/Navigation";
-// import Balance from "components/Balance";
-import Currency from "components/Currency";
-// import HomeTab from "components/HomeTab";
-// import DiagramTab from "components/DiagramTab";
 import s from "./DashBoard.module.scss";
-import Header from "components/Header";
-import Container from "components/Container/Container";
-import Loader from "components/Loader"
 import {
   allTransactions,
-  // totalBalance,
   getCategories,
 } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
-// import { toggleIsLoading } from "redux/global/global-slice";
-import globalSelectors from 'redux/global/global-selectors';
-const HomeTab = lazy(() => import("components/HomeTab" /*webpackChankName: "HomeTab" */));
-const DiagramTab = lazy(() => import("components/DiagramTab" /*webpackChankName: "DiagramTab" */));
-const Balance = lazy(() => import("components/Balance" /*webpackChankName: "Balance" */));
+import globalSelectors from "redux/global/global-selectors";
+import Navigation from "components/Navigation";
+import Currency from "components/Currency";
+import Header from "components/Header";
+import Container from "components/Container/Container";
+import Loader from "components/Loader";
+
+const HomeTab = lazy(() =>
+  import("components/HomeTab" /*webpackChankName: "HomeTab" */)
+);
+const DiagramTab = lazy(() =>
+  import("components/DiagramTab" /*webpackChankName: "DiagramTab" */)
+);
+const Balance = lazy(() =>
+  import("components/Balance" /*webpackChankName: "Balance" */)
+);
 
 const Dashboard = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const isLoading = useSelector(globalSelectors.getIsLoading);
 
   useEffect(() => {
-    // dispatch(toggleIsLoading());
     dispatch(refresh());
     dispatch(allTransactions());
-    // dispatch(totalBalance());
     dispatch(getCategories());
-    // dispatch(toggleIsLoading());
   }, [dispatch]);
 
-  return (
-      isLoading ? <Loader/> : <>
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <>
       <Header />
       <main className={s.main}>
         <Media
@@ -52,20 +53,20 @@ const Dashboard = () => {
                 {matches.small && (
                   <>
                     <Navigation />
-                    <Suspense fallback={<Loader/>}>
-                    <Routes>
-                      <Route
-                        path="*"
-                        element={
-                          <>
-                            <Balance />
+                    <Suspense fallback={<Loader />}>
+                      <Routes>
+                        <Route
+                          path="*"
+                          element={
+                            <>
+                              <Balance />
                               <HomeTab />
-                          </>
-                        }
-                      />
-                      <Route path="/currency" element={<Currency />} />
-                      <Route path="/diagram" element={<DiagramTab />} />
-                    </Routes>
+                            </>
+                          }
+                        />
+                        <Route path="/currency" element={<Currency />} />
+                        <Route path="/diagram" element={<DiagramTab />} />
+                      </Routes>
                     </Suspense>
                   </>
                 )}
@@ -79,11 +80,11 @@ const Dashboard = () => {
                       <Currency />
                     </div>
                     <div className={s.Dashboard__rigth}>
-                      <Suspense fallback={<Loader/>}>
-                      <Routes>
-                        <Route path="*" element={<HomeTab />} />
-                        <Route path="/diagram" element={<DiagramTab />} />
-                      </Routes>
+                      <Suspense fallback={<Loader />}>
+                        <Routes>
+                          <Route path="*" element={<HomeTab />} />
+                          <Route path="/diagram" element={<DiagramTab />} />
+                        </Routes>
                       </Suspense>
                     </div>
                   </>
