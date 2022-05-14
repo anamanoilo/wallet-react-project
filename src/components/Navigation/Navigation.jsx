@@ -6,13 +6,8 @@ import { AiFillHome } from "react-icons/ai";
 import { FaDollarSign } from "react-icons/fa";
 import { MdShowChart } from "react-icons/md";
 
-const linkStyle = { fontWeight: "normal" };
-const linkActiveStyle = {
-  fontWeight: "bold",
-};
-
 const toggle = ({ isActive }) => {
-  return isActive ? linkActiveStyle : linkStyle;
+  return isActive ? s.active__link : s.nav__link;
 };
 
 const Navigation = () => {
@@ -25,21 +20,21 @@ const Navigation = () => {
           <Fragment>
             {matches.small && (
               <nav className={s.nav}>
-                <NavLink to="/home" className={s.nav__link}>
+                <NavLink to="/home" className={toggle}>
                   <div className={s.icon__wrapper}>
                     <AiFillHome
                       style={{ width: "27", height: "23", color: "white" }}
                     />
                   </div>
                 </NavLink>
-                <NavLink to="/diagram" className={s.nav__link}>
+                <NavLink to="/diagram" className={toggle}>
                   <div className={s.icon__wrapper}>
                     <MdShowChart
                       style={{ width: "28", height: "18", color: "white" }}
                     />
                   </div>
                 </NavLink>
-                <NavLink to="/currency" className={s.nav__link}>
+                <NavLink to="/currency" className={toggle}>
                   <div className={s.icon__wrapper}>
                     <FaDollarSign
                       style={{ width: "13", height: "22", color: "white" }}
@@ -50,7 +45,7 @@ const Navigation = () => {
             )}
             {matches.medium && (
               <nav className={s.nav}>
-                <NavLink to="/home" className={s.nav__link} style={toggle}>
+                <NavLink to="/home" className={toggle}>
                   <div className={s.icon__wrapper}>
                     <AiFillHome
                       style={{ width: "18", height: "18", color: "white" }}
@@ -58,7 +53,7 @@ const Navigation = () => {
                   </div>
                   <p className={s.text}>Main page</p>
                 </NavLink>
-                <NavLink to="/diagram" className={s.nav__link} style={toggle}>
+                <NavLink to="/diagram" className={toggle}>
                   <div className={s.icon__wrapper}>
                     <MdShowChart
                       style={{ width: "28", height: "18", color: "white" }}

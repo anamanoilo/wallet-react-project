@@ -15,14 +15,14 @@
   }
 
   @include mq(tablet) {
-    padding-left: 32px;
-    padding-right: 32px;
-    width: 704px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 688px;
   }
 
   @include mq(desktop) {
-    padding-left: 16px;
-    padding-right: 16px;
-    width: 1248px;
+    padding-left: 85px;
+    padding-right: 85px;
+    width: 1110px;
   }
 }

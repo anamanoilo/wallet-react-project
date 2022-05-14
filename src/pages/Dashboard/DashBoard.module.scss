@@ -1,12 +1,18 @@
 @import "stylesheet/_mixin.scss";
 
 .main {
-    height: calc(100vh - 85px) ;
+    
     // flex-grow: 1;
     background-color: var(--auth-bg-cl);
     background-image: none;
     background-attachment: fixed;
+    @include mq(s-mobile) {
+        // position: absolute;
+        // z-index: -1;
+        height: calc(100vh - 73px);
+    }
     @include mq(tablet) {
+        height: calc(100vh - 85px);
         align-items: center;
         padding-top: 20px;
         background-image: url(../../bc-image/Group1-tablet.webp);
@@ -35,7 +41,7 @@
 }
 
 .Dashboard {
-    height: 100%;
+    // height: 100%;
     padding-top: 13px;
     display: flex;
     flex-direction: column;
@@ -86,13 +92,18 @@
       1px 0px 0px rgba(255, 255, 255, 0.6);
     margin-bottom: 0;
     padding-top: 45px;
-    height: 1000px;
+    
 }
 }
 
 .Dashboard__rigth {
+    height: 100%;
     @include mq(tablet) {
-        height: 1000px;
+        
+    }
+    @include mq(desktop) {
+        padding-top: 46px;
+        padding-left: 30px;
     }
 }
 

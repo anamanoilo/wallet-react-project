@@ -51,7 +51,7 @@ const sessionSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
       if (state.error === "Rejected") {
-        toast.error("such user does not exist, please signup");
+        toast.error("Invalid credentials");
       } else {
         toast.error("Oops, something went wrong, please try again");
       }
@@ -61,7 +61,7 @@ const sessionSlice = createSlice({
     },
     [logOut.fulfilled](state) {
       state.loading = false;
-      state.user = { username: "", email: "", password: "" };
+      state.user = { username: "", email: "", id: "", balance: "" };
       state.token = null;
       state.isAuth = false;
     },
