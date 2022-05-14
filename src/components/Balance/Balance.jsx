@@ -4,6 +4,7 @@ import financeSelectors from "redux/finance/finance-selectors";
 
 const Balance = () => {
   const totalBalance = useSelector(financeSelectors.getTotalBalance);
+
   function total(totalBalance) {
     if (Number.isInteger(totalBalance)) {
       totalBalance.toString();
