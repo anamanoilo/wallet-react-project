@@ -2,7 +2,7 @@ import s from "./HomeTab.module.scss";
 // import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Media from "react-media";
-import financeSelectors from "redux/finance/finance-selectors";
+import financeSelectors from "redux/finance/finance-selectors"; 
 
 const HomeTab = () => {
   const data = useSelector(financeSelectors.getFilteredData);
