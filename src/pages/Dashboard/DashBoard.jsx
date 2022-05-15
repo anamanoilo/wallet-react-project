@@ -14,9 +14,8 @@ import Currency from "components/Currency";
 import Header from "components/Header";
 import Container from "components/Container/Container";
 import Loader from "components/Loader";
+import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
 import ButtonAddTransactions from "components/ButtonAddTransactions";
-import ModalAddTransaction from "components/ModalAddTransaction";
-
 const HomeTab = lazy(() =>
   import("components/HomeTab" /*webpackChankName: "HomeTab" */)
 );
@@ -26,6 +25,7 @@ const DiagramTab = lazy(() =>
 const Balance = lazy(() =>
   import("components/Balance" /*webpackChankName: "Balance" */)
 );
+
 
 
 

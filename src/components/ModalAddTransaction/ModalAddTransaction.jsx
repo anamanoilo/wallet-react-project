@@ -99,7 +99,7 @@ const ModalAddTransaction = () => {
             {chooseType ? (
                 <div className={s.category}>
                   <ModalSelect label='categoryId' name="categoryId">
-                    <option className={s.categoryOption} value=''>
+                    <option disabled className={s.categoryOption} value=''>
                       Choose category
                     </option>
                     
@@ -112,7 +112,7 @@ const ModalAddTransaction = () => {
               ) : (
                           <div className={s.category}>
                   <ModalSelect label='categoryId' name="categoryId">
-                    <option className={s.categoryChoose} value=''>
+                    <option disabled className={s.categoryChoose} value=''>
                       Choose category
                   </option>
                   {expenseCategories?.map(category => (
@@ -145,7 +145,7 @@ const ModalAddTransaction = () => {
               timeFormat={false}
               open={openDate}
                     dateFormat="DD.MM.yyyy"
-                    isValidDate={ valid }
+                    isValidDate={valid}
             />
               <button className={s.dateBtn} type='button' onClick={showDate}>
                 <IconContext.Provider value={{ className: "global-class-name",color: "#4A56E2", size: "20px" }}>
