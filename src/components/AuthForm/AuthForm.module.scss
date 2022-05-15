@@ -2,6 +2,7 @@
 
 .form {
 width: 400px;
+// min-height: 468px;
 display: block;
   padding-right: 65px;
   padding-left: 65px;
@@ -10,6 +11,10 @@ display: block;
   background-color: white;
   border-radius: 20px;
   text-align: center;
+  transition: 1.5s;
+  animation: mainAnimation 1s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
 
   @media screen and (max-width: 767px) {
     width: 280px;

@@ -14,7 +14,9 @@ const Registration = () => {
             <h1 className={s.title}>Finance App</h1>
           </div>
           <div className={s.right}>
-            <AuthForm type="signUp" />
+            <div className={s.right__formbox}>
+              <AuthForm type="signUp" />
+            </div>
           </div>
         </div>
       </div>

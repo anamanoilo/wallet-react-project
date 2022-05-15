@@ -1,19 +1,27 @@
 @import "../../stylesheet/shared.scss";
+@import "stylesheet/_mixin.scss";
 
 .registerBg {
     background-color: rgba(255, 255, 255, 0.4);
     background-size: cover;
 
-    @media screen and (min-width: 768px) and (max-width: 1279px) {
+    @include mq(tablet) {
         background-image: url('../../assets/images/imgFrameRegister.png');
-        background-size: cover;
-        height: 1024px;
+    }
+    @include mq(desktop) {
+        // url('../../assets/images/imgFrameRegisterbig.png');
     }
 
-    @media screen and (min-width: 1280px) {
-        background-image: url('../../assets/images/imgFrameRegisterbig.png');
-        background-color: black;
-    }
+    // @media screen and (min-width: 768px) and (max-width: 1279px) {
+    //     background-image: url('../../assets/images/imgFrameRegister.png');
+    //     background-size: cover;
+    //     height: 100%;
+    // }
+
+    // @media screen and (min-width: 1280px) {
+    //     background-image: url('../../assets/images/imgFrameRegisterbig.png');
+    //     background-color: black;
+    // }
 
     .containerForm {
             width: 280px;
@@ -100,16 +108,27 @@
     }
 
     .right {
+        
         padding-top: 136px;
         padding-left: 95px;
-        transition: 1.5s;
-        animation: mainAnimation 1s 1;
-        animation-fill-mode: forwards;
-        animation-delay: 0s;
-    
+        // &__formbox {
+        //     transition: 1.5s;
+        //     animation: mainAnimation 1s 1;
+        //     animation-fill-mode: forwards;
+        //     animation-delay: 0s;
+        // }
+                // transition: 1.5s;
+                // animation: mainAnimation 1s 1;
+                // animation-fill-mode: forwards;
+                // animation-delay: 0s;
+    @include mq(desktop) {
+        flex-grow: 1;
+        backdrop-filter: blur(50px);
+        background-color: rgb(255, 255, 255, 0.4);
+    }
 
         @media screen and (max-width: 1279px) {
-            margin-top: 20px;
+            margin-top: 50px;
             padding-left: 0;
             padding-top: 0px;
         }
