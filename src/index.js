@@ -6,6 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "stylesheet/shared.scss";
+import "modern-normalize";
 
 const container = document.getElementById("root");
 const root = createRoot(container);

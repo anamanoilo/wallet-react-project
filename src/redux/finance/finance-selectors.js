@@ -1,4 +1,4 @@
-import { allMonths, allCategoriesWithColors } from "assets/const";
+import { allMonths } from "assets/const";
 
 import normalizeAmount from "services/normalizeAmount";
 
@@ -75,6 +75,7 @@ const getPeriodForStatistic = (state) => {
 };
 
 const getAllTransactionsForStat = (state) => {
+  const categoryNew = getCategories(state);
   const objectSummary = getSummary(state) || {};
   const { categoriesSummary, expenseSummary, incomeSummary } = objectSummary;
   const newExpenseSummary = String(normalizeAmount(expenseSummary * -1));
@@ -82,7 +83,7 @@ const getAllTransactionsForStat = (state) => {
   const arrayCategoriesSummary = categoriesSummary
     ?.filter((category) => category.type === "EXPENSE")
     .map((category) => {
-      const color = allCategoriesWithColors?.find(
+      const color = categoryNew?.find(
         (object) => object.name === category.name
       ).backgroundColor;
       const number = normalizeAmount(category.total * -1);
@@ -114,14 +115,14 @@ const getDataAllSummaryForChart = (state) => {
       },
     ],
   };
-
+  const categoryNew = getCategories(state);
   const objectSummary = getSummary(state) || {};
 
   const { categoriesSummary } = objectSummary;
   categoriesSummary
     ?.filter((category) => category.type === "EXPENSE")
     .forEach((category) => {
-      const color = allCategoriesWithColors?.find(
+      const color = categoryNew?.find(
         (object) => object.name === category.name
       ).backgroundColor;
       const number = category.total * -1;
@@ -132,19 +133,10 @@ const getDataAllSummaryForChart = (state) => {
   return dataAllSummaryForChart;
 };
 
-const getBalanceForChart = (state) => {
-  const objectSummary = getSummary(state) || {};
-
-  const balanceForChart =
-    normalizeAmount(objectSummary?.periodTotal) || "Data missing";
-  return balanceForChart;
-};
-
 const financeSelectors = {
   getPeriodForStatistic,
   getAllTransactionsForStat,
   getDataAllSummaryForChart,
-  getBalanceForChart,
   getTotalBalance,
   getBalance,
   getTransactionsData,

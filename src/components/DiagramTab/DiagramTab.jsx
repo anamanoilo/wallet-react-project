@@ -21,6 +21,7 @@ const DiagramTab = () => {
       return;
     }
     const index = allMonths.findIndex((month) => month === monthForState) + 1;
+    console.log(index);
     // if (index === 0 && yearForState === "All years") {
     //   setPeriod("");
     //   return;
@@ -40,10 +41,13 @@ const DiagramTab = () => {
   const dataAllSummaryForTabl = useSelector(
     financeSelectors.getAllTransactionsForStat
   );
+
+  const expenseSummaryChart = dataAllSummaryForTabl.newExpenseSummary;
+
   const dataAllSummaryForChart = useSelector(
     financeSelectors.getDataAllSummaryForChart
   );
-  const balanceForChart = useSelector(financeSelectors.getBalanceForChart);
+
   const show = dataAllSummaryForChart?.datasets[0]?.data?.length ?? true;
 
   return (
@@ -57,7 +61,7 @@ const DiagramTab = () => {
             <>
               <Chart
                 data={dataAllSummaryForChart}
-                balanceForChart={balanceForChart}
+                expenseSummaryChart={expenseSummaryChart}
                 show={show}
               />
               <Table
@@ -66,6 +70,7 @@ const DiagramTab = () => {
                 setMonthForState={setMonthForState}
                 yearForState={yearForState}
                 setYearForState={setYearForState}
+                show={show}
               />
             </>
           )}
