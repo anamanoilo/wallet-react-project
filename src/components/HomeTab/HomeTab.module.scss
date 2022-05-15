@@ -86,15 +86,42 @@ color: inherit;
 }
 
 .tableHeader {
+    text-align: left;
     font-weight: 700;
     font-size: 18px; 
     line-height: 1.47;
-    
+    padding-left: 10px;
+    padding-right: 10px;
+    &:nth-child(1) {
+        padding-left: 20px;
+        width: 104px;
+    }
+    &:last-child {
+        padding-right: 25px;
+        text-align: right;
+        width: 120px;
+    }
     @include mq(tablet) {
         width: 114px;
+        &:nth-child(2) {
+                width: 60px;
+            }
+        &:nth-child(3) {
+            width: 134px;
+        }
+        &:nth-child(4) {
+            width: 148px;
+        }
+        &:nth-child(5) {
+            width: 118px;
+            text-align: right;
+        }
     }
     @include mq(desktop) {
         width: 116px;
+        &:nth-child(1) {
+            width: 106px;
+        }
         &:nth-child(2) {
             width: 60px;
         }
@@ -104,42 +131,38 @@ color: inherit;
         &:nth-child(4) {
             width: 146px;
         }
-        
     }
 }
 
-// <div class="scrollbar" id="style-4">
-// <div class="force-overflow"></div>
-// </div>
-
 .tableScrollBox::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(156, 147, 147, 0.1);
+    -webkit-box-shadow: inset 0 0 6px var(--bottom-table-row);
     background-color: transparent;
+    border-radius: 2px;
 }
 
 .tableScrollBox::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
     background-color: transparent;
 }
 
 .tableScrollBox::-webkit-scrollbar-thumb {
     background-color: transparent;
-    border: 5px solid var(--bottom-table-row);
-    border-radius: 2px;
+    border: 2px solid var(--bottom-table-row);
+    border-radius: 5px;
 }
 
 .tableScrollBox::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--bottom-table-row);
 }
 
 .tableScrollBox {
     overflow-y: scroll;
     @include mq(tablet) {
-        height: 30vh;
+        height: 45vh;
     }
     
     @include mq(desktop) {
-        height: 55vh;
+        height: 65vh;
     }
 }
 
@@ -154,20 +177,20 @@ color: inherit;
 }
 
 .tableData {
-    text-align: center;
+    text-align: left;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.47;
-    box-sizing: content-box;
     padding-right: 10px;
     padding-left: 10px;
-    &:nth-child(3),
-    &:nth-child(4) {
-        text-align: left;
+    &:nth-child(1) {
+        padding-left: 20px;
+        width: 104px;
     }
     &:last-child {
         padding-right: 20px;
         text-align: right;
+        width: 120px;
     }
     &_INCOME {
         composes: tableData;
@@ -182,6 +205,24 @@ color: inherit;
     }
     @include mq(tablet) {
         width: 114px;
+        &:nth-child(1) {
+            width: 106px;
+        }
+        &:nth-child(2) {
+            width: 60px;
+            text-align: center;
+        }
+        &:nth-child(3) {
+            width: 134px;
+        }
+        &:nth-child(4) {
+            width: 148px;
+        }
+        &:nth-child(5) {
+            width: 118px;
+            text-align: right;
+            font-weight: 700;
+        }
     }
     
     @include mq(desktop) {
@@ -196,6 +237,5 @@ color: inherit;
             width: 146px;
         }
     }
-
 }
 
