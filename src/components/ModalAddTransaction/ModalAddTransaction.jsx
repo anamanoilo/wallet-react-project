@@ -131,7 +131,7 @@ const ModalAddTransaction = () => {
               {chooseType ? (
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
-                    <option className={s.categoryOption} value="">
+                    <option disabled className={s.categoryOption} value="">
                       Choose category
                     </option>
 
@@ -147,7 +147,7 @@ const ModalAddTransaction = () => {
               ) : (
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
-                    <option className={s.categoryChoose} value="">
+                    <option disabled className={s.categoryChoose} value="">
                       Choose category
                     </option>
                     {expenseCategories?.map((category) => (
