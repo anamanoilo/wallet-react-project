@@ -8,6 +8,8 @@ import { getSummary } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
 import { allMonths } from "assets/const";
 import InlineLoader from "components/InlineLoader";
+import { IconContext } from "react-icons";
+import { FcStatistics } from "react-icons/fc";
 
 const DiagramTab = () => {
   const [monthForState, setMonthForState] = useState("Month");
@@ -21,11 +23,6 @@ const DiagramTab = () => {
       return;
     }
     const index = allMonths.findIndex((month) => month === monthForState) + 1;
-    console.log(index);
-    // if (index === 0 && yearForState === "All years") {
-    //   setPeriod("");
-    //   return;
-    // }
     if (new Date() < new Date(`${monthForState} ${yearForState}`)) {
       return;
     }
@@ -85,6 +82,17 @@ const DiagramTab = () => {
               ) : (
                 <div className={s.noTransactions}>
                   <h2>Your statistics will be shown here</h2>
+                  <IconContext.Provider
+                    value={{
+                      className: `${s.react__icon}`,
+                      style: {
+                        width: "140px",
+                        height: "130px",
+                      },
+                    }}
+                  >
+                    <FcStatistics />
+                  </IconContext.Provider>
                 </div>
               )}
             </>

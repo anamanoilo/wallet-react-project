@@ -40,4 +40,42 @@
 
 .noTransactions {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+.noTransactions h2 {
+  text-align: center;
+}
+// Підставка
+svg.react__icon g:nth-child(1) {
+  fill: var(--main-text-cl);
+}
+// Стріла
+svg.react__icon g:last-child {
+  fill: var(--accent-active-cl);
+  transition: all 250ms linear;
+}
+svg.react__icon:hover g:last-child {
+  fill: var(--accent-inactive-cl);
+}
+svg.react__icon:focus g:last-child {
+  fill: var(--accent-inactive-cl);
+}
+svg.react__icon {
+  animation: animate125 3000ms 1 500ms;
+  margin-top: 20px;
+}
+@keyframes animate125 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
