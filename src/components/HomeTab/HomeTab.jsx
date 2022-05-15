@@ -2,14 +2,14 @@ import s from "./HomeTab.module.scss";
 // import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Media from "react-media";
-import financeSelectors from "redux/finance/finance-selectors";
+import financeSelectors from "redux/finance/finance-selectors"; 
 
 const HomeTab = () => {
   const data = useSelector(financeSelectors.getFilteredData);
   // console.log("~ data", data);
 
   return (
-    data && (
+    !!data?.length ? (
       <Media
         queries={{
           small: "(max-width: 767px)",
@@ -194,7 +194,7 @@ const HomeTab = () => {
           </>
         )}
       </Media>
-    )
+    ) : <div className={s.noTransactions}><h2>Your transactions will be shown here</h2></div>
   );
 };
 export default HomeTab;

@@ -17,7 +17,6 @@ const getFilteredData = (state) => {
       transactionDate: new Date(data.transactionDate),
     }))
     .sort((a, b) => b.transactionDate - a.transactionDate);
-
   const categories = getCategories(state)?.reduce((acc, cur) => {
     return { ...acc, [cur.id]: cur.name };
   }, {});
@@ -27,7 +26,7 @@ const getFilteredData = (state) => {
 
 function normalizeData(data, categories) {
   return data?.map((data) => {
-    const day = data.transactionDate.getDay().toString().padStart(2, "0");
+    const day = data.transactionDate.getDate().toString().padStart(2, "0");
     const month = (data.transactionDate.getMonth() + 1)
       .toString()
       .padStart(2, "0");
