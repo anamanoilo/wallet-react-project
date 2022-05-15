@@ -61,9 +61,33 @@
   background-color: var(--main-bg-cl);
 }
 .table__list {
-  overflow: scroll;
-  height: 300px;
+  @include mq(tablet) {
+    overflow-y: scroll;
+    height: 40vh;
+    }
 }
+
+.table__list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px var(--bottom-table-row);
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.table__list::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+.table__list::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: 2px solid var(--bottom-table-row);
+  border-radius: 5px;
+}
+
+.table__list::-webkit-scrollbar-thumb:hover {
+  background: var(--bottom-table-row);
+}
+
 .table__item {
   display: flex;
   justify-content: space-between;
