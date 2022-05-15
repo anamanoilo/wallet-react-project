@@ -26,9 +26,6 @@ const Balance = lazy(() =>
   import("components/Balance" /*webpackChankName: "Balance" */)
 );
 
-
-
-
 const Dashboard = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(globalSelectors.getIsLoading);
@@ -39,8 +36,6 @@ const Dashboard = () => {
     dispatch(allTransactions());
     dispatch(getCategories());
   }, [dispatch]);
-
-
 
   return isLoading ? (
     <Loader />
@@ -68,6 +63,7 @@ const Dashboard = () => {
                             <>
                               <Balance />
                               <HomeTab />
+                              <ButtonAddTransactions />
                             </>
                           }
                         />
@@ -89,7 +85,15 @@ const Dashboard = () => {
                     <div className={s.Dashboard__rigth}>
                       <Suspense fallback={<Loader />}>
                         <Routes>
-                          <Route path="*" element={<HomeTab />} />
+                          <Route
+                            path="*"
+                            element={
+                              <>
+                                <HomeTab />
+                                <ButtonAddTransactions />
+                              </>
+                            }
+                          />
                           <Route path="/diagram" element={<DiagramTab />} />
                         </Routes>
                       </Suspense>
@@ -100,8 +104,8 @@ const Dashboard = () => {
             </Container>
           )}
         </Media>
-                <ButtonAddTransactions />
-   {showModal && <ModalAddTransaction />}
+
+        {showModal && <ModalAddTransaction />}
       </main>
     </>
   );

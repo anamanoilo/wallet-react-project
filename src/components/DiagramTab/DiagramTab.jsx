@@ -7,11 +7,14 @@ import financeSelectors from "redux/finance/finance-selectors";
 import { getSummary } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
 import { allMonths } from "assets/const";
+import InlineLoader from "components/InlineLoader";
 
 const DiagramTab = () => {
   const [monthForState, setMonthForState] = useState("Month");
   const [yearForState, setYearForState] = useState("Year");
   const [period, setPeriod] = useState("");
+
+  const isLoading = useSelector(financeSelectors.getLoading);
 
   useEffect(() => {
     if (monthForState === "Month" || yearForState === "Year") {
@@ -48,18 +51,24 @@ const DiagramTab = () => {
       <section className={s.section}>
         <h2 className={s.title}>Statistics</h2>
         <div className={s.wrapper}>
-          <Chart
-            data={dataAllSummaryForChart}
-            balanceForChart={balanceForChart}
-            show={show}
-          />
-          <Table
-            data={dataAllSummaryForTabl}
-            monthForState={monthForState}
-            setMonthForState={setMonthForState}
-            yearForState={yearForState}
-            setYearForState={setYearForState}
-          />
+          {isLoading ? (
+            <InlineLoader />
+          ) : (
+            <>
+              <Chart
+                data={dataAllSummaryForChart}
+                balanceForChart={balanceForChart}
+                show={show}
+              />
+              <Table
+                data={dataAllSummaryForTabl}
+                monthForState={monthForState}
+                setMonthForState={setMonthForState}
+                yearForState={yearForState}
+                setYearForState={setYearForState}
+              />
+            </>
+          )}
         </div>
       </section>
     </>
