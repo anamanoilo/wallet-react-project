@@ -93,7 +93,7 @@ const financeSlice = createSlice({
       state.error = payload;
       console.log("addTransaction", payload);
       if (payload === "Request failed with status code 409") {
-        toast.error("Fatal error");
+        toast.error("Error, try another one");
       } else {
         toast.error("Try later");
       }
