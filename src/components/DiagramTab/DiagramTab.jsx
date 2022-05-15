@@ -8,6 +8,8 @@ import { getSummary } from "redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
 import { allMonths } from "assets/const";
 import InlineLoader from "components/InlineLoader";
+import { IconContext } from "react-icons";
+import { FcStatistics } from "react-icons/fc";
 
 const DiagramTab = () => {
   const [monthForState, setMonthForState] = useState("Month");
@@ -21,10 +23,6 @@ const DiagramTab = () => {
       return;
     }
     const index = allMonths.findIndex((month) => month === monthForState) + 1;
-    // if (index === 0 && yearForState === "All years") {
-    //   setPeriod("");
-    //   return;
-    // }
     if (new Date() < new Date(`${monthForState} ${yearForState}`)) {
       return;
     }
@@ -32,19 +30,29 @@ const DiagramTab = () => {
   }, [monthForState, yearForState]);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(refresh());
     dispatch(getSummary(period));
   }, [dispatch, period]);
+
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
 
   const dataAllSummaryForTabl = useSelector(
     financeSelectors.getAllTransactionsForStat
   );
+
+  const expenseSummaryChart = dataAllSummaryForTabl.newExpenseSummary;
+
   const dataAllSummaryForChart = useSelector(
     financeSelectors.getDataAllSummaryForChart
   );
-  const balanceForChart = useSelector(financeSelectors.getBalanceForChart);
-  const show = dataAllSummaryForChart?.datasets[0]?.data?.length ?? true;
+
+  const showChart = dataAllSummaryForChart?.datasets[0]?.data?.length ?? true;
+
+  const data = useSelector(financeSelectors.getFilteredData);
+  const showStat = !!data?.length ? true : false;
 
   return (
     <>
@@ -55,18 +63,38 @@ const DiagramTab = () => {
             <InlineLoader />
           ) : (
             <>
-              <Chart
-                data={dataAllSummaryForChart}
-                balanceForChart={balanceForChart}
-                show={show}
-              />
-              <Table
-                data={dataAllSummaryForTabl}
-                monthForState={monthForState}
-                setMonthForState={setMonthForState}
-                yearForState={yearForState}
-                setYearForState={setYearForState}
-              />
+              {showStat ? (
+                <>
+                  <Chart
+                    data={dataAllSummaryForChart}
+                    expenseSummaryChart={expenseSummaryChart}
+                    show={showChart}
+                  />
+                  <Table
+                    data={dataAllSummaryForTabl}
+                    monthForState={monthForState}
+                    setMonthForState={setMonthForState}
+                    yearForState={yearForState}
+                    setYearForState={setYearForState}
+                    show={showChart}
+                  />
+                </>
+              ) : (
+                <div className={s.noTransactions}>
+                  <h2>Your statistics will be shown here</h2>
+                  <IconContext.Provider
+                    value={{
+                      className: `${s.react__icon}`,
+                      style: {
+                        width: "140px",
+                        height: "130px",
+                      },
+                    }}
+                  >
+                    <FcStatistics />
+                  </IconContext.Provider>
+                </div>
+              )}
             </>
           )}
         </div>

@@ -40,7 +40,7 @@ const financeSlice = createSlice({
 
     [getCategories.fulfilled]: (state, { payload }) => {
       state.categories = payload.map((obj, i) => {
-        return obj.type === "EXPANSE"
+        return obj.type === "EXPENSE"
           ? { ...obj, backgroundColor: colors[i] }
           : obj;
       });
