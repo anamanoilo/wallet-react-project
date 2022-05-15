@@ -39,31 +39,32 @@
       // background-size: 35em;
     }
     @include mq(tablet) {
-        overflow: auto;
-        height: calc(100vh - 85px);
-        align-items: center;
-        background-image: url(../../bc-image/Group1-tablet.webp);
-        background-repeat: no-repeat;
-            // background-position: left bottom;
-        background-size: cover;
-    
-        @include retina() {
-            background-image: url(../../bc-image/Group2-tablet.webp);
-        }
-        }
-    
-        @include mq(desktop) {
-            align-items: unset;
-            flex-direction: row;
-            background-image: url(../../bc-image/Group1-desktop.webp);
-            background-repeat: no-repeat;
-            // background-position: left bottom;
-    
-            @include retina() {
-                background-image: url(../../bc-image/Group2-desktop.webp);
-                // background-size: 35em;
-            }
-        }
+      overflow: auto;
+      height: calc(100vh - 85px);
+      align-items: center;
+      background-image: url(../../bc-image/Group1-tablet.webp);
+      background-repeat: no-repeat;
+      // background-position: left bottom;
+      background-size: cover;
+
+      @include retina() {
+        background-image: url(../../bc-image/Group2-tablet.webp);
+      }
+    }
+
+    @include mq(desktop) {
+      align-items: unset;
+      flex-direction: row;
+      background-image: url(../../bc-image/Group1-desktop.webp);
+      background-repeat: no-repeat;
+      // background-position: left bottom;
+
+      @include retina() {
+        background-image: url(../../bc-image/Group2-desktop.webp);
+        // background-size: 35em;
+      }
+    }
+  }
 }
 
 .Dashboard {
