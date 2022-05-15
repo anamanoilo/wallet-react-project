@@ -15,7 +15,7 @@
         height: calc(100vh - 85px);
     }
     @include mq(tablet) {
-        overflow: auto;
+        overflow:auto;
         height: calc(100vh - 85px);
         align-items: center;
         background-image: url(../../bc-image/Group1-tablet.webp);
