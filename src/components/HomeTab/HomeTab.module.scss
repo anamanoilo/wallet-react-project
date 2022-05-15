@@ -1,11 +1,11 @@
-@import "stylesheet/_mixin.scss";
+@import "../../stylesheet/_mixin.scss";
 // мобильная версия
 .noTransactions {
     width: 100%;
 }
 
 .mobailTrList {
-
+color: inherit;
 }
 
 .mobailTrItem {

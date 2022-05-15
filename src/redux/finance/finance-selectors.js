@@ -119,7 +119,7 @@ const getDataAllSummaryForChart = (state) => {
   const { categoriesSummary } = objectSummary;
   categoriesSummary
     ?.filter((category) => category.type === "EXPENSE")
-    .map((category) => {
+    .forEach((category) => {
       const color = allCategoriesWithColors?.find(
         (object) => object.name === category.name
       ).backgroundColor;

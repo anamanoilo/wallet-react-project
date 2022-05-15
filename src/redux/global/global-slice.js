@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   allTransactions,
-  totalBalance,
-  getSummary,
-  getCategories,
-  addTransaction,
+  // totalBalance,
+  // getSummary,
+  // getCategories,
+  // addTransaction,
 } from "redux/finance/finance-operation";
 import { logOut } from "redux/session/auth-operation";
 
