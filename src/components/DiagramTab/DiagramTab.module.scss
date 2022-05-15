@@ -1,4 +1,4 @@
-@import "src/stylesheet/_mixin.scss";
+@import "../../stylesheet/_mixin.scss";
 .section {
   @include mq(s-mobile) {
     width: 100%;
@@ -13,7 +13,6 @@
   }
   @include mq(desktop) {
     width: 715px;
-    margin-left: 69px;
     flex-wrap: wrap;
   }
 }

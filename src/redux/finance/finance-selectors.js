@@ -7,6 +7,7 @@ const getTransactionsData = (state) => state.finance.data;
 const getCategories = (state) => state.finance.categories;
 const getSummary = (state) => state.finance.summary;
 const getError = (state) => state.finance.error;
+const getLoading = (state) => state.finance.loading;
 
 const getBalance = (state) => normalizeAmount(getTotalBalance(state));
 
@@ -17,7 +18,6 @@ const getFilteredData = (state) => {
       transactionDate: new Date(data.transactionDate),
     }))
     .sort((a, b) => b.transactionDate - a.transactionDate);
-
   const categories = getCategories(state)?.reduce((acc, cur) => {
     return { ...acc, [cur.id]: cur.name };
   }, {});
@@ -27,7 +27,7 @@ const getFilteredData = (state) => {
 
 function normalizeData(data, categories) {
   return data?.map((data) => {
-    const day = data.transactionDate.getDay().toString().padStart(2, "0");
+    const day = data.transactionDate.getDate().toString().padStart(2, "0");
     const month = (data.transactionDate.getMonth() + 1)
       .toString()
       .padStart(2, "0");
@@ -120,7 +120,7 @@ const getDataAllSummaryForChart = (state) => {
   const { categoriesSummary } = objectSummary;
   categoriesSummary
     ?.filter((category) => category.type === "EXPENSE")
-    .map((category) => {
+    .forEach((category) => {
       const color = allCategoriesWithColors?.find(
         (object) => object.name === category.name
       ).backgroundColor;
@@ -152,6 +152,7 @@ const financeSelectors = {
   getFilteredData,
   getSummary,
   getError,
+  getLoading,
 };
 
 export default financeSelectors;

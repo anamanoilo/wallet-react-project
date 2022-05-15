@@ -1,19 +1,25 @@
-@import "stylesheet/shared.scss";
+@import "../../stylesheet/shared.scss";
 
 .balance {
-    height: 62px;
+    box-sizing:border-box;
+    height: 80px;
     width: 280px;
-    padding: 8px 40px 10px 20px;
-    margin-bottom: 32px;
+    padding: 8px 40px 13px 20px;
+    margin-bottom: 30px;
     background: var(--main-bg-cl);
     border-radius: 30px;
+    @include mq(mobile) {
+        width: 400px;
+        padding-left: 40px;
+    }
     @include mq(tablet) {
-        width: 276px;
-        margin-bottom: 20px;
+        width: 334px;
+        padding-left: 40px;
+        margin-bottom: 0px;
     }
     @include mq(desktop) {
-        width: 335px;
-        margin-bottom: 32px;
+        width: 348px;
+        margin-bottom: 0px;
     }
 }
 

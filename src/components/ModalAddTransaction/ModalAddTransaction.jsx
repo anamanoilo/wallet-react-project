@@ -14,6 +14,7 @@ import ModalSelect from "../ModalSelect/ModalSelect";
 import financeSelectors from "redux/finance/finance-selectors";
 import moment from "moment";
 import { addTransaction } from "../../redux/finance/finance-operation";
+import { refresh } from "redux/session/auth-operation";
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,8 @@ const ModalAddTransaction = () => {
         transactionDate,
       })
     );
+    dispatch(refresh());
+
     isCloseModal();
   };
 
@@ -128,7 +131,7 @@ const ModalAddTransaction = () => {
               {chooseType ? (
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
-                    <option className={s.categoryOption} value="">
+                    <option disabled className={s.categoryOption} value="">
                       Choose category
                     </option>
 
@@ -144,7 +147,7 @@ const ModalAddTransaction = () => {
               ) : (
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
-                    <option className={s.categoryChoose} value="">
+                    <option disabled className={s.categoryChoose} value="">
                       Choose category
                     </option>
                     {expenseCategories?.map((category) => (

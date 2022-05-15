@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   allTransactions,
-  totalBalance,
-  getSummary,
-  getCategories,
   addTransaction,
 } from "redux/finance/finance-operation";
 import { logOut } from "redux/session/auth-operation";
@@ -46,15 +43,15 @@ const globalSlice = createSlice({
     [allTransactions.rejected]: (state) => {
       state.isLoading = false;
     },
-    // [getSummary.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [getSummary.fulfilled]: (state) => {
-    //   state.isLoading = false;
-    // },
-    // [getSummary.rejected]: (state) => {
-    //   state.isLoading = false;
-    // },
+    [addTransaction.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [addTransaction.fulfilled]: (state) => {
+      state.isLoading = false;
+    },
+    [addTransaction.rejected]: (state) => {
+      state.isLoading = false;
+    },
   },
 });
 

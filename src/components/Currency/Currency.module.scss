@@ -1,20 +1,4 @@
-@import "stylesheet/shared.scss";
-// .table {
-//   table-layout: fixed;
-//   width: 100%;
-//   border-collapse: collapse;
-//   border-radius: 30px 30px;
-//   @include mq(desktop) {
-//     width: 393px;
-//     height: 347px;
-//   }
-// }
-
-// .tableHead {
-//   background-color: var(--accent-inactive-cl);
-//   height: 50px;
-//   color: var(--main-bg-cl);
-// }
+@import "../../stylesheet/shared.scss";
 
 .currency {
   position: relative;
@@ -76,11 +60,11 @@
     width: 280px;
   }
   @include mq(tablet) {
-    width: 336px;
-    min-height: 182px;
+    width: 334px;
+    height: 174px;
   }
   @include mq(desktop) {
-    width: 348px;
+    width: 393px;
     min-height: 347px;
   }
 }
@@ -94,7 +78,7 @@
   padding-left: 20px;
   padding-right: 20px;
   @include mq(tablet) {
-    width: 296px;
+    width: 294px;
   }
   @include mq(desktop) {
     width: unset;

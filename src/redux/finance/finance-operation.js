@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const allTransactions = createAsyncThunk(
   "transactions",
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const transactions = await axios.get("/api/transactions");
       return transactions.data;
