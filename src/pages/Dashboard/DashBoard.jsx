@@ -16,6 +16,7 @@ import Container from "components/Container/Container";
 import Loader from "components/Loader";
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
 import ButtonAddTransactions from "components/ButtonAddTransactions";
+import financeSelectors from "redux/finance/finance-selectors";
 const HomeTab = lazy(() =>
   import("components/HomeTab" /*webpackChankName: "HomeTab" */)
 );
@@ -30,12 +31,16 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(globalSelectors.getIsLoading);
   const showModal = useSelector(globalSelectors.getIsModalAddTransaction);
+  const categories = useSelector(financeSelectors.getCategories);
 
   useEffect(() => {
     dispatch(refresh());
     dispatch(allTransactions());
-    dispatch(getCategories());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!categories) dispatch(getCategories());
+  }, [dispatch, categories]);
 
   return isLoading ? (
     <Loader />
