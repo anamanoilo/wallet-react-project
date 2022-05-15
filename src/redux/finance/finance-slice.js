@@ -34,6 +34,9 @@ const financeSlice = createSlice({
       state.loading = false;
       console.log("allTransactions", payload);
       state.error = payload;
+      if (payload) {
+        toast.error("Fatal error");
+      }
     },
     [getSummary.pending]: (state) => {
       state.loading = true;
@@ -47,6 +50,9 @@ const financeSlice = createSlice({
       state.loading = false;
       console.log("getSummary", payload);
       state.error = payload;
+      if (payload) {
+        toast.error("Fatal error");
+      }
     },
 
     [getCategories.pending]: (state) => {
@@ -65,6 +71,9 @@ const financeSlice = createSlice({
       state.loading = false;
       console.log("getCategories", payload);
       state.error = payload;
+      if (payload) {
+        toast.error("Fatal error");
+      }
     },
     [addTransaction.pending]: (state) => {
       state.loading = true;
