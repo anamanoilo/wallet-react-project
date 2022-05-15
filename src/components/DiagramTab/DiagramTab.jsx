@@ -33,10 +33,14 @@ const DiagramTab = () => {
   }, [monthForState, yearForState]);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(refresh());
     dispatch(getSummary(period));
   }, [dispatch, period]);
+
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
 
   const dataAllSummaryForTabl = useSelector(
     financeSelectors.getAllTransactionsForStat
@@ -48,7 +52,10 @@ const DiagramTab = () => {
     financeSelectors.getDataAllSummaryForChart
   );
 
-  const show = dataAllSummaryForChart?.datasets[0]?.data?.length ?? true;
+  const showChart = dataAllSummaryForChart?.datasets[0]?.data?.length ?? true;
+
+  const data = useSelector(financeSelectors.getFilteredData);
+  const showStat = !!data?.length ? true : false;
 
   return (
     <>
@@ -59,19 +66,27 @@ const DiagramTab = () => {
             <InlineLoader />
           ) : (
             <>
-              <Chart
-                data={dataAllSummaryForChart}
-                expenseSummaryChart={expenseSummaryChart}
-                show={show}
-              />
-              <Table
-                data={dataAllSummaryForTabl}
-                monthForState={monthForState}
-                setMonthForState={setMonthForState}
-                yearForState={yearForState}
-                setYearForState={setYearForState}
-                show={show}
-              />
+              {showStat ? (
+                <>
+                  <Chart
+                    data={dataAllSummaryForChart}
+                    expenseSummaryChart={expenseSummaryChart}
+                    show={showChart}
+                  />
+                  <Table
+                    data={dataAllSummaryForTabl}
+                    monthForState={monthForState}
+                    setMonthForState={setMonthForState}
+                    yearForState={yearForState}
+                    setYearForState={setYearForState}
+                    show={showChart}
+                  />
+                </>
+              ) : (
+                <div className={s.noTransactions}>
+                  <h2>Your statistics will be shown here</h2>
+                </div>
+              )}
             </>
           )}
         </div>
