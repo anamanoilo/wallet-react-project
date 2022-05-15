@@ -7,6 +7,7 @@ import {
 } from "./finance-operation";
 import { logOut, refresh } from "redux/session/auth-operation";
 import { colors } from "assets/const";
+import { toast } from "react-toastify";
 
 const initialState = {
   data: null,
@@ -31,6 +32,7 @@ const financeSlice = createSlice({
     },
     [allTransactions.rejected]: (state, { payload }) => {
       state.loading = false;
+      console.log("allTransactions", payload);
       state.error = payload;
     },
     [getSummary.pending]: (state) => {
@@ -43,6 +45,7 @@ const financeSlice = createSlice({
     },
     [getSummary.rejected]: (state, { payload }) => {
       state.loading = false;
+      console.log("getSummary", payload);
       state.error = payload;
     },
 
@@ -60,6 +63,7 @@ const financeSlice = createSlice({
     },
     [getCategories.rejected]: (state, { payload }) => {
       state.loading = false;
+      console.log("getCategories", payload);
       state.error = payload;
     },
     [addTransaction.pending]: (state) => {
@@ -68,11 +72,22 @@ const financeSlice = createSlice({
     },
     [addTransaction.fulfilled]: (state, { payload }) => {
       state.loading = false;
+      if (payload) {
+        toast.success("Add successfull");
+      } else {
+        toast.error("Try later");
+      }
       state.data = [...state.data, payload];
     },
     [addTransaction.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
+      console.log("addTransaction", payload);
+      if (payload === "Request failed with status code 409") {
+        toast.error("Fatal error");
+      } else {
+        toast.error("Try later");
+      }
     },
     [logOut.pending]: (state) => {
       state.loading = true;
@@ -88,6 +103,11 @@ const financeSlice = createSlice({
     },
     [logOut.rejected]: (state, { payload }) => {
       state.loading = false;
+      if (payload) {
+        toast.error("you are not authorized");
+      } else {
+        toast.error("try later");
+      }
       state.error = payload;
     },
 
@@ -101,6 +121,7 @@ const financeSlice = createSlice({
     },
     [refresh.rejected]: (state, { payload }) => {
       state.loading = false;
+      console.log("refresh", payload);
       state.error = payload;
     },
   },
