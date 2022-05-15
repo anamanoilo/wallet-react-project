@@ -13,6 +13,7 @@ const initialState = {
   summary: null,
   error: null,
   categories: null,
+  loading: false,
 };
 
 const financeSlice = createSlice({
@@ -25,9 +26,17 @@ const financeSlice = createSlice({
     [allTransactions.rejected]: (state, { payload }) => {
       state.error = payload;
     },
+    [getSummary.pending]: (state) => {
+      state.loading = true;
+    },
     [getSummary.fulfilled]: (state, { payload }) => {
       state.summary = payload;
+      state.loading = false;
     },
+    [getSummary.rejected]: (state) => {
+      state.loading = false;
+    },
+
     [getCategories.fulfilled]: (state, { payload }) => {
       state.categories = payload;
     },
