@@ -87,7 +87,7 @@ const ModalAddTransaction = () => {
         <Formik
           initialValues={{
             type: type,
-            amount: "",
+            amount: 0,
             comment: "",
             categoryId: "",
             transactionDate: startDate,
@@ -139,26 +139,6 @@ const ModalAddTransaction = () => {
                   />
                 </>
               ) : (
-                // <div className={s.category}>
-                //   <ModalSelect label="" name="">
-                //     <option
-                //       defaultChecked={true}
-                //       defaultValue={incomeCategory.id}
-                //       className={s.visuallyHidden}
-                //       value={incomeCategory.id}
-                //     >
-                //       Choose category
-                //     </option>
-
-                //     <option
-                //       className={s.visuallyHidden}
-                //       key={incomeCategory.id}
-                //       value={incomeCategory.id}
-                //     >
-                //       {incomeCategory.name}
-                //     </option>
-                //   </ModalSelect>
-                // </div>
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
                     <option disabled className={s.categoryChoose} value="">
@@ -183,6 +163,7 @@ const ModalAddTransaction = () => {
                     type="number"
                     placeholder="0.00"
                     className={s.money}
+                    value={values.amount.toFixed(2)}
                   />
                   {errors.amount && (
                     <div className={s.moneyError}>{errors.amount}</div>
