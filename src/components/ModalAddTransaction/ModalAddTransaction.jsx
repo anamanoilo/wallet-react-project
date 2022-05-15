@@ -15,6 +15,7 @@ import financeSelectors from "redux/finance/finance-selectors";
 import moment from "moment";
 import { addTransaction } from "../../redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
+import { TextField } from "@material-ui/core";
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const ModalAddTransaction = () => {
             type: type,
             amount: "",
             comment: "",
-            categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
+            categoryId: "",
             transactionDate: startDate,
           }}
           validationSchema={validationSchema}
@@ -96,7 +97,7 @@ const ModalAddTransaction = () => {
           enableReinitialize
           validateOnBlur
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, values, handleChange }) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
               <div className={s.checkbox}>
@@ -128,7 +129,36 @@ const ModalAddTransaction = () => {
                   Expense
                 </span>
               </div>
-              {chooseType ? null : (
+              {chooseType ? (
+                <>
+                  <input
+                    className={s.visuallyHidden}
+                    type="password"
+                    value={(values.categoryId = incomeCategory.id)}
+                    onChange={handleChange}
+                  />
+                </>
+              ) : (
+                // <div className={s.category}>
+                //   <ModalSelect label="" name="">
+                //     <option
+                //       defaultChecked={true}
+                //       defaultValue={incomeCategory.id}
+                //       className={s.visuallyHidden}
+                //       value={incomeCategory.id}
+                //     >
+                //       Choose category
+                //     </option>
+
+                //     <option
+                //       className={s.visuallyHidden}
+                //       key={incomeCategory.id}
+                //       value={incomeCategory.id}
+                //     >
+                //       {incomeCategory.name}
+                //     </option>
+                //   </ModalSelect>
+                // </div>
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
                     <option disabled className={s.categoryChoose} value="">
@@ -154,7 +184,7 @@ const ModalAddTransaction = () => {
                     placeholder="0.00"
                     className={s.money}
                   />
-                  {errors.amount && touched.amount && (
+                  {errors.amount && (
                     <div className={s.moneyError}>{errors.amount}</div>
                   )}
                 </div>
