@@ -14,9 +14,9 @@ import Currency from "components/Currency";
 import Header from "components/Header";
 import Container from "components/Container/Container";
 import Loader from "components/Loader";
+import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
 import ButtonAddTransactions from "components/ButtonAddTransactions";
-import ModalAddTransaction from "components/ModalAddTransaction";
-
+import financeSelectors from "redux/finance/finance-selectors";
 const HomeTab = lazy(() =>
   import("components/HomeTab" /*webpackChankName: "HomeTab" */)
 );
@@ -27,20 +27,20 @@ const Balance = lazy(() =>
   import("components/Balance" /*webpackChankName: "Balance" */)
 );
 
-
-
 const Dashboard = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(globalSelectors.getIsLoading);
   const showModal = useSelector(globalSelectors.getIsModalAddTransaction);
+  const categories = useSelector(financeSelectors.getCategories);
 
   useEffect(() => {
     dispatch(refresh());
     dispatch(allTransactions());
-    dispatch(getCategories());
   }, [dispatch]);
 
-
+  useEffect(() => {
+    if (!categories) dispatch(getCategories());
+  }, [dispatch, categories]);
 
   return isLoading ? (
     <Loader />
@@ -68,6 +68,7 @@ const Dashboard = () => {
                             <>
                               <Balance />
                               <HomeTab />
+                              <ButtonAddTransactions />
                             </>
                           }
                         />
@@ -89,7 +90,15 @@ const Dashboard = () => {
                     <div className={s.Dashboard__rigth}>
                       <Suspense fallback={<Loader />}>
                         <Routes>
-                          <Route path="*" element={<HomeTab />} />
+                          <Route
+                            path="*"
+                            element={
+                              <>
+                                <HomeTab />
+                                <ButtonAddTransactions />
+                              </>
+                            }
+                          />
                           <Route path="/diagram" element={<DiagramTab />} />
                         </Routes>
                       </Suspense>
@@ -100,8 +109,8 @@ const Dashboard = () => {
             </Container>
           )}
         </Media>
-                <ButtonAddTransactions />
-   {showModal && <ModalAddTransaction />}
+
+        {showModal && <ModalAddTransaction />}
       </main>
     </>
   );

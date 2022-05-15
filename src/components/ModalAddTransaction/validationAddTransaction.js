@@ -5,6 +5,7 @@ export const validationSchema = Yup.object().shape({
       .required('Type is required'),
    amount: Yup.number('Enter your money')
       .min(0)
+      .max(1000000000, 'Very large sum, Stop!')
       .required('Money is required'),
    comment: Yup.string('Comment is required')
       .max(15, 'Stop!'),

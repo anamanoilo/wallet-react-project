@@ -1,17 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   allTransactions,
-  // totalBalance,
-  // getSummary,
-  // getCategories,
-  // addTransaction,
+  addTransaction,
 } from "redux/finance/finance-operation";
 import { logOut } from "redux/session/auth-operation";
 
 const initialState = {
   isModalAddTransactionOpen: false,
   isModalLogoutOpen: false,
-  isLoading: false,
+  isLoading: true,
 };
 
 const globalSlice = createSlice({
@@ -23,9 +20,6 @@ const globalSlice = createSlice({
     },
     toggleModalLogout: (state) => {
       state.isModalLogoutOpen = !state.isModalLogoutOpen;
-    },
-    toggleIsLoading: (state) => {
-      state.isLoading = !state.isLoading;
     },
   },
   extraReducers: {
@@ -46,15 +40,15 @@ const globalSlice = createSlice({
     [allTransactions.rejected]: (state) => {
       state.isLoading = false;
     },
-    // [getSummary.pending]: (state) => {
-    //   state.isLoading = true;
-    // },
-    // [getSummary.fulfilled]: (state) => {
-    //   state.isLoading = false;
-    // },
-    // [getSummary.rejected]: (state) => {
-    //   state.isLoading = false;
-    // },
+    [addTransaction.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [addTransaction.fulfilled]: (state) => {
+      state.isLoading = false;
+    },
+    [addTransaction.rejected]: (state) => {
+      state.isLoading = false;
+    },
   },
 });
 
