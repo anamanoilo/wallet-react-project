@@ -88,7 +88,7 @@ const ModalAddTransaction = () => {
             type: type,
             amount: "",
             comment: "",
-            categoryId: "",
+            categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
             transactionDate: startDate,
           }}
           validationSchema={validationSchema}
@@ -128,23 +128,7 @@ const ModalAddTransaction = () => {
                   Expense
                 </span>
               </div>
-              {chooseType ? (
-                <div className={s.category}>
-                  <ModalSelect label="categoryId" name="categoryId">
-                    <option disabled className={s.categoryOption} value="">
-                      Choose category
-                    </option>
-
-                    <option
-                      className={s.categoryOption}
-                      key={incomeCategory.id}
-                      value={incomeCategory.id}
-                    >
-                      {incomeCategory.name}
-                    </option>
-                  </ModalSelect>
-                </div>
-              ) : (
+              {chooseType ? null : (
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
                     <option disabled className={s.categoryChoose} value="">
