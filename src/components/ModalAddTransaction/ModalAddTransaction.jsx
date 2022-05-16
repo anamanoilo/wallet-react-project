@@ -1,21 +1,20 @@
 import { useState } from "react";
-import Modal from "components/Modal/Modal";
 import { Formik, Form, Field } from "formik";
 import Datetime from "react-datetime";
-import "react-datetime/css/react-datetime.css";
 import { IconContext } from "react-icons";
 import { GrClose } from "react-icons/gr";
 import { MdDateRange } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModalAddTransaction } from "redux/global/global-slice";
-import s from "./ModalAddTransaction.module.scss";
-import { validationSchema } from "./validationAddTransaction";
-import ModalSelect from "../ModalSelect/ModalSelect";
 import financeSelectors from "redux/finance/finance-selectors";
-import moment from "moment";
 import { addTransaction } from "../../redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
-import { TextField } from "@material-ui/core";
+import Modal from "components/Modal/Modal";
+import ModalSelect from "../ModalSelect/ModalSelect";
+import { validationSchema } from "./validationAddTransaction";
+import moment from "moment";
+import "react-datetime/css/react-datetime.css";
+import s from "./ModalAddTransaction.module.scss";
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
@@ -73,7 +72,25 @@ const ModalAddTransaction = () => {
 
     isCloseModal();
   };
+  const handleAmount = (value) => {
+    if (!value || Number.isNaN(Number(value))) return value;
+    const length = value.length;
+    const dot = value.indexOf(".");
 
+    if (dot < 0) {
+      return value.concat(".00");
+    }
+
+    if (dot < length - 3) {
+      return value.slice(0, dot + 3);
+    }
+
+    if (dot > length - 3) {
+      return value.padEnd(dot + 3, "0");
+    }
+
+    return value;
+  };
   return (
     <Modal closeModal={isCloseModal}>
       <div className={s.transaction}>
@@ -87,7 +104,7 @@ const ModalAddTransaction = () => {
         <Formik
           initialValues={{
             type: type,
-            amount: 0,
+            amount: '',
             comment: "",
             categoryId: "",
             transactionDate: startDate,
@@ -97,7 +114,7 @@ const ModalAddTransaction = () => {
           enableReinitialize
           validateOnBlur
         >
-          {({ errors, touched, values, handleChange }) => (
+          {({ errors, touched, values, handleChange,handleBlur,setFieldValue }) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
               <div className={s.checkbox}>
@@ -163,7 +180,11 @@ const ModalAddTransaction = () => {
                     type="number"
                     placeholder="0.00"
                     className={s.money}
-                    value={values.amount.toFixed(2)}
+                     onBlur={(e) => {
+                    const { value } = e.target;
+                    setFieldValue("amount", handleAmount(value));
+                    handleBlur(e);
+                     }}
                   />
                   {errors.amount && (
                     <div className={s.moneyError}>{errors.amount}</div>
@@ -206,7 +227,7 @@ const ModalAddTransaction = () => {
                   className={s.comment}
                 />
                 {errors.comment && touched.comment && (
-                  <div className={s.error}>{errors.comment}</div>
+                  <div className={s.commentError}>{errors.comment}</div>
                 )}
               </div>
               <div className={s.btnWrapper}>
