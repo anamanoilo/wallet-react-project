@@ -1,17 +1,17 @@
 @import "../../stylesheet/shared.scss";
 
 .form {
-width: 400px;
-display: block;
+  width: 540px;
+  display: block;
   padding-right: 65px;
   padding-left: 65px;
   padding-top: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 43px;
   background-color: white;
   border-radius: 20px;
   text-align: center;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 766px) {
     width: 280px;
 
     padding-left: 0;
@@ -33,7 +33,6 @@ display: block;
     font-size: 30px;
     line-height: 1.5;
     color: var(--main-text-cl);
-   
   }
 
   .img {
@@ -72,16 +71,14 @@ display: block;
     margin-top: 36px;
   }
 
- 
-
   .btnForm {
     width: 300px;
     margin-top: 20px;
     padding-top: 16px;
     padding-bottom: 13px;
     border-radius: 20px;
-    border: 1px solid #4A56E2;
-    color: #4A56E2;
+    border: 1px solid #4a56e2;
+    color: #4a56e2;
     background-color: white;
     font-family: Circe;
     font-style: normal;
@@ -99,14 +96,13 @@ display: block;
   }
 
   .current {
-       background-color: var(--income-cl);
-       border: 1px solid var(--income-cl);
-       color: white;
-     }
+    background-color: var(--income-cl);
+    border: 1px solid var(--income-cl);
+    color: white;
+  }
   .btnForm:hover {
     background-color: var(--income-cl);
-      border: 1px solid var(--income-cl);
-      color: white;
+    border: 1px solid var(--income-cl);
+    color: white;
   }
- 
 }
