@@ -236,6 +236,18 @@
     //    flex-direction: row;
     // }
   }
+  &Error{
+        color: var(--expense-cl);
+    position: absolute;
+    bottom:160px;
+    @include mq(mobile) {
+    bottom: 170px;
+    }
+    @include mq(tablet){
+      bottom:180px;
+    }
+
+  }
 }
 .btnWrapper {
   display: flex;

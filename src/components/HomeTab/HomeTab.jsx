@@ -3,6 +3,8 @@ import s from "./HomeTab.module.scss";
 import { useSelector } from "react-redux";
 import Media from "react-media";
 import financeSelectors from "redux/finance/finance-selectors";
+import { IconContext } from "react-icons";
+import { MdAccountBalanceWallet } from "react-icons/md";
 
 const HomeTab = () => {
   const data = useSelector(financeSelectors.getFilteredData);
@@ -188,7 +190,20 @@ const HomeTab = () => {
     </Media>
   ) : (
     <div className={s.noTransactions}>
-      <h2>Your transactions will be shown here</h2>
+      <h2 className={s.noTransactions_title}>
+        Your transactions will be shown here
+      </h2>
+      <IconContext.Provider
+        value={{
+          className: `${s.react__icon}`,
+          style: {
+            width: "140px",
+            height: "130px",
+          },
+        }}
+      >
+        <MdAccountBalanceWallet />
+      </IconContext.Provider>
     </div>
   );
 };
