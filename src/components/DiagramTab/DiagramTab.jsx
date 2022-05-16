@@ -17,6 +17,7 @@ const DiagramTab = () => {
   const [period, setPeriod] = useState("");
 
   const isLoading = useSelector(financeSelectors.getLoading);
+  const summary = useSelector(financeSelectors.getSummary);
 
   useEffect(() => {
     if (monthForState === "Month" || yearForState === "Year") {
@@ -59,7 +60,7 @@ const DiagramTab = () => {
       <section className={s.section}>
         <h2 className={s.title}>Statistics</h2>
         <div className={s.wrapper}>
-          {isLoading ? (
+          {isLoading && !summary ? (
             <InlineLoader />
           ) : (
             <>
