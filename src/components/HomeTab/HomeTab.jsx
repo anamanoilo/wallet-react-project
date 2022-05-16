@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Media from "react-media";
 import financeSelectors from "redux/finance/finance-selectors";
 import { IconContext } from "react-icons";
-import { GiWallet } from "react-icons/gi";
+import { MdAccountBalanceWallet } from "react-icons/md";
 
 const HomeTab = () => {
   const data = useSelector(financeSelectors.getFilteredData);
@@ -200,7 +200,7 @@ const HomeTab = () => {
           },
         }}
       >
-        <GiWallet />
+        <MdAccountBalanceWallet />
       </IconContext.Provider>
     </div>
   );
