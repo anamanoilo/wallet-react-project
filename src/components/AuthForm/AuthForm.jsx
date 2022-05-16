@@ -59,6 +59,7 @@ export const AuthForm = ({ type }) => {
                 id="email"
                 name="email"
                 label="E-mail"
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 value={values.email}
                 onChange={handleChange}
                 error={touched.email && Boolean(errors.email)}
@@ -78,6 +79,7 @@ export const AuthForm = ({ type }) => {
                 name="password"
                 label="Password"
                 type="password"
+                pattern="?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20}"
                 value={values.password}
                 onChange={handleChange}
                 error={touched.password && Boolean(errors.password)}
@@ -114,6 +116,7 @@ export const AuthForm = ({ type }) => {
                     </Icon>
                   ),
                 }}
+                pattern="^(?!.*\.\.)(?!\.)(?!.*\.$)(?!\d+$)[a-zA-Z0-9.]{5,50}$"
                 id="username"
                 name="username"
                 label="Username"
@@ -154,6 +157,7 @@ export const AuthForm = ({ type }) => {
                 id="email"
                 name="email"
                 label="E-mail"
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 value={values.email}
                 onChange={handleChange}
                 error={touched.email && Boolean(errors.email)}
@@ -172,6 +176,7 @@ export const AuthForm = ({ type }) => {
                 name="password"
                 label="Password"
                 type="password"
+                pattern="?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20}"
                 value={values.password}
                 onChange={handleChange}
                 error={touched.password && Boolean(errors.password)}
