@@ -190,7 +190,9 @@ const HomeTab = () => {
     </Media>
   ) : (
     <div className={s.noTransactions}>
-      <h2>Your transactions will be shown here</h2>
+      <h2 className={s.noTransactions_title}>
+        Your transactions will be shown here
+      </h2>
       <IconContext.Provider
         value={{
           className: `${s.react__icon}`,

@@ -1,7 +1,10 @@
 @import "../../stylesheet/_mixin.scss";
 // мобильная версия
 .noTransactions {
-  width: 100%;
+  &_title {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .mobailTrList {
