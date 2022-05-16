@@ -18,14 +18,9 @@ const Table = ({
   const periodForSelects = useSelector(financeSelectors.getPeriodForStatistic);
   const isLoading = useSelector(financeSelectors.getLoading);
   const error = useSelector(financeSelectors.getError);
-  // console.log(new Date().getUTCMonth() + 1);
-  // console.log(new Date().getFullYear());
-  // console.log(new Date("December 2022").toISOString());
-  // console.log(new Date("December 2022").getUTCMonth() + 1);
 
   const event = new Date("05 January 2021 14:48 UTC");
   console.log(event.toISOString());
-  // expected output: 2021-11-05T14:48:00.000Z
   if (error) {
     return null;
   }

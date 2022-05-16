@@ -4,7 +4,7 @@ const useLocalStorage = (key, defaultValue) => {
   const [state, setState] = useState(() => {
     try {
       const storageData = JSON.parse(localStorage.getItem(key));
-      return storageData ? [...storageData] : defaultValue;
+      return storageData ? { ...storageData } : defaultValue;
     } catch (error) {
       return defaultValue;
     }
