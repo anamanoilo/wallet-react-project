@@ -97,9 +97,9 @@
     width: 104px;
   }
   &:last-child {
-    padding-right: 25px;
+    padding-right: 20px;
     text-align: right;
-    width: 120px;
+    width: 130px;
   }
   @include mq(tablet) {
     width: 114px;
@@ -166,6 +166,13 @@
   }
 }
 
+.dataTable {
+  width: 678px;
+  @include mq(desktop) {
+    width: 700px;
+  }
+}
+
 .tableBody {
   border-collapse: collapse;
 }
@@ -187,7 +194,7 @@
     width: 104px;
   }
   &:last-child {
-    padding-right: 20px;
+    padding-right: 10px;
     text-align: right;
     width: 120px;
   }

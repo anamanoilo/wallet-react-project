@@ -144,7 +144,7 @@ const HomeTab = () => {
                 </thead>
               </table>
               <div className={s.tableScrollBox}>
-                <table>
+                <table className={s.dataTable}>
                   <tbody className={s.tableBody}>
                     {data?.map(
                       ({
