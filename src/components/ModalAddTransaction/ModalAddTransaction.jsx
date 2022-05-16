@@ -21,9 +21,7 @@ const ModalAddTransaction = () => {
   const categories = useSelector(financeSelectors.getCategories);
   const [chooseType, setChooseType] = useState(false);
   const [type, setType] = useState("EXPENSE");
-  const [startDate, setStartDate] = useState(new Date());
-  const [openDate, setOpenDate] = useState(false);
-
+  const startDate = new Date();
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );
@@ -34,14 +32,6 @@ const ModalAddTransaction = () => {
 
   const isCloseModal = () => {
     dispatch(toggleModalAddTransaction());
-  };
-  const showDate = () => {
-    setOpenDate(!openDate);
-  };
-  const chooseDate = (value) => {
-    const date = value.toISOString();
-    setStartDate(date);
-    showDate();
   };
   const valid = function (current) {
     const tommorow = moment().subtract(1, "day");
@@ -114,7 +104,7 @@ const ModalAddTransaction = () => {
           enableReinitialize
           validateOnBlur
         >
-          {({ errors, touched, values, handleChange,handleBlur,setFieldValue }) => (
+          {({ errors, touched, values, handleChange,handleBlur,setFieldValue}) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
               <div className={s.checkbox}>
@@ -194,28 +184,15 @@ const ModalAddTransaction = () => {
                   <Datetime
                     className={s.date}
                     initialValue={startDate}
-                    onChange={chooseDate}
+                    onChange={(value) =>
+  setFieldValue("transactionDate", value.toISOString())
+}                   
                     closeOnSelect={true}
                     timeFormat={false}
-                    open={openDate}
                     dateFormat="DD.MM.yyyy"
                     isValidDate={valid}
                   />
-                  <button
-                    className={s.dateBtn}
-                    type="button"
-                    onClick={showDate}
-                  >
-                    <IconContext.Provider
-                      value={{
-                        className: "global-class-name",
-                        color: "#4A56E2",
-                        size: "20px",
-                      }}
-                    >
-                      <MdDateRange />
-                    </IconContext.Provider>
-                  </button>
+                  <MdDateRange className={s.dateIcon}/>
                 </div>
               </div>
               <div className={s.commentWrapper}>
