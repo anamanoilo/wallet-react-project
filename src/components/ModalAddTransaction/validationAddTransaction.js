@@ -3,12 +3,13 @@ import * as Yup from 'yup';
 export const validationSchema = Yup.object().shape({
    type: Yup.string()
       .required('Type is required'),
-   amount: Yup.number('Enter your money')
+   amount: Yup.string('Enter your money')
       .min(0)
-      .max(1000000000, 'Very large sum, Stop!')
-      .required('Money is required'),
-   comment: Yup.string('Comment is required')
-      .max(15, 'Stop!'),
+      .max(8, 'Very large amount, no more than 8 characters')
+      .required('Enter the amount, only numbers and comas'),
+   comment: Yup.string()
+      .max(15, 'No more than 15 characters')
+   .matches(/^[a-zA-Z\s]+$/, 'Only letters are allowed'),
    categoryId: Yup.string('Choose a category')
       .required('Category is required'),
    transactionDate: Yup.string()
