@@ -169,7 +169,7 @@
 .date {
   & input {
     font-family: "Circe";
-    width: 260px;
+    width: 280px;
     height: 32px;
     font-size: 18px;
     line-height: 1.5;
@@ -182,9 +182,6 @@
     @include mq(mobile) {
       max-width: 160px;
     }
-    //    @include mq(tablet){
-    //      width: 160px;
-    //   }
   }
   &Wrapper {
     position: relative;
@@ -192,13 +189,18 @@
     align-items: center;
     justify-content: center;
   }
-  &Btn {
-    right: 14px;
+  &Icon {
     position: absolute;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-  }
+    width: 24px;
+    height: 24px;
+    top: 2px;
+    right: 10px;
+    color: var(--accent-active-cl);
+    pointer-events: none;
+    @include mq(mobile) {
+      right: 5px;
+    }
+}
 }
 .comment {
   padding-bottom: 40px;
@@ -232,14 +234,12 @@
     align-items: center;
     border: none;
     justify-content: center;
-    // @include mq(tablet) {
-    //    flex-direction: row;
-    // }
+
   }
   &Error{
         color: var(--expense-cl);
     position: absolute;
-    bottom:160px;
+    bottom:180px;
     @include mq(mobile) {
     bottom: 170px;
     }

@@ -12,6 +12,6 @@ export const validationSchema = Yup.object().shape({
    .matches(/^[a-zA-Z\s]+$/, 'Only letters are allowed'),
    categoryId: Yup.string('Choose a category')
       .required('Category is required'),
-   transactionDate: Yup.string()
-   .required('Data is required'),
+   transactionDate: Yup.date()
+   .required('Date is required'),
 });
