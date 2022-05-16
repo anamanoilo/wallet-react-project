@@ -29,7 +29,7 @@ export const getSummary = createAsyncThunk(
   "getSummary",
   async (period = "", { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/api/transactions-summary${period}`);
+      const { data } = await axios.get(`api/transactions-summary${period}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
