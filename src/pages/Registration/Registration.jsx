@@ -10,11 +10,15 @@ const Registration = () => {
       <div className={sContainer.container}>
         <div className={s.mainPage}>
           <div className={s.left}>
+            <div className={s.left__position}>
             <img src={imgRegister} alt="finance app" className={s.img} />
-            <h1 className={s.title}>Finance App</h1>
+              <h1 className={s.title}>Finance App</h1>
+            </div>
           </div>
           <div className={s.right}>
-            <AuthForm type="signUp" />
+            <div className={s.right__formbox}>
+              <AuthForm type="signUp" />
+            </div>
           </div>
         </div>
       </div>
