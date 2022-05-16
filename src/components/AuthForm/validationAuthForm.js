@@ -3,9 +3,10 @@ import * as Yup from "yup";
 const authValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Please enter correct email")
+    .min(2, "Please enter more than 2 character")
     .max(100, "Max 100")
     .matches(
-      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+      /^[A-Za-z0-9][A-Za-z0-9\.\-_]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
       "Please enter correct email"
     )
     .required("this field is required"),
@@ -33,7 +34,7 @@ const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Please enter correct email")
     .matches(
-      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+      /^[A-Za-z0-9][A-Za-z0-9\.\-_]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
       "Please enter correct email"
     )
     .max(254, "Max 254")
