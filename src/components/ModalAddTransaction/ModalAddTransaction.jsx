@@ -15,6 +15,7 @@ import financeSelectors from "redux/finance/finance-selectors";
 import moment from "moment";
 import { addTransaction } from "../../redux/finance/finance-operation";
 import { refresh } from "redux/session/auth-operation";
+import { TextField } from "@material-ui/core";
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
@@ -86,7 +87,7 @@ const ModalAddTransaction = () => {
         <Formik
           initialValues={{
             type: type,
-            amount: "",
+            amount: 0,
             comment: "",
             categoryId: "",
             transactionDate: startDate,
@@ -96,7 +97,7 @@ const ModalAddTransaction = () => {
           enableReinitialize
           validateOnBlur
         >
-          {({ errors, touched }) => (
+          {({ errors, touched, values, handleChange }) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
               <div className={s.checkbox}>
@@ -129,21 +130,14 @@ const ModalAddTransaction = () => {
                 </span>
               </div>
               {chooseType ? (
-                <div className={s.category}>
-                  <ModalSelect label="categoryId" name="categoryId">
-                    <option disabled className={s.categoryOption} value="">
-                      Choose category
-                    </option>
-
-                    <option
-                      className={s.categoryOption}
-                      key={incomeCategory.id}
-                      value={incomeCategory.id}
-                    >
-                      {incomeCategory.name}
-                    </option>
-                  </ModalSelect>
-                </div>
+                <>
+                  <input
+                    className={s.visuallyHidden}
+                    type="password"
+                    value={(values.categoryId = incomeCategory.id)}
+                    onChange={handleChange}
+                  />
+                </>
               ) : (
                 <div className={s.category}>
                   <ModalSelect label="categoryId" name="categoryId">
@@ -169,8 +163,9 @@ const ModalAddTransaction = () => {
                     type="number"
                     placeholder="0.00"
                     className={s.money}
+                    value={values.amount.toFixed(2)}
                   />
-                  {errors.amount && touched.amount && (
+                  {errors.amount && (
                     <div className={s.moneyError}>{errors.amount}</div>
                   )}
                 </div>
