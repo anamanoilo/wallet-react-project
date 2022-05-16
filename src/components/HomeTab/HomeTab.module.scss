@@ -258,6 +258,7 @@ svg.react__icon {
   animation: animate125 3000ms 1 500ms;
   margin-top: 20px;
   fill: var(--accent-active-cl);
+  transition: all 250ms linear;
 }
 @keyframes animate125 {
   0% {
