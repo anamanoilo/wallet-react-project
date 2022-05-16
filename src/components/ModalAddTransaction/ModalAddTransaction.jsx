@@ -186,7 +186,7 @@ const ModalAddTransaction = () => {
                     handleBlur(e);
                      }}
                   />
-                  {errors.amount && (
+                  {errors.amount && touched.amount &&(
                     <div className={s.moneyError}>{errors.amount}</div>
                   )}
                 </div>
