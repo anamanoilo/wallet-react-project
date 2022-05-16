@@ -78,7 +78,7 @@
   padding-left: 20px;
   padding-right: 20px;
   @include mq(tablet) {
-    width: 294px;
+    width: 334px;
   }
   @include mq(desktop) {
     width: unset;
@@ -108,7 +108,7 @@
   padding-left: 20px;
   padding-right: 20px;
   @include mq(tablet) {
-    width: 296px;
+    width: 334px;
     padding-top: 16px;
     padding-bottom: 20px;
   }
