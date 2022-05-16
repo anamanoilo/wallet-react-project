@@ -77,8 +77,6 @@
   @include mq(tablet) {
     width: 100%;
   }
-  @include mq(desktop) {
-  }
 }
 
 .table {
@@ -160,11 +158,11 @@
 .tableScrollBox {
   overflow-y: scroll;
   @include mq(tablet) {
-    height: 45vh;
+    max-height: 45vh;
   }
 
   @include mq(desktop) {
-    height: 65vh;
+    max-height: 65vh;
   }
 }
 
