@@ -5,8 +5,10 @@ import useLocalStorage from "hooks/useLocalStorage";
 import fetchExchangeRate from "services/CurrencyApi";
 
 const Currency = () => {
-  const [requestTime, setRequestTime] = useLocalStorage("time", 0);
-  const [currency, setCurrency] = useState([]);
+  const [requestData, setRequestData] = useLocalStorage("request", {
+    currency: [],
+    time: 0,
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -22,9 +24,9 @@ const Currency = () => {
   };
 
   const countPastTime = useCallback(() => {
-    const pastTime = new Date(Date.now() - requestTime);
+    const pastTime = new Date(Date.now() - requestData.time);
     return pastTime / (1000 * 60);
-  }, [requestTime]);
+  }, [requestData.time]);
 
   useEffect(() => {
     (async () => {
@@ -36,15 +38,14 @@ const Currency = () => {
         setError("");
         const data = await fetchExchangeRate();
         const normalizedData = prepareData(data);
-        setCurrency(normalizedData);
-        setRequestTime(Date.now());
+        setRequestData({ currency: normalizedData, time: Date.now() });
         setLoading(false);
       } catch (error) {
         setError("Sorry, exchange rate is not available now.");
         setLoading(false);
       }
     })();
-  }, [countPastTime, requestTime, setRequestTime]);
+  }, [countPastTime, requestData, setRequestData]);
 
   return (
     <div className={s.currency}>
@@ -61,7 +62,7 @@ const Currency = () => {
             <p className={s.currencyHeader}>Sell</p>
           </div>
           <ul className={s.currencyBody}>
-            {currency.map(({ buy, sale, ccy }) => (
+            {requestData.currency?.map(({ buy, sale, ccy }) => (
               <li key={ccy} className={s.currencyRow}>
                 <span className={s.currencyData}>{ccy}</span>
                 <span className={s.currencyData}>{buy}</span>
