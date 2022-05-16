@@ -81,6 +81,8 @@
             }
             @include mq(tablet) {
                 display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
 
@@ -108,12 +110,26 @@
         .img {
             width: 450px;
             height: 410px;
-
-            @media screen and (max-width: 1279px) {
+            
+            // @media screen and (max-width: 1279px) {
+            //     width: 274px;
+            //     height: 250px;
+            //     margin-right: 40px;
+            // }
+            // @media screen and (max-heigth: 999px) {
+            //     width: 0;
+            //     height: 0;
+            //     margin-right: 0;
+            // }
+            @include mq(tablet) {
                 width: 274px;
-                height: 250px;
-
-                margin-right: 40px;
+                    height: 250px;
+                    margin-right: 40px;
+                @media screen and (max-heigth: 999px) {
+                        width: 0;
+                        height: 0;
+                        margin-right: 0;
+                    }
             }
         }
 
