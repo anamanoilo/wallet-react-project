@@ -21,6 +21,7 @@ const ModalAddTransaction = () => {
   const categories = useSelector(financeSelectors.getCategories);
   const [chooseType, setChooseType] = useState(false);
   const [type, setType] = useState("EXPENSE");
+  const [id,setId]=useState('')
   const startDate = new Date();
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
@@ -95,7 +96,7 @@ const ModalAddTransaction = () => {
             type: type,
             amount: "",
             comment: "",
-            categoryId: "",
+            categoryId: id,
             transactionDate: startDate,
           }}
           validationSchema={validationSchema}
@@ -130,6 +131,7 @@ const ModalAddTransaction = () => {
                     readOnly
                   />
                   <span
+                    tabIndex="0"
                     onClick={handleChangeType}
                     className={s.checkboxSwitch}
                   ></span>
@@ -153,21 +155,13 @@ const ModalAddTransaction = () => {
                 </>
               ) : (
                 <div className={s.category}>
-                  {/* <ModalSelect label="categoryId" name="categoryId">
-                    <option disabled className={s.categoryChoose} value="">
-                      Choose category
-                    </option>
-                    {expenseCategories?.map((category) => (
-                      <option
-                        className={s.categoryOption}
-                        key={category.id}
-                        value={category.id}
-                      >
-                        {category.name}
-                      </option>
-                    ))}
-                  </ModalSelect> */}
-                    <ModalSelect options={expenseCategories}/>
+                    <ModalSelect options={expenseCategories}
+                    onClick={(setId) =>
+                      setFieldValue("categoryId", setId)}
+                    />
+                      {errors.categoryId && touched.categoryId && (
+                  <div className={s.categoryError}>{errors.categoryId}</div>
+                )}
                 </div>
               )}
               <div className={s.wrapper}>

@@ -318,3 +318,24 @@
   clip-path: inset(50%);
   margin: -1px;
 }
+.category{
+  display: flex;
+  justify-content: center;
+ @include mq(tablet) {
+   justify-content: normal;
+ }
+
+  &Error {
+    top: 206px;
+  position: absolute;
+  color: var(--expense-cl);
+  @include mq(mobile) {
+    top:224px;
+  }
+  @include mq(tablet) {
+    // left: 71px;
+    top:234px;
+  }
+}
+}
+
