@@ -153,7 +153,7 @@ const ModalAddTransaction = () => {
                 </>
               ) : (
                 <div className={s.category}>
-                  <ModalSelect label="categoryId" name="categoryId">
+                  {/* <ModalSelect label="categoryId" name="categoryId">
                     <option disabled className={s.categoryChoose} value="">
                       Choose category
                     </option>
@@ -166,7 +166,8 @@ const ModalAddTransaction = () => {
                         {category.name}
                       </option>
                     ))}
-                  </ModalSelect>
+                  </ModalSelect> */}
+                    <ModalSelect options={expenseCategories}/>
                 </div>
               )}
               <div className={s.wrapper}>

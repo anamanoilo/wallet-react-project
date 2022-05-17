@@ -1,37 +1,80 @@
-@import "stylesheet/shared.scss";
-.select {
-  display: flex;
-  min-width: 280px;
-   font-family: 'Circe', sans-serif;
-   font-weight: 400;
-   font-size: 18px;
-   line-height: 1.5;
-   color: #bdbdbd;
-   border: none;
-   background-color: transparent;
-   border-bottom: 1px solid #e0e0e0;
-   outline: none;
-   @include mq(mobile){
-     width: 400px;
-   }
-  &Wrapper {
-  display: flex;
-    justify-content: center;
-}
-}
-.error {
+// @import "stylesheet/shared.scss";
+// .select {
+//   display: flex;
+//   min-width: 280px;
+//    font-family: 'Circe', sans-serif;
+//    font-weight: 400;
+//    font-size: 18px;
+//    line-height: 1.5;
+//    color: #bdbdbd;
+//    border: none;
+//    background-color: transparent;
+//    border-bottom: 1px solid #e0e0e0;
+//    outline: none;
+//    @include mq(mobile){
+//      width: 400px;
+//    }
+//   &Wrapper {
+//   display: flex;
+//     justify-content: center;
+// }
+// }
+// .error {
+//   position: absolute;
+//   color: var(--expense-cl);
+//   top: 206px;
+//   // left: 60px;
+//   @include mq(mobile) {
+//     top:224px;
+//     // left: 70px;
+
+//   }
+//     @include mq(tablet) {
+//     top:234px;
+//     left: 70px;
+//   }
+
+// }
+ 
+.dropDown{
+  &Container{
+    width: 10.5em;
+    margin: 0 auto;
+  }
+  &Header{
+     margin-bottom: 0.8em;
+  padding: 0.4em 2em 0.4em 1em;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: black;
+  }
+  &ListContainer{
   position: absolute;
-  color: var(--expense-cl);
-  top: 206px;
-  // left: 60px;
-  @include mq(mobile) {
-    top:224px;
-    // left: 70px;
-
+  width: 10.5em;
+  z-index: 1;
   }
-    @include mq(tablet) {
-    top:234px;
-    left: 70px;
+  &List{
+     padding: 0;
+  margin: 0;
+  padding-left: 1em;
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+  box-sizing: border-box;
+  color: #3faffa;
+  font-size: 1.3rem;
+  font-weight: 500;
+  &:first-child {
+    padding-top: 0.8em;
   }
+    cursor:pointer;
+  }
+  &Item{
+     list-style: none;
+  margin-bottom: 0.8em;
 
+  &:hover {
+    color: #fd9e46;
+  }
+  }
 }
