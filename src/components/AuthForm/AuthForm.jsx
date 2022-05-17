@@ -1,6 +1,6 @@
 import s from "./AuthForm.module.scss";
 import { Formik } from "formik";
-import { validationSchema } from "./validationAuthForm";
+import { validationSchema } from "./validation/validationAuthForm";
 import { logIn, register } from "redux/session/auth-operation";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
