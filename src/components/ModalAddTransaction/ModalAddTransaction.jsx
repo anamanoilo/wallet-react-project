@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { useState, useRef } from "react";
 import Datetime from "react-datetime";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { IconContext } from "react-icons";
 import { GrClose } from "react-icons/gr";
 import { MdDateRange } from "react-icons/md";
@@ -14,31 +14,53 @@ import { validationSchema } from "./validationAddTransaction";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
 import s from "./ModalAddTransaction.module.scss";
+import { toast } from "react-toastify";
 
+  const handleAmount = (value) => {
+      if (!value || Number.isNaN(Number(value))) return value;
+    const length = value.length;
+    const dot = value.indexOf(".");
+    if (dot < 0) {
+      return value.concat(".00");
+    }
+    if (dot < length - 3) {
+      return value.slice(0, dot + 3);
+    }
+    
+    if (dot > length - 3) {
+      return value.padEnd(dot + 3, "0");
+    }
+    return value;
+  };
+  const valid = function (current) {
+    const tommorow = moment().subtract(1, "day");
+    return current.isBefore(tommorow);
+  };
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
   const categories = useSelector(financeSelectors.getCategories);
   const [chooseType, setChooseType] = useState(false);
   const [type, setType] = useState("EXPENSE");
   const startDate = new Date();
+  const toastId = useRef('enterAmount');
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );
-
   const incomeCategory = categories?.find(
     (category) => category.type === "INCOME"
   );
-
   const isCloseModal = () => {
     dispatch(toggleModalAddTransaction());
   };
-  const valid = function (current) {
-    const tommorow = moment().subtract(1, "day");
-    return current.isBefore(tommorow);
-  };
+  
   const handleChangeType = () => {
     setChooseType(!chooseType);
     setType("INCOME");
+  };
+     const enterByFocus = (e) => {
+    if (e.keyCode === 13) {
+      handleChangeType();
+    }
   };
   const handleSubmitForm = ({
     type,
@@ -48,6 +70,13 @@ const ModalAddTransaction = () => {
     transactionDate,
   }) => {
     const normalizedAmount = type === "EXPENSE" ? -amount : amount;
+    if (amount === '0') {
+      if(! toast.isActive(toastId.current)) {
+        toastId.current = toast.error("Enter amount!");
+      }
+      return;
+    }
+
     dispatch(
       addTransaction({
         type,
@@ -59,25 +88,7 @@ const ModalAddTransaction = () => {
     );
     isCloseModal();
   };
-  const handleAmount = (value) => {
-    if (!value || Number.isNaN(Number(value))) return value;
-    const length = value.length;
-    const dot = value.indexOf(".");
 
-    if (dot < 0) {
-      return value.concat(".00");
-    }
-
-    if (dot < length - 3) {
-      return value.slice(0, dot + 3);
-    }
-
-    if (dot > length - 3) {
-      return value.padEnd(dot + 3, "0");
-    }
-
-    return value;
-  };
   return (
     <Modal closeModal={isCloseModal}>
       <div className={s.transaction}>
@@ -107,7 +118,7 @@ const ModalAddTransaction = () => {
             values,
             handleChange,
             handleBlur,
-            setFieldValue,
+            setFieldValue
           }) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
@@ -124,10 +135,11 @@ const ModalAddTransaction = () => {
                     type="checkbox"
                     value="type"
                     checked={chooseType}
-                    onChange={handleChangeType}
                     readOnly
                   />
                   <span
+                    onKeyDown={enterByFocus}
+                  tabIndex="0"
                     onClick={handleChangeType}
                     className={s.checkboxSwitch}
                   ></span>
@@ -143,6 +155,7 @@ const ModalAddTransaction = () => {
               {chooseType ? (
                 <>
                   <input
+                    autoComplete="off"
                     className={s.visuallyHidden}
                     type="text"
                     value={(values.categoryId = incomeCategory.id)}
@@ -170,6 +183,7 @@ const ModalAddTransaction = () => {
               <div className={s.wrapper}>
                 <div className={s.moneyWrapper}>
                   <Field
+                    autoComplete='off'
                     name="amount"
                     type="number"
                     placeholder="0.00"
@@ -180,17 +194,18 @@ const ModalAddTransaction = () => {
                       handleBlur(e);
                     }}
                   />
-                  {errors.amount && touched.amount && (
-                    <div className={s.moneyError}>{errors.amount}</div>
-                  )}
+                    <span className={s.moneyError}>
+                      <ErrorMessage name="amount" />
+                    </span>
                 </div>
                 <div className={s.dateWrapper}>
                   <Datetime
                     className={s.date}
                     initialValue={startDate}
                     onChange={(value) =>
-                      setFieldValue("transactionDate", value.toISOString())
-                    }
+                    setFieldValue("transactionDate",
+                    value.toISOString())
+                    }                   
                     closeOnSelect={true}
                     timeFormat={false}
                     dateFormat="DD.MM.yyyy"
