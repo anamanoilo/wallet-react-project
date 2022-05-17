@@ -94,7 +94,7 @@ const ModalAddTransaction = () => {
         <Formik
           initialValues={{
             type: type,
-            amount: '',
+            amount: "",
             comment: "",
             categoryId: "",
             transactionDate: startDate,
@@ -104,7 +104,14 @@ const ModalAddTransaction = () => {
           enableReinitialize
           validateOnBlur
         >
-          {({ errors, touched, values, handleChange,handleBlur,setFieldValue}) => (
+          {({
+            errors,
+            touched,
+            values,
+            handleChange,
+            handleBlur,
+            setFieldValue,
+          }) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
               <div className={s.checkbox}>
@@ -140,7 +147,7 @@ const ModalAddTransaction = () => {
                 <>
                   <input
                     className={s.visuallyHidden}
-                    type="password"
+                    type="text"
                     value={(values.categoryId = incomeCategory.id)}
                     onChange={handleChange}
                   />
@@ -170,13 +177,13 @@ const ModalAddTransaction = () => {
                     type="number"
                     placeholder="0.00"
                     className={s.money}
-                     onBlur={(e) => {
-                    const { value } = e.target;
-                    setFieldValue("amount", handleAmount(value));
-                    handleBlur(e);
-                     }}
+                    onBlur={(e) => {
+                      const { value } = e.target;
+                      setFieldValue("amount", handleAmount(value));
+                      handleBlur(e);
+                    }}
                   />
-                  {errors.amount && touched.amount &&(
+                  {errors.amount && touched.amount && (
                     <div className={s.moneyError}>{errors.amount}</div>
                   )}
                 </div>
@@ -185,14 +192,14 @@ const ModalAddTransaction = () => {
                     className={s.date}
                     initialValue={startDate}
                     onChange={(value) =>
-  setFieldValue("transactionDate", value.toISOString())
-}                   
+                      setFieldValue("transactionDate", value.toISOString())
+                    }
                     closeOnSelect={true}
                     timeFormat={false}
                     dateFormat="DD.MM.yyyy"
                     isValidDate={valid}
                   />
-                  <MdDateRange className={s.dateIcon}/>
+                  <MdDateRange className={s.dateIcon} />
                 </div>
               </div>
               <div className={s.commentWrapper}>
