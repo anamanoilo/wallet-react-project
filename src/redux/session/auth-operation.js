@@ -64,7 +64,6 @@ export const refresh = createAsyncThunk(
     token.set(localStorageToken);
     try {
       const { data } = await axios.get("/api/users/current");
-      console.log("~ user data after refresh  ", data);
       return data;
     } catch (error) {
       rejectWithValue(error.message);
