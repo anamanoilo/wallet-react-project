@@ -144,7 +144,7 @@ const ModalAddTransaction = () => {
                 <>
                   <input
                     className={s.visuallyHidden}
-                    type="password"
+                    type="text"
                     value={(values.categoryId = incomeCategory.id)}
                     onChange={handleChange}
                   />
