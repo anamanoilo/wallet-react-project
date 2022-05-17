@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Datetime from "react-datetime";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { IconContext } from "react-icons";
@@ -14,15 +14,13 @@ import { validationSchema } from "./validationAddTransaction";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
 import s from "./ModalAddTransaction.module.scss";
+import { toast } from "react-toastify";
 
   const handleAmount = (value) => {
       if (!value || Number.isNaN(Number(value))) return value;
     const length = value.length;
     const dot = value.indexOf(".");
-    console.log('value :>> ', value);
-    if (value < 0.1) {
-      return value.concat(".01");
-    }
+
     if (dot < 0) {
       return value.replace('.', ',');
     }
@@ -48,6 +46,7 @@ const ModalAddTransaction = () => {
   const [chooseType, setChooseType] = useState(false);
   const [type, setType] = useState("EXPENSE");
   const startDate = new Date();
+  const toastId = useRef('enterAmount');
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );
@@ -75,6 +74,13 @@ const ModalAddTransaction = () => {
     transactionDate,
   }) => {
     const normalizedAmount = type === "EXPENSE" ? -amount : amount;
+    if (amount === '0') {
+      if(! toast.isActive(toastId.current)) {
+        toastId.current = toast.error("Enter amount!");
+      }
+      return;
+    }
+
     dispatch(
       addTransaction({
         type,
@@ -192,8 +198,9 @@ const ModalAddTransaction = () => {
                       handleBlur(e);
                     }}
                   />
-                   <span className={s.moneyError}> <ErrorMessage name="amount" /></span>
-                   
+                    <span className={s.moneyError}>
+                      <ErrorMessage name="amount" />
+                    </span>
                 </div>
                 <div className={s.dateWrapper}>
                   <Datetime

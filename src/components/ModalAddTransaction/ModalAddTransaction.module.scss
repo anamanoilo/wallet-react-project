@@ -60,12 +60,7 @@
     left: 0;
     transition: background-color 250ms ease;
   }
-  &Label &Switch::before{
-       &:focus{
-     border: 2px solid blue;
-     border-radius: 10px;
-    }
-  }
+
   &Label &Switch::before {
     position: absolute;
     content: "";
