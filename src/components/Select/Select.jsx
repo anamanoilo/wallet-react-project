@@ -1,6 +1,7 @@
 import s from "./Select.module.scss";
 import { useState } from "react";
-import { HiOutlineChevronDown } from "react-icons/hi";
+import { AiOutlineDown } from "react-icons/ai";
+import { IconContext } from "react-icons";
 
 const Select = ({ options, selected, setSelected, position = false }) => {
   const [isActive, setIsActive] = useState(false);
@@ -10,11 +11,18 @@ const Select = ({ options, selected, setSelected, position = false }) => {
       <div className={s.dropdown__btn} onClick={(e) => setIsActive(!isActive)}>
         <p>{selected}</p>
 
-        <span className={s.wrapper__icon}>
-          <HiOutlineChevronDown
-            style={{ width: "20", height: "11", color: "black" }}
-          />
-        </span>
+        <IconContext.Provider
+          value={{
+            className: `${s.react__icon}`,
+            style: {
+              width: "20px",
+              height: "15px",
+              color: "black",
+            },
+          }}
+        >
+          <AiOutlineDown />
+        </IconContext.Provider>
       </div>
       {isActive && (
         <div className={s.dropdown__content}>
