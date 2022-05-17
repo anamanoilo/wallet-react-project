@@ -19,8 +19,6 @@ const Table = ({
   const isLoading = useSelector(financeSelectors.getLoading);
   const error = useSelector(financeSelectors.getError);
 
-  const event = new Date("05 January 2021 14:48 UTC");
-  console.log(event.toISOString());
   if (error) {
     return null;
   }
