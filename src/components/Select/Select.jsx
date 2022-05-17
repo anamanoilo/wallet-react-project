@@ -4,8 +4,17 @@ import { useState, useEffect, useCallback } from "react";
 import { AiOutlineDown } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
+import Box from "@mui/material/Box";
+import ClickAwayListener from "@mui/base/ClickAwayListener";
+
 const Select = ({ options, selected, setSelected, position = false }) => {
   const [isActive, setIsActive] = useState(false);
+
+  const handleClick = (e) => setIsActive(!isActive);
+
+  const handleClickAway = () => {
+    setIsActive(false);
+  };
 
   const closeSelectByEsc = useCallback(
     (e) => {
@@ -23,63 +32,46 @@ const Select = ({ options, selected, setSelected, position = false }) => {
     };
   }, [closeSelectByEsc]);
 
-  // const onPress = (e) => {
-  //   console.log("e.target", e.target);
-  //   console.log("e.currentTarget", e.currentTarget);
-  //   console.log("e.target", e.target.id);
-  //   if (e.target.id === "3") {
-  //     console.log(e.target);
-  //     setIsActive(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (isActive) {
-  //     window.addEventListener("click", onPress);
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener("click", onPress);
-  //   };
-  // }, [isActive]);
-
   return (
-    <div id="3" className={position ? s.dropdown__first : s.dropdown}>
-      <div className={s.dropdown__btn} onClick={(e) => setIsActive(!isActive)}>
-        <p>{selected}</p>
-
-        <IconContext.Provider
-          value={{
-            className: `${s.react__icon}`,
-            style: {
-              width: "20px",
-              height: "15px",
-              color: "black",
-            },
-          }}
-        >
-          <AiOutlineDown />
-        </IconContext.Provider>
-      </div>
-      {isActive && (
-        <div
-          className={position ? s.dropdown__contentFirst : s.dropdown__content}
-        >
-          {options?.map((option) => (
-            <div
-              key={[option]}
-              onClick={(e) => {
-                setSelected(option);
-                setIsActive(false);
-              }}
-              className={s.dropdown__item}
-            >
-              {option}
-            </div>
-          ))}
+    <ClickAwayListener onClickAway={handleClickAway}>
+      <Box id="3" className={position ? s.dropdown__first : s.dropdown}>
+        <div className={s.dropdown__btn} onClick={handleClick}>
+          <p>{selected}</p>
+          <IconContext.Provider
+            value={{
+              className: `${s.react__icon}`,
+              style: {
+                width: "20px",
+                height: "15px",
+                color: "black",
+              },
+            }}
+          >
+            <AiOutlineDown />
+          </IconContext.Provider>
         </div>
-      )}
-    </div>
+        {isActive && (
+          <Box
+            className={
+              position ? s.dropdown__contentFirst : s.dropdown__content
+            }
+          >
+            {options?.map((option) => (
+              <div
+                key={[option]}
+                onClick={(e) => {
+                  setSelected(option);
+                  setIsActive(false);
+                }}
+                className={s.dropdown__item}
+              >
+                {option}
+              </div>
+            ))}
+          </Box>
+        )}
+      </Box>
+    </ClickAwayListener>
   );
 };
 
