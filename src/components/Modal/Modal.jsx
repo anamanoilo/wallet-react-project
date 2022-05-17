@@ -5,6 +5,7 @@ import s from "./Modal.module.scss";
 
 const modalRoot = document.querySelector('#modal-root');
 const Modal = ({ children, closeModal }) => {
+document.body.style.overflow = "hidden"; 
   const closeModalByEsc = useCallback(
     (e) => {
       if (e.code === "Escape") {
