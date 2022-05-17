@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleModalAddTransaction } from "redux/global/global-slice";
 import financeSelectors from "redux/finance/finance-selectors";
 import { addTransaction } from "../../redux/finance/finance-operation";
-import { refresh } from "redux/session/auth-operation";
 import Modal from "components/Modal/Modal";
 import ModalSelect from "../ModalSelect/ModalSelect";
 import { validationSchema } from "./validationAddTransaction";
@@ -58,7 +57,6 @@ const ModalAddTransaction = () => {
         transactionDate,
       })
     );
-
     isCloseModal();
   };
   const handleAmount = (value) => {

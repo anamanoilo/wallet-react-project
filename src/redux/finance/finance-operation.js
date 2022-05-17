@@ -18,7 +18,11 @@ export const addTransaction = createAsyncThunk(
   async (transaction, { rejectWithValue }) => {
     try {
       const { data } = await axios.post("/api/transactions", transaction);
-      return data;
+      const fixedData = {
+        ...data,
+        balanceAfter: Number(data.balanceAfter.toFixed(2)),
+      };
+      return fixedData;
     } catch (error) {
       return rejectWithValue(error.message);
     }
