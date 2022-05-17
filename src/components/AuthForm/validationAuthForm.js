@@ -34,7 +34,7 @@ const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Please enter correct email")
     .matches(
-      /^[A-Za-z0-9][A-Za-z0-9\.\]+@[a-z0-9]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
+      /^[A-Za-z0-9-_][A-Za-z0-9\.\-_]*[0-9A-Za-z]+@[a-z0-9]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
       "Please enter correct email"
     )
     .max(254, "Max 254")

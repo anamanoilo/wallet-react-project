@@ -12,6 +12,7 @@ import EmailIcon from "@material-ui/icons/Email";
 import LockIcon from "@material-ui/icons/Lock";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import classNames from "classnames";
+import PasswordStrength from "./password-strength/password-strength";
 
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
@@ -107,7 +108,7 @@ export const AuthForm = ({ type }) => {
                 }
                 helperText={touched.confirmPassword && errors.confirmPassword}
               />
-
+              <PasswordStrength password={values.password} />
               <TextField
                 className={s.textField}
                 InputProps={{
