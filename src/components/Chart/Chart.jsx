@@ -36,7 +36,6 @@ const Chart = ({ data, expenseSummaryChart, show }) => {
                 cutoutPercentage: 90,
                 plugins: {
                   legend: { display: false },
-                  tooltip: true,
                 },
               }}
             />
@@ -56,7 +55,9 @@ const Chart = ({ data, expenseSummaryChart, show }) => {
               cutoutPercentage: 90,
               plugins: {
                 legend: { display: false },
-                tooltip: false,
+                tooltip: {
+                  enabled: false,
+                },
               },
             }}
           />
