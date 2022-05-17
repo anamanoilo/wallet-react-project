@@ -58,7 +58,7 @@ const ModalAddTransaction = () => {
         transactionDate,
       })
     );
-
+    dispatch(refresh());
     isCloseModal();
   };
   const handleAmount = (value) => {
