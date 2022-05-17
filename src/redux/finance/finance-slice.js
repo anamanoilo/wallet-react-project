@@ -87,6 +87,7 @@ const financeSlice = createSlice({
         toast.error("Try later");
       }
       state.data = [...state.data, payload];
+      state.totalBalance = payload.balanceAfter;
     },
     [addTransaction.rejected]: (state, { payload }) => {
       state.loading = false;
@@ -130,7 +131,6 @@ const financeSlice = createSlice({
     },
     [refresh.rejected]: (state, { payload }) => {
       state.loading = false;
-      console.log("refresh", payload);
       state.error = payload;
     },
   },
