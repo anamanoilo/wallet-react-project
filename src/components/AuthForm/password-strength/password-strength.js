@@ -4,35 +4,18 @@ const PasswordStrengthMeter = ({ password }) => {
   const testResult = zxcvbn(password);
   const num = (testResult.score * 100) / 4;
 
-  const createPassLabel = () => {
-    switch (testResult.score) {
-      case 0:
-        return "Very weak";
-      case 1:
-        return "Weak";
-      case 2:
-        return "Fear";
-      case 3:
-        return "Good";
-      case 4:
-        return "Strong";
-      default:
-        return "";
-    }
-  };
-
   const funcProgressColor = () => {
     switch (testResult.score) {
       case 0:
-        return "#828282";
+        return "#24CCA7";
       case 1:
-        return "#EA1111";
+        return "#24CCA7";
       case 2:
-        return "#FFAD00";
+        return "#24CCA7";
       case 3:
-        return "#9bc158";
+        return "#24CCA7";
       case 4:
-        return "#00b500";
+        return "#24CCA7";
       default:
         return "none";
     }
@@ -41,15 +24,23 @@ const PasswordStrengthMeter = ({ password }) => {
   const changePasswordColor = () => ({
     width: `${num}%`,
     background: funcProgressColor(),
-    height: "7px",
+    height: "5px",
+    borderRadius: "20px",
+    boxShadow: "0px 1px 8px rgba(36, 204, 167, 0.5)",
   });
 
   return (
     <>
-      <div style={{ height: "7px" }}>
+      <div
+        style={{
+          marginTop: "10px",
+          background: "#E5F1EF",
+          border: "1px solid #E5F1EF",
+          borderRadius: "20px",
+        }}
+      >
         <div style={changePasswordColor()}></div>
       </div>
-      <p style={{ color: funcProgressColor() }}>{createPassLabel()}</p>
     </>
   );
 };
