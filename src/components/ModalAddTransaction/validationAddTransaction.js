@@ -4,8 +4,10 @@ export const validationSchema = Yup.object().shape({
    type: Yup.string()
       .required('Type is required'),
    amount: Yup.string('Enter your money')
-      .min(0)
+      .min(1)
       .max(8, 'Very large amount, no more than 8 characters')
+      .matches(
+        /^(?:\d*\.)?\d+$/,'Only positive amount')
       .required('Enter the amount, only numbers and comas'),
    comment: Yup.string()
       .max(15, 'No more than 15 characters')

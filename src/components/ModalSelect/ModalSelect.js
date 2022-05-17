@@ -7,7 +7,7 @@ export default function Select({label,...props}) {
    return (
       <div className={s.selectWrapper}>
          <label htmlFor={props.value} />
-         <select className={s.select} {...field} {...props} />
+         <select  className={s.select} {...field} {...props} />
            {meta.touched && meta.error ? (
         <span className={s.error}>{meta.error}</span>
       ) : null}

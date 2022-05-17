@@ -25,11 +25,9 @@ const ModalAddTransaction = () => {
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );
-
   const incomeCategory = categories?.find(
     (category) => category.type === "INCOME"
   );
-
   const isCloseModal = () => {
     dispatch(toggleModalAddTransaction());
   };
@@ -41,6 +39,11 @@ const ModalAddTransaction = () => {
     setChooseType(!chooseType);
     setType("INCOME");
   };
+     const enterByFocus = (e) => {
+    if (e.keyCode === 13) {
+      handleChangeType();
+    }
+  };
   const handleSubmitForm = ({
     type,
     amount,
@@ -48,6 +51,7 @@ const ModalAddTransaction = () => {
     categoryId,
     transactionDate,
   }) => {
+    console.log('amount', amount)
     const normalizedAmount = type === "EXPENSE" ? -amount : amount;
     dispatch(
       addTransaction({
@@ -63,14 +67,11 @@ const ModalAddTransaction = () => {
     isCloseModal();
   };
   const handleAmount = (value) => {
-    if (!value || Number.isNaN(Number(value))) return value;
     const length = value.length;
     const dot = value.indexOf(".");
-
     if (dot < 0) {
       return value.concat(".00");
     }
-
     if (dot < length - 3) {
       return value.slice(0, dot + 3);
     }
@@ -78,7 +79,6 @@ const ModalAddTransaction = () => {
     if (dot > length - 3) {
       return value.padEnd(dot + 3, "0");
     }
-
     return value;
   };
   return (
@@ -120,10 +120,11 @@ const ModalAddTransaction = () => {
                     type="checkbox"
                     value="type"
                     checked={chooseType}
-                    onChange={handleChangeType}
                     readOnly
                   />
                   <span
+                    onKeyDown={enterByFocus}
+                  tabIndex="0"
                     onClick={handleChangeType}
                     className={s.checkboxSwitch}
                   ></span>
@@ -139,6 +140,7 @@ const ModalAddTransaction = () => {
               {chooseType ? (
                 <>
                   <input
+                    autoComplete="off"
                     className={s.visuallyHidden}
                     type="password"
                     value={(values.categoryId = incomeCategory.id)}
@@ -170,11 +172,11 @@ const ModalAddTransaction = () => {
                     type="number"
                     placeholder="0.00"
                     className={s.money}
-                     onBlur={(e) => {
+                    onBlur={(e) => {
                     const { value } = e.target;
                     setFieldValue("amount", handleAmount(value));
                     handleBlur(e);
-                     }}
+                    }}
                   />
                   {errors.amount && touched.amount &&(
                     <div className={s.moneyError}>{errors.amount}</div>
@@ -185,8 +187,9 @@ const ModalAddTransaction = () => {
                     className={s.date}
                     initialValue={startDate}
                     onChange={(value) =>
-  setFieldValue("transactionDate", value.toISOString())
-}                   
+                    setFieldValue("transactionDate",
+                    value.toISOString())
+                    }                   
                     closeOnSelect={true}
                     timeFormat={false}
                     dateFormat="DD.MM.yyyy"

@@ -14,6 +14,10 @@
    @include mq(mobile){
      width: 400px;
    }
+   &:focus{
+     border: 2px solid blue;
+     border-radius: 10px;
+    }
   &Wrapper {
   display: flex;
     justify-content: center;
@@ -30,7 +34,7 @@
 
   }
     @include mq(tablet) {
-    top:234px;
+    top:236px;
     left: 70px;
   }
 
