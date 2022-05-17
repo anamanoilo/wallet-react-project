@@ -10,6 +10,7 @@ import { allMonths } from "assets/const";
 import InlineLoader from "components/InlineLoader";
 import { IconContext } from "react-icons";
 import { FcStatistics } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const DiagramTab = () => {
   const [monthForState, setMonthForState] = useState("Month");
@@ -25,6 +26,7 @@ const DiagramTab = () => {
     }
     const index = allMonths.findIndex((month) => month === monthForState) + 1;
     if (new Date() < new Date(`${monthForState} ${yearForState}`)) {
+      toast.error("Please select a past period");
       return;
     }
     setPeriod(`?month=${index}&year=${yearForState}`);
