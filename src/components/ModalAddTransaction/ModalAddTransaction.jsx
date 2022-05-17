@@ -84,7 +84,6 @@ const ModalAddTransaction = () => {
         transactionDate,
       })
     );
-
     isCloseModal();
   };
 
@@ -156,7 +155,7 @@ const ModalAddTransaction = () => {
                   <input
                     autoComplete="off"
                     className={s.visuallyHidden}
-                    type="password"
+                    type="text"
                     value={(values.categoryId = incomeCategory.id)}
                     onChange={handleChange}
                   />
