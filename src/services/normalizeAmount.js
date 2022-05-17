@@ -6,10 +6,5 @@ export default function normalizeAmount(amount) {
   if (amount === null || amount === undefined) {
     return;
   }
-  const splittedAmount = numberWithSpaces(amount);
-  if (Number.isInteger(amount)) {
-    return splittedAmount.concat(".00");
-  } else {
-    return splittedAmount;
-  }
+  return numberWithSpaces(amount.toFixed(2));
 }

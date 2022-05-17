@@ -60,6 +60,7 @@
     left: 0;
     transition: background-color 250ms ease;
   }
+
   &Label &Switch::before {
     position: absolute;
     content: "";
