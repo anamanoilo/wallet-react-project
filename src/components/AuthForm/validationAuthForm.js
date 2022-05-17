@@ -6,7 +6,7 @@ const authValidationSchema = Yup.object().shape({
     .min(2, "Please enter more than 2 character")
     .max(100, "Max 100")
     .matches(
-      /^[A-Za-z0-9][A-Za-z0-9\.\-_]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
+      /^[A-Za-z0-9][A-Za-z0-9\.\]+@[a-z0-9]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
       "Please enter correct email"
     )
     .required("this field is required"),
@@ -14,8 +14,8 @@ const authValidationSchema = Yup.object().shape({
     .min(6, "Please enter more than 5 character")
     .max(12, "Please enter not more than 12 character")
     .matches(
-      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,12}/,
-      "password must contain one number,uppercase and lowercase character and one special character"
+      /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,12}/,
+      "password must contain one number,uppercase and lowercase character"
     )
     .required("this field is required"),
   confirmPassword: Yup.string()
@@ -34,7 +34,7 @@ const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Please enter correct email")
     .matches(
-      /^[A-Za-z0-9][A-Za-z0-9\.\-_]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
+      /^[A-Za-z0-9][A-Za-z0-9\.\]+@[a-z0-9]+(\.[a-z0-9_-]+)*\.[A-z]{2,100}$/,
       "Please enter correct email"
     )
     .max(254, "Max 254")
@@ -43,8 +43,8 @@ const loginValidationSchema = Yup.object().shape({
     .min(6, "Please enter more than 5 character")
     .max(12, "Max 12")
     .matches(
-      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,12}/,
-      "password must contain one number,uppercase and lowercase character and one special character"
+      /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,12}/,
+      "password must contain one number,uppercase and lowercase character"
     )
     .required("this field is required"),
 });
