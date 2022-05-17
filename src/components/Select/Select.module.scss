@@ -61,8 +61,7 @@
   overflow: auto;
   top: 110%;
   left: 0;
-  padding-left: 20px;
-  padding-right: 20px;
+
   font-size: 16px;
   color: var(--main-text-cl);
   width: 90%;
@@ -72,11 +71,20 @@
   cursor: pointer;
 }
 .dropdown__item {
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 18px;
   line-height: 1.5;
   color: var(--main-text-cl);
   padding-top: 3px;
   padding-bottom: 3px;
+  transition: all 250ms linear;
+}
+.dropdown__item:hover {
+  background-color: var(--bottom-table-row);
+}
+.dropdown__item:focus {
+  background-color: var(--bottom-table-row);
 }
 .dropdown__item:not(:last-child) {
   border-bottom: 1px solid #dcdcdf;
