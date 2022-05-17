@@ -4,7 +4,7 @@ export const validationSchema = Yup.object().shape({
    type: Yup.string()
       .required('Type is required'),
    amount: Yup.string('Enter your money')
-      .min(1)
+      .min(0)
       .max(8, 'Very large amount, no more than 8 characters')
       .matches(
         /^(?:\d*\.)?\d+$/,'Only positive amount')

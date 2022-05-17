@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Formik, Form, Field } from "formik";
 import Datetime from "react-datetime";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { IconContext } from "react-icons";
 import { GrClose } from "react-icons/gr";
 import { MdDateRange } from "react-icons/md";
@@ -15,6 +15,33 @@ import moment from "moment";
 import "react-datetime/css/react-datetime.css";
 import s from "./ModalAddTransaction.module.scss";
 
+  const handleAmount = (value) => {
+      if (!value || Number.isNaN(Number(value))) return value;
+    const length = value.length;
+    const dot = value.indexOf(".");
+    console.log('value :>> ', value);
+    if (value < 0.1) {
+      return value.concat(".01");
+    }
+    if (dot < 0) {
+      return value.replace('.', ',');
+    }
+    if (dot < 0) {
+      return value.concat(".00");
+    }
+    if (dot < length - 3) {
+      return value.slice(0, dot + 3);
+    }
+
+    if (dot > length - 3) {
+      return value.padEnd(dot + 3, "0");
+    }
+    return value;
+  };
+  const valid = function (current) {
+    const tommorow = moment().subtract(1, "day");
+    return current.isBefore(tommorow);
+  };
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
   const categories = useSelector(financeSelectors.getCategories);
@@ -30,10 +57,7 @@ const ModalAddTransaction = () => {
   const isCloseModal = () => {
     dispatch(toggleModalAddTransaction());
   };
-  const valid = function (current) {
-    const tommorow = moment().subtract(1, "day");
-    return current.isBefore(tommorow);
-  };
+  
   const handleChangeType = () => {
     setChooseType(!chooseType);
     setType("INCOME");
@@ -63,21 +87,7 @@ const ModalAddTransaction = () => {
 
     isCloseModal();
   };
-  const handleAmount = (value) => {
-    const length = value.length;
-    const dot = value.indexOf(".");
-    if (dot < 0) {
-      return value.concat(".00");
-    }
-    if (dot < length - 3) {
-      return value.slice(0, dot + 3);
-    }
 
-    if (dot > length - 3) {
-      return value.padEnd(dot + 3, "0");
-    }
-    return value;
-  };
   return (
     <Modal closeModal={isCloseModal}>
       <div className={s.transaction}>
@@ -107,7 +117,7 @@ const ModalAddTransaction = () => {
             values,
             handleChange,
             handleBlur,
-            setFieldValue,
+            setFieldValue
           }) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
@@ -172,6 +182,7 @@ const ModalAddTransaction = () => {
               <div className={s.wrapper}>
                 <div className={s.moneyWrapper}>
                   <Field
+                    autoComplete='off'
                     name="amount"
                     type="number"
                     placeholder="0.00"
@@ -182,9 +193,8 @@ const ModalAddTransaction = () => {
                       handleBlur(e);
                     }}
                   />
-                  {errors.amount && touched.amount && (
-                    <div className={s.moneyError}>{errors.amount}</div>
-                  )}
+                   <span className={s.moneyError}> <ErrorMessage name="amount" /></span>
+                   
                 </div>
                 <div className={s.dateWrapper}>
                   <Datetime
