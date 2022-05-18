@@ -1,5 +1,6 @@
 @import "../../stylesheet/shared.scss";
 .overlay {
+  align-items: start;
   margin-top: 60px;
   background-color: #fff;
   position: fixed;
@@ -9,8 +10,10 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 1200;
+  @include mq(mobile){
+    align-items: center;
+  }
   @include mq(mobile){
     margin-top: 0px;
     background-color: rgba(0, 0, 0, 0.8);
