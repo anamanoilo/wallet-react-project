@@ -14,6 +14,7 @@ import Currency from "components/Currency";
 import Header from "components/Header";
 import Container from "components/Container/Container";
 import Loader from "components/Loader";
+import Scrollup from "components/Scrollup";
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
 import ButtonAddTransactions from "components/ButtonAddTransactions";
 import financeSelectors from "redux/finance/finance-selectors";
@@ -42,6 +43,14 @@ const Dashboard = () => {
     if (!categories) dispatch(getCategories());
   }, [dispatch, categories]);
 
+  const rootElement = document.documentElement;
+  const handlClickUp = () => {
+    rootElement.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+  }
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -68,6 +77,7 @@ const Dashboard = () => {
                             <>
                               <Balance />
                               <HomeTab />
+                              <Scrollup onClick={handlClickUp}/>
                               <ButtonAddTransactions />
                             </>
                           }

@@ -1,0 +1,26 @@
+.buttonScrollup {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    color: var(--main-bg-cl);
+    background-color: var(--income-cl);
+    z-index: 100;
+        
+    opacity: 0;
+        
+    transform: translateY(100px);
+    transition: all 0.5s ease;
+    &:hover {
+        background-color: var(--income-hover-cl);
+        font-weight: 700;
+    }
+}
+
+.showBtn {
+    opacity: 1;
+    transform: translateY(0);
+}
