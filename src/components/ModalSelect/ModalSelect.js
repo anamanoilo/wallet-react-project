@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoIosArrowDown } from 'react-icons/io';
 import s from './ModalSelect.module.scss';
 
 export default function ModalSelect({options, onClick}) {
@@ -20,11 +21,13 @@ export default function ModalSelect({options, onClick}) {
         onKeyDown={onEnter}
         className={s.dropDownHeader} onClick={toggling}>
         {selectedOption || 
-         <span className={s.chooseOption}>Choose option</span>}
+          <span className={s.chooseOption}>Choose option
+                            <IoIosArrowDown /></span>}
         </div>
         {isOpen && (
           <div className={s.dropDownListContainer}>
-            <ul className={s.dropDownList}>
+          <ul className={s.dropDownList}
+            tabIndex={-1}>
               {options.map(option => (
                 <li
                   onKeyDown={onOptionClicked(option)}
@@ -32,6 +35,7 @@ export default function ModalSelect({options, onClick}) {
                   tabIndex={0}
                  >
                   {option.name}
+
                 </li>
               ))}
             </ul>

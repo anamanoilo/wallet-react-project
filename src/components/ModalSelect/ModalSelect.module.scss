@@ -23,6 +23,13 @@
       &ListContainer{
         position: absolute;
         z-index: 1;
+        top: 206px;
+        @include mq(mobile) {
+            top: 226px;
+        }
+         @include mq(tablet) {
+            top: 236px;
+        }
       }
       &List{
         background-color: rgba(255, 255, 255, 0.7);
@@ -34,10 +41,6 @@
         align-items: flex-start;
         cursor:pointer;
         min-width: 280px;
-        
-        &:first-child {
-          padding-top: 4px;
-        }
         @include mq(mobile){
           width: 400px;
         }
@@ -70,6 +73,9 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 1.5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       color: var(--secondary-text-cl);
       @include mq(mobile){
         width: 400px;
