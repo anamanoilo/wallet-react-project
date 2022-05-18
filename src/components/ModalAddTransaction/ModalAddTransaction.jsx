@@ -76,13 +76,6 @@ const ModalAddTransaction = () => {
       }
       return;
     }
-    console.log("transaction", {
-      type,
-      amount: normalizedAmount,
-      comment,
-      categoryId,
-      transactionDate,
-    });
     dispatch(
       addTransaction({
         type,
