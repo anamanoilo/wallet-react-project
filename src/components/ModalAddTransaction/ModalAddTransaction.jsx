@@ -16,34 +16,33 @@ import "react-datetime/css/react-datetime.css";
 import s from "./ModalAddTransaction.module.scss";
 import { toast } from "react-toastify";
 
-  const handleAmount = (value) => {
-      if (!value || Number.isNaN(Number(value))) return value;
-    const length = value.length;
-    const dot = value.indexOf(".");
-    if (dot < 0) {
-      return value.concat(".00");
-    }
-    if (dot < length - 3) {
-      return value.slice(0, dot + 3);
-    }
-    
-    if (dot > length - 3) {
-      return value.padEnd(dot + 3, "0");
-    }
-    return value;
-  };
-  const valid = function (current) {
-    const tommorow = moment().subtract(0, "day");
-    return current.isBefore(tommorow);
-  };
+const handleAmount = (value) => {
+  if (!value || Number.isNaN(Number(value))) return value;
+  const length = value.length;
+  const dot = value.indexOf(".");
+  if (dot < 0) {
+    return value.concat(".00");
+  }
+  if (dot < length - 3) {
+    return value.slice(0, dot + 3);
+  }
+
+  if (dot > length - 3) {
+    return value.padEnd(dot + 3, "0");
+  }
+  return value;
+};
+const valid = function (current) {
+  const tommorow = moment().subtract(0, "day");
+  return current.isBefore(tommorow);
+};
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
   const categories = useSelector(financeSelectors.getCategories);
   const [chooseType, setChooseType] = useState(false);
   const [type, setType] = useState("EXPENSE");
-  const [id,setId]=useState('')
   const startDate = new Date();
-  const toastId = useRef('enterAmount');
+  const toastId = useRef("enterAmount");
   const expenseCategories = categories?.filter(
     (category) => category.type === "EXPENSE"
   );
@@ -53,12 +52,12 @@ const ModalAddTransaction = () => {
   const isCloseModal = () => {
     dispatch(toggleModalAddTransaction());
   };
-  
+
   const handleChangeType = () => {
     setChooseType(!chooseType);
-    setType("INCOME");
+    setType(chooseType ? "EXPENSE" : "INCOME");
   };
-     const enterByFocus = (e) => {
+  const enterByFocus = (e) => {
     if (e.keyCode === 13) {
       handleChangeType();
     }
@@ -71,13 +70,19 @@ const ModalAddTransaction = () => {
     transactionDate,
   }) => {
     const normalizedAmount = type === "EXPENSE" ? -amount : amount;
-    if (amount === '0') {
-      if(! toast.isActive(toastId.current)) {
+    if (amount === "0") {
+      if (!toast.isActive(toastId.current)) {
         toastId.current = toast.error("Enter amount!");
       }
       return;
     }
-
+    console.log("transaction", {
+      type,
+      amount: normalizedAmount,
+      comment,
+      categoryId,
+      transactionDate,
+    });
     dispatch(
       addTransaction({
         type,
@@ -105,7 +110,7 @@ const ModalAddTransaction = () => {
             type: type,
             amount: "",
             comment: "",
-            categoryId: id,
+            categoryId: "",
             transactionDate: startDate,
           }}
           validationSchema={validationSchema}
@@ -119,7 +124,7 @@ const ModalAddTransaction = () => {
             values,
             handleChange,
             handleBlur,
-            setFieldValue
+            setFieldValue,
           }) => (
             <Form className={s.form}>
               <h1 className={s.form__title}>Add transaction</h1>
@@ -140,7 +145,7 @@ const ModalAddTransaction = () => {
                   />
                   <span
                     onKeyDown={enterByFocus}
-                  tabIndex="0"
+                    tabIndex="0"
                     onClick={handleChangeType}
                     className={s.checkboxSwitch}
                   ></span>
@@ -165,19 +170,19 @@ const ModalAddTransaction = () => {
                 </>
               ) : (
                 <div className={s.category}>
-                    <ModalSelect options={expenseCategories}
-                    onClick={(setId) =>
-                      setFieldValue("categoryId", setId)}
-                    />
-                      {errors.categoryId && touched.categoryId && (
-                  <div className={s.categoryError}>{errors.categoryId}</div>
-                )}
+                  <ModalSelect
+                    options={expenseCategories}
+                    onClick={(setId) => setFieldValue("categoryId", setId)}
+                  />
+                  {errors.categoryId && touched.categoryId && (
+                    <div className={s.categoryError}>{errors.categoryId}</div>
+                  )}
                 </div>
               )}
               <div className={s.wrapper}>
                 <div className={s.moneyWrapper}>
                   <Field
-                    autoComplete='off'
+                    autoComplete="off"
                     name="amount"
                     type="number"
                     placeholder="0.00"
@@ -188,18 +193,17 @@ const ModalAddTransaction = () => {
                       handleBlur(e);
                     }}
                   />
-                    <span className={s.moneyError}>
-                      <ErrorMessage name="amount" />
-                    </span>
+                  <span className={s.moneyError}>
+                    <ErrorMessage name="amount" />
+                  </span>
                 </div>
                 <div className={s.dateWrapper}>
                   <Datetime
                     className={s.date}
                     initialValue={startDate}
                     onChange={(value) =>
-                    setFieldValue("transactionDate",
-                    value.toISOString())
-                    }                   
+                      setFieldValue("transactionDate", value.toISOString())
+                    }
                     closeOnSelect={true}
                     timeFormat={false}
                     dateFormat="DD.MM.yyyy"
