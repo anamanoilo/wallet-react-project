@@ -33,7 +33,7 @@ import { toast } from "react-toastify";
     return value;
   };
   const valid = function (current) {
-    const tommorow = moment().subtract(1, "day");
+    const tommorow = moment().subtract(0, "day");
     return current.isBefore(tommorow);
   };
 const ModalAddTransaction = () => {
